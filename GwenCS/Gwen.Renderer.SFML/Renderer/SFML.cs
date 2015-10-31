@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using SFML;
 using SFML.Graphics;
+using SFML.System;
 using SFML.Window;
 using Tao.OpenGl;
 using Color = SFML.Graphics.Color;
@@ -197,7 +198,7 @@ namespace Gwen.Renderer
                     text += '\0';
             }
 
-            Point extents = new Point(0, sfFont.GetLineSpacing((uint)font.RealSize));
+            Point extents = new Point(0, (int)Math.Round(sfFont.GetLineSpacing((uint)font.RealSize)));
             char prev = '\0';
 
             for (int i = 0; i < text.Length; i++)

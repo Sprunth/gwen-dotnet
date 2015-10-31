@@ -1,6 +1,7 @@
 ﻿using System;
 using Gwen.Control;
 using SFML.Graphics;
+using SFML.System;
 using SFML.Window;
 
 namespace Gwen.Input
@@ -85,7 +86,7 @@ namespace Gwen.Input
         {
             switch (sfKey)
             {
-                case Keyboard.Key.Back: return Key.Backspace;
+                case Keyboard.Key.BackSpace: return Key.Backspace;
                 case Keyboard.Key.Return: return Key.Return;
                 case Keyboard.Key.Escape: return Key.Escape;
                 case Keyboard.Key.Tab: return Key.Tab;

@@ -94,7 +94,7 @@ namespace Gwen.Sample.SFML
 
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
-                while (m_Window.IsOpen())
+                while (m_Window.IsOpen)
                 {
                     m_Window.SetActive();
                     m_Window.DispatchEvents();
