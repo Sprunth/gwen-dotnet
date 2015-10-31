@@ -211,6 +211,8 @@ namespace Gwen.Control
             m_CenterImage = center;
 
             TextPadding = new Padding(m_Image.Right + 2, TextPadding.Top, TextPadding.Right, TextPadding.Bottom);
+
+            m_Image.MouseInputEnabled = false;
         }
 
         /// <summary>

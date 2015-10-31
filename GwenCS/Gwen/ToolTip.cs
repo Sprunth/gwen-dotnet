@@ -31,6 +31,7 @@ namespace Gwen
             if (g_ToolTip == control)
             {
                 g_ToolTip = null;
+                control.ToolTip = null;
             }
         }
 

@@ -112,6 +112,8 @@ namespace Gwen.Renderer
             try
             {
                 sfFont = new global::SFML.Graphics.Font(font.FaceName);
+                sfFont.GetTexture((uint)font.Size).Smooth = font.Smooth;
+                font.RendererData = sfFont;
             }
             catch (LoadingFailedException)
             {
