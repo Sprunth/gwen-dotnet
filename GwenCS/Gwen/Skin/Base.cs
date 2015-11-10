@@ -56,7 +56,7 @@ namespace Gwen.Skin
 #if DEBUG
         ~Base()
         {
-            throw new InvalidOperationException(String.Format("IDisposable object finalized: {0}", GetType()));
+            //throw new InvalidOperationException(String.Format("IDisposable object finalized: {0}", GetType()));
             //Debug.Print(String.Format("IDisposable object finalized: {0}", GetType()));
         }
 #endif

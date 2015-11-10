@@ -508,7 +508,7 @@ namespace Gwen.Control
 #if DEBUG
         ~Base()
         {
-            throw new InvalidOperationException(String.Format("IDisposable object finalized [{1:X}]: {0}", this, GetHashCode()));
+            //throw new InvalidOperationException(String.Format("IDisposable object finalized [{1:X}]: {0}", this, GetHashCode()));
             //Debug.Print(String.Format("IDisposable object finalized: {0}", GetType()));
         }
 #endif
