@@ -14,7 +14,7 @@ namespace Gwen.Control
         /// </summary>
         public bool IsChecked
         {
-            get { return m_Checked; } 
+            get { return m_Checked; }
             set
             {
                 if (m_Checked == value) return;
@@ -31,7 +31,7 @@ namespace Gwen.Control
             : base(parent)
         {
             SetSize(15, 15);
-			IsToggle = true;
+            IsToggle = true;
         }
 
         /// <summary>
@@ -46,22 +46,25 @@ namespace Gwen.Control
         /// <summary>
         /// Invoked when the checkbox has been checked.
         /// </summary>
-		public event GwenEventHandler<EventArgs> Checked;
+        public event GwenEventHandler<EventArgs> Checked;
 
         /// <summary>
         /// Invoked when the checkbox has been unchecked.
         /// </summary>
-		public event GwenEventHandler<EventArgs> UnChecked;
+        public event GwenEventHandler<EventArgs> UnChecked;
 
         /// <summary>
         /// Invoked when the checkbox state has been changed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> CheckChanged;
+        public event GwenEventHandler<EventArgs> CheckChanged;
 
         /// <summary>
         /// Determines whether unchecking is allowed.
         /// </summary>
-        protected virtual bool AllowUncheck { get { return true; } }
+        protected virtual bool AllowUncheck
+        {
+            get { return true; }
+        }
 
         /// <summary>
         /// Handler for CheckChanged event.
@@ -69,18 +72,18 @@ namespace Gwen.Control
         protected virtual void OnCheckChanged()
         {
             if (IsChecked)
-            { 
+            {
                 if (Checked != null)
-					Checked.Invoke(this, EventArgs.Empty);
+                    Checked.Invoke(this, EventArgs.Empty);
             }
             else
             {
                 if (UnChecked != null)
-					UnChecked.Invoke(this, EventArgs.Empty);
+                    UnChecked.Invoke(this, EventArgs.Empty);
             }
 
             if (CheckChanged != null)
-				CheckChanged.Invoke(this, EventArgs.Empty);
+                CheckChanged.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -100,13 +103,13 @@ namespace Gwen.Control
         {
             if (IsDisabled)
                 return;
-            
+
             if (IsChecked && !AllowUncheck)
             {
                 return;
             }
 
-			base.OnClicked(x, y);
+            base.OnClicked(x, y);
         }
     }
 }

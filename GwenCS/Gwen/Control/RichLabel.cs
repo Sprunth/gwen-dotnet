@@ -34,7 +34,7 @@ namespace Gwen.Control
         public RichLabel(Base parent)
             : base(parent)
         {
-            newline = new string[] { Environment.NewLine };
+            newline = new string[] {Environment.NewLine};
             m_TextBlocks = new List<TextBlock>();
         }
 
@@ -43,7 +43,7 @@ namespace Gwen.Control
         /// </summary>
         public void AddLineBreak()
         {
-            TextBlock block = new TextBlock { Type = BlockType.NewLine };
+            TextBlock block = new TextBlock {Type = BlockType.NewLine};
             m_TextBlocks.Add(block);
         }
 
@@ -64,7 +64,7 @@ namespace Gwen.Control
                 if (i > 0)
                     AddLineBreak();
 
-                TextBlock block = new TextBlock { Type = BlockType.Text, Text = lines[i], Color = color, Font = font };
+                TextBlock block = new TextBlock {Type = BlockType.Text, Text = lines[i], Color = color, Font = font};
 
                 m_TextBlocks.Add(block);
                 m_NeedsRebuild = true;

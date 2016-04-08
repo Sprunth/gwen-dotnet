@@ -12,7 +12,11 @@ namespace Gwen.Control.Layout
         /// <summary>
         /// Children position.
         /// </summary>
-        public Pos Pos { get { return m_Pos; } set { m_Pos = value; } }
+        public Pos Pos
+        {
+            get { return m_Pos; }
+            set { m_Pos = value; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Positioner"/> class.

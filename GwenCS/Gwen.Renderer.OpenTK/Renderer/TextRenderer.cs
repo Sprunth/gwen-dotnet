@@ -16,7 +16,10 @@ namespace Gwen.Renderer
         readonly Gwen.Texture texture;
         bool disposed;
 
-        public Texture Texture { get { return texture; } }
+        public Texture Texture
+        {
+            get { return texture; }
+        }
 
         /// <summary>
         /// Constructs a new instance.

@@ -21,7 +21,10 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the combo menu is open.
         /// </summary>
-        public bool IsOpen { get { return m_Menu != null && !m_Menu.IsHidden; } }
+        public bool IsOpen
+        {
+            get { return m_Menu != null && !m_Menu.IsHidden; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ComboBox"/> class.
@@ -123,7 +126,7 @@ namespace Gwen.Control
                 Open();
             }
 
-			base.OnClicked(x, y);
+            base.OnClicked(x, y);
         }
 
         /// <summary>
@@ -139,7 +142,7 @@ namespace Gwen.Control
         /// Internal handler for item selected event.
         /// </summary>
         /// <param name="control">Event source.</param>
-		protected virtual void OnItemSelected(Base control, ItemSelectedEventArgs args)
+        protected virtual void OnItemSelected(Base control, ItemSelectedEventArgs args)
         {
             if (!IsDisabled)
             {
@@ -258,7 +261,6 @@ namespace Gwen.Control
         /// <param name="skin">Skin to use.</param>
         protected override void RenderFocus(Skin.Base skin)
         {
-
         }
 
         /// <summary>

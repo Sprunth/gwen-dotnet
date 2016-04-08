@@ -19,12 +19,20 @@ namespace Gwen.Control
         /// <summary>
         /// Minimum value.
         /// </summary>
-        public int Min { get { return m_Min; } set { m_Min = value; } }
+        public int Min
+        {
+            get { return m_Min; }
+            set { m_Min = value; }
+        }
 
         /// <summary>
         /// Maximum value.
         /// </summary>
-        public int Max { get { return m_Max; } set { m_Max = value; } }
+        public int Max
+        {
+            get { return m_Max; }
+            set { m_Max = value; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NumericUpDown"/> class.
@@ -59,7 +67,7 @@ namespace Gwen.Control
         /// <summary>
         /// Invoked when the value has been changed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> ValueChanged;
+        public event GwenEventHandler<EventArgs> ValueChanged;
 
         /// <summary>
         /// Handler for Up Arrow keyboard event.
@@ -91,7 +99,7 @@ namespace Gwen.Control
         /// Handler for the button up event.
         /// </summary>
         /// <param name="control">Event source.</param>
-		protected virtual void OnButtonUp(Base control, EventArgs args)
+        protected virtual void OnButtonUp(Base control, EventArgs args)
         {
             Value = m_Value + 1;
         }
@@ -125,10 +133,7 @@ namespace Gwen.Control
         /// </summary>
         public override float Value
         {
-            get
-            {
-                return base.Value;
-            }
+            get { return base.Value; }
             set
             {
                 if (value < m_Min) value = m_Min;

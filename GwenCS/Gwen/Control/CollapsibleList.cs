@@ -23,7 +23,7 @@ namespace Gwen.Control
         /// <param name="parent">Parent control.</param>
         public CollapsibleList(Base parent) : base(parent)
         {
-			MouseInputEnabled = true;
+            MouseInputEnabled = true;
             EnableScroll(false, true);
             AutoHideBars = true;
         }
@@ -106,7 +106,7 @@ namespace Gwen.Control
         /// Handler for ItemSelected event.
         /// </summary>
         /// <param name="control">Event source: <see cref="CollapsibleList"/>.</param>
-		protected virtual void OnCategorySelected(Base control, EventArgs args)
+        protected virtual void OnCategorySelected(Base control, EventArgs args)
         {
             CollapsibleCategory cat = control as CollapsibleCategory;
             if (cat == null) return;

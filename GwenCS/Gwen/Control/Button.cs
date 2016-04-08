@@ -17,27 +17,27 @@ namespace Gwen.Control
         /// <summary>
         /// Invoked when the button is pressed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> Pressed;
+        public event GwenEventHandler<EventArgs> Pressed;
 
         /// <summary>
         /// Invoked when the button is released.
         /// </summary>
-		public event GwenEventHandler<EventArgs> Released;
+        public event GwenEventHandler<EventArgs> Released;
 
         /// <summary>
         /// Invoked when the button's toggle state has changed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> Toggled;
+        public event GwenEventHandler<EventArgs> Toggled;
 
         /// <summary>
         /// Invoked when the button's toggle state has changed to On.
         /// </summary>
-		public event GwenEventHandler<EventArgs> ToggledOn;
+        public event GwenEventHandler<EventArgs> ToggledOn;
 
         /// <summary>
         /// Invoked when the button's toggle state has changed to Off.
         /// </summary>
-		public event GwenEventHandler<EventArgs> ToggledOff;
+        public event GwenEventHandler<EventArgs> ToggledOff;
 
         /// <summary>
         /// Indicates whether the button is depressed.
@@ -47,9 +47,9 @@ namespace Gwen.Control
             get { return m_Depressed; }
             set
             {
-                if (m_Depressed == value) 
+                if (m_Depressed == value)
                     return;
-                m_Depressed = value; 
+                m_Depressed = value;
                 Redraw();
             }
         }
@@ -57,7 +57,11 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the button is toggleable.
         /// </summary>
-        public bool IsToggle { get { return m_Toggle; } set { m_Toggle = value; } }
+        public bool IsToggle
+        {
+            get { return m_Toggle; }
+            set { m_Toggle = value; }
+        }
 
         /// <summary>
         /// Determines the button's toggle state.
@@ -73,17 +77,17 @@ namespace Gwen.Control
                 m_ToggleStatus = value;
 
                 if (Toggled != null)
-					Toggled.Invoke(this, EventArgs.Empty);
+                    Toggled.Invoke(this, EventArgs.Empty);
 
                 if (m_ToggleStatus)
                 {
                     if (ToggledOn != null)
-						ToggledOn.Invoke(this, EventArgs.Empty);
+                        ToggledOn.Invoke(this, EventArgs.Empty);
                 }
                 else
                 {
                     if (ToggledOff != null)
-						ToggledOff.Invoke(this, EventArgs.Empty);
+                        ToggledOff.Invoke(this, EventArgs.Empty);
                 }
 
                 Redraw();
@@ -97,7 +101,7 @@ namespace Gwen.Control
         public Button(Base parent)
             : base(parent)
         {
-			AutoSizeToContents = false;
+            AutoSizeToContents = false;
             SetSize(100, 20);
             MouseInputEnabled = true;
             Alignment = Pos.Center;
@@ -166,7 +170,7 @@ namespace Gwen.Control
                 IsDepressed = false;
                 InputHandler.MouseFocus = null;
                 if (Released != null)
-					Released.Invoke(this, EventArgs.Empty);
+                    Released.Invoke(this, EventArgs.Empty);
             }
 
             Redraw();
@@ -182,9 +186,9 @@ namespace Gwen.Control
                 Toggle();
             }
 
-			base.OnMouseClickedLeft(x, y, true);
+            base.OnMouseClickedLeft(x, y, true);
         }
-        
+
         /// <summary>
         /// Sets the button's image.
         /// </summary>
@@ -206,7 +210,7 @@ namespace Gwen.Control
             }
 
             m_Image.ImageName = textureName;
-            m_Image.SizeToContents( );
+            m_Image.SizeToContents();
             m_Image.SetPosition(Math.Max(Padding.Left, 2), 2);
             m_CenterImage = center;
 
@@ -240,10 +244,10 @@ namespace Gwen.Control
         /// </returns>
         protected override bool OnKeySpace(bool down)
         {
-			return base.OnKeySpace(down);
-			//if (down)
-			//    OnClicked(0, 0);
-			//return true;
+            return base.OnKeySpace(down);
+            //if (down)
+            //    OnClicked(0, 0);
+            //return true;
         }
 
         /// <summary>
@@ -303,7 +307,7 @@ namespace Gwen.Control
         /// <param name="y">Y coordinate.</param>
         protected override void OnMouseDoubleClickedLeft(int x, int y)
         {
-			base.OnMouseDoubleClickedLeft(x, y);
+            base.OnMouseDoubleClickedLeft(x, y);
             OnMouseClickedLeft(x, y, true);
         }
     }

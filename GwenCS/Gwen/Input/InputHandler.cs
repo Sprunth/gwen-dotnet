@@ -34,32 +34,50 @@ namespace Gwen.Input
         /// <summary>
         /// Maximum number of mouse buttons supported.
         /// </summary>
-        public static int MaxMouseButtons { get { return 5; } }
+        public static int MaxMouseButtons
+        {
+            get { return 5; }
+        }
 
         /// <summary>
         /// Maximum time in seconds between mouse clicks to be recognized as double click.
         /// </summary>
-        public static float DoubleClickSpeed { get { return 0.5f; } }
+        public static float DoubleClickSpeed
+        {
+            get { return 0.5f; }
+        }
 
         /// <summary>
         /// Time in seconds between autorepeating of keys.
         /// </summary>
-        public static float KeyRepeatRate { get { return 0.03f; } }
+        public static float KeyRepeatRate
+        {
+            get { return 0.03f; }
+        }
 
         /// <summary>
         /// Time in seconds before key starts to autorepeat.
         /// </summary>
-        public static float KeyRepeatDelay { get { return 0.5f; } }
+        public static float KeyRepeatDelay
+        {
+            get { return 0.5f; }
+        }
 
         /// <summary>
         /// Indicates whether the left mouse button is down.
         /// </summary>
-        public static bool IsLeftMouseDown { get { return m_KeyData.LeftMouseDown; } }
+        public static bool IsLeftMouseDown
+        {
+            get { return m_KeyData.LeftMouseDown; }
+        }
 
         /// <summary>
         /// Indicates whether the right mouse button is down.
         /// </summary>
-        public static bool IsRightMouseDown { get { return m_KeyData.RightMouseDown; } }
+        public static bool IsRightMouseDown
+        {
+            get { return m_KeyData.RightMouseDown; }
+        }
 
         /// <summary>
         /// Current mouse position.
@@ -69,12 +87,18 @@ namespace Gwen.Input
         /// <summary>
         /// Indicates whether the shift key is down.
         /// </summary>
-        public static bool IsShiftDown { get { return IsKeyDown(Key.Shift); } }
+        public static bool IsShiftDown
+        {
+            get { return IsKeyDown(Key.Shift); }
+        }
 
         /// <summary>
         /// Indicates whether the control key is down.
         /// </summary>
-        public static bool IsControlDown { get { return IsKeyDown(Key.Control); } }
+        public static bool IsControlDown
+        {
+            get { return IsKeyDown(Key.Control); }
+        }
 
         /// <summary>
         /// Checks if the given key is pressed.
@@ -289,25 +313,25 @@ namespace Gwen.Input
             switch (mouseButton)
             {
                 case 0:
-                    {
-                        if (DragAndDrop.OnMouseButton(HoveredControl, MousePosition.X, MousePosition.Y, down))
-                            return true;
-
-                        if (isDoubleClick)
-							HoveredControl.InputMouseDoubleClickedLeft(MousePosition.X, MousePosition.Y);
-                        else
-							HoveredControl.InputMouseClickedLeft(MousePosition.X, MousePosition.Y, down);
+                {
+                    if (DragAndDrop.OnMouseButton(HoveredControl, MousePosition.X, MousePosition.Y, down))
                         return true;
-                    }
 
-                case 1: 
-                    {
-                        if (isDoubleClick)
-							HoveredControl.InputMouseDoubleClickedRight(MousePosition.X, MousePosition.Y);
-                        else
-							HoveredControl.InputMouseClickedRight(MousePosition.X, MousePosition.Y, down);
-                        return true;
-                    }
+                    if (isDoubleClick)
+                        HoveredControl.InputMouseDoubleClickedLeft(MousePosition.X, MousePosition.Y);
+                    else
+                        HoveredControl.InputMouseClickedLeft(MousePosition.X, MousePosition.Y, down);
+                    return true;
+                }
+
+                case 1:
+                {
+                    if (isDoubleClick)
+                        HoveredControl.InputMouseDoubleClickedRight(MousePosition.X, MousePosition.Y);
+                    else
+                        HoveredControl.InputMouseClickedRight(MousePosition.X, MousePosition.Y, down);
+                    return true;
+                }
             }
 
             return false;

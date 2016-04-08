@@ -20,22 +20,38 @@ namespace Gwen.Control
         /// <summary>
         /// Number of notches on the slider axis.
         /// </summary>
-        public int NotchCount { get { return m_NotchCount; } set { m_NotchCount = value; } }
+        public int NotchCount
+        {
+            get { return m_NotchCount; }
+            set { m_NotchCount = value; }
+        }
 
         /// <summary>
         /// Determines whether the slider should snap to notches.
         /// </summary>
-        public bool SnapToNotches { get { return m_SnapToNotches; } set { m_SnapToNotches = value; } }
+        public bool SnapToNotches
+        {
+            get { return m_SnapToNotches; }
+            set { m_SnapToNotches = value; }
+        }
 
         /// <summary>
         /// Minimum value.
         /// </summary>
-        public float Min { get { return m_Min; } set { SetRange(value, m_Max); } }
+        public float Min
+        {
+            get { return m_Min; }
+            set { SetRange(value, m_Max); }
+        }
 
         /// <summary>
         /// Maximum value.
         /// </summary>
-        public float Max { get { return m_Max; } set { SetRange(m_Min, value); } }
+        public float Max
+        {
+            get { return m_Max; }
+            set { SetRange(m_Min, value); }
+        }
 
         /// <summary>
         /// Current value.
@@ -57,7 +73,7 @@ namespace Gwen.Control
         /// <summary>
         /// Invoked when the value has been changed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> ValueChanged;
+        public event GwenEventHandler<EventArgs> ValueChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Slider"/> class.
@@ -174,10 +190,9 @@ namespace Gwen.Control
         /// <param name="down">If set to <c>true</c> mouse button is down.</param>
         protected override void OnMouseClickedLeft(int x, int y, bool down)
         {
-            
         }
 
-		protected virtual void OnMoved(Base control, EventArgs args)
+        protected virtual void OnMoved(Base control, EventArgs args)
         {
             SetValueInternal(CalculateValue());
         }
@@ -189,7 +204,6 @@ namespace Gwen.Control
 
         protected virtual void UpdateBarFromValue()
         {
-            
         }
 
         protected virtual void SetValueInternal(float val)
@@ -204,7 +218,7 @@ namespace Gwen.Control
             {
                 m_Value = val;
                 if (ValueChanged != null)
-					ValueChanged.Invoke(this, EventArgs.Empty);
+                    ValueChanged.Invoke(this, EventArgs.Empty);
             }
 
             UpdateBarFromValue();
@@ -229,7 +243,7 @@ namespace Gwen.Control
         {
             if (InputHandler.KeyboardFocus != this) return;
             if (!IsTabable) return;
-            
+
             skin.DrawKeyboardHighlight(this, RenderBounds, 0);
         }
     }

@@ -9,7 +9,6 @@ namespace Gwen.UnitTest
 
         public GUnit(Base parent) : base(parent)
         {
-            
         }
 
         public void UnitPrint(string str)

@@ -14,22 +14,30 @@ namespace Gwen.Control
         /// <summary>
         /// Header text.
         /// </summary>
-        public string Text { get { return m_HeaderButton.Text; } set { m_HeaderButton.Text = value; } }
+        public string Text
+        {
+            get { return m_HeaderButton.Text; }
+            set { m_HeaderButton.Text = value; }
+        }
 
         /// <summary>
         /// Determines whether the category is collapsed (closed).
         /// </summary>
-        public bool IsCollapsed { get { return m_HeaderButton.ToggleState; } set { m_HeaderButton.ToggleState = value; } }
+        public bool IsCollapsed
+        {
+            get { return m_HeaderButton.ToggleState; }
+            set { m_HeaderButton.ToggleState = value; }
+        }
 
         /// <summary>
         /// Invoked when an entry has been selected.
         /// </summary>
-		public event GwenEventHandler<ItemSelectedEventArgs> Selected;
+        public event GwenEventHandler<ItemSelectedEventArgs> Selected;
 
         /// <summary>
         /// Invoked when the category collapsed state has been changed (header button has been pressed).
         /// </summary>
-		public event GwenEventHandler<EventArgs> Collapsed;
+        public event GwenEventHandler<EventArgs> Collapsed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CollapsibleCategory"/> class.
@@ -71,17 +79,17 @@ namespace Gwen.Control
         /// Handler for header button toggle event.
         /// </summary>
         /// <param name="control">Source control.</param>
-		protected virtual void OnHeaderToggle(Base control, EventArgs args)
+        protected virtual void OnHeaderToggle(Base control, EventArgs args)
         {
             if (Collapsed != null)
-				Collapsed.Invoke(this, EventArgs.Empty);
+                Collapsed.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
         /// Handler for Selected event.
         /// </summary>
         /// <param name="control">Event source.</param>
-		protected virtual void OnSelected(Base control, EventArgs args)
+        protected virtual void OnSelected(Base control, EventArgs args)
         {
             CategoryButton child = control as CategoryButton;
             if (child == null) return;

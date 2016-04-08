@@ -11,7 +11,10 @@ namespace Gwen.Anim
         private float m_End;
         private float m_Ease;
 
-        public override bool Finished { get { return m_Finished; } }
+        public override bool Finished
+        {
+            get { return m_Finished; }
+        }
 
         public TimedAnimation(float length, float delay = 0.0f, float ease = 1.0f)
         {
@@ -58,12 +61,15 @@ namespace Gwen.Anim
         // These are the magic functions you should be overriding
 
         protected virtual void OnStart()
-        { }
+        {
+        }
 
         protected virtual void Run(float delta)
-        { }
+        {
+        }
 
         protected virtual void OnFinish()
-        { }
+        {
+        }
     }
 }

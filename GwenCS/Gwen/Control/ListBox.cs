@@ -37,24 +37,37 @@ namespace Gwen.Control
         /// <summary>
         /// Determines whether rows can be unselected by clicking on them again.
         /// </summary>
-        public bool IsToggle { get { return m_IsToggle; } set { m_IsToggle = value; } }
+        public bool IsToggle
+        {
+            get { return m_IsToggle; }
+            set { m_IsToggle = value; }
+        }
 
         /// <summary>
         /// Number of rows in the list box.
         /// </summary>
-        public int RowCount { get { return m_Table.RowCount; } }
+        public int RowCount
+        {
+            get { return m_Table.RowCount; }
+        }
 
         /// <summary>
         /// Returns specific row of the ListBox.
         /// </summary>
         /// <param name="index">Row index.</param>
         /// <returns>Row at the specified index.</returns>
-        public ListBoxRow this[int index] { get { return m_Table[index] as ListBoxRow; } }
+        public ListBoxRow this[int index]
+        {
+            get { return m_Table[index] as ListBoxRow; }
+        }
 
         /// <summary>
         /// List of selected rows.
         /// </summary>
-        public IEnumerable<TableRow> SelectedRows { get { return m_SelectedRows; } }
+        public IEnumerable<TableRow> SelectedRows
+        {
+            get { return m_SelectedRows; }
+        }
 
         /// <summary>
         /// First selected row (and only if list is not multiselectable).
@@ -95,16 +108,21 @@ namespace Gwen.Control
                     return -1;
                 return m_Table.GetRowIndex(selected);
             }
-            set
-            {
-                SelectRow(value);
-            }
+            set { SelectRow(value); }
         }
 
         /// <summary>
         /// Column count of table rows.
         /// </summary>
-        public int ColumnCount { get { return m_Table.ColumnCount; } set { m_Table.ColumnCount = value; Invalidate(); } }
+        public int ColumnCount
+        {
+            get { return m_Table.ColumnCount; }
+            set
+            {
+                m_Table.ColumnCount = value;
+                Invalidate();
+            }
+        }
 
         /// <summary>
         /// Invoked when a row has been selected.
@@ -125,7 +143,7 @@ namespace Gwen.Control
         {
             m_SelectedRows = new List<ListBoxRow>();
 
-			MouseInputEnabled = true;
+            MouseInputEnabled = true;
             EnableScroll(false, true);
             AutoHideBars = true;
             Margin = Margin.One;
@@ -172,7 +190,8 @@ namespace Gwen.Control
         /// <param name="pattern">Regex pattern to search for.</param>
         /// <param name="regexOptions">Regex options.</param>
         /// <param name="clearOthers">Determines whether to deselect previously selected rows.</param>
-        public void SelectRowsByRegex(string pattern, RegexOptions regexOptions = RegexOptions.None, bool clearOthers = false)
+        public void SelectRowsByRegex(string pattern, RegexOptions regexOptions = RegexOptions.None,
+            bool clearOthers = false)
         {
             var rows = m_Table.Children.OfType<ListBoxRow>().Where(x => Regex.IsMatch(x.Text, pattern));
             foreach (ListBoxRow row in rows)
@@ -199,7 +218,7 @@ namespace Gwen.Control
             row.IsSelected = true;
             m_SelectedRows.Add(row);
             if (RowSelected != null)
-				RowSelected.Invoke(this, new ItemSelectedEventArgs(row));
+                RowSelected.Invoke(this, new ItemSelectedEventArgs(row));
         }
 
         /// <summary>
@@ -293,7 +312,7 @@ namespace Gwen.Control
             {
                 row.IsSelected = false;
                 if (RowUnselected != null)
-					RowUnselected.Invoke(this, new ItemSelectedEventArgs(row));
+                    RowUnselected.Invoke(this, new ItemSelectedEventArgs(row));
             }
             m_SelectedRows.Clear();
         }
@@ -318,8 +337,8 @@ namespace Gwen.Control
         protected virtual void OnRowSelected(Base control, ItemSelectedEventArgs args)
         {
             // [omeg] changed default behavior
-            bool clear = false;// !InputHandler.InputHandler.IsShiftDown;
-			ListBoxRow row = args.SelectedItem as ListBoxRow;
+            bool clear = false; // !InputHandler.InputHandler.IsShiftDown;
+            ListBoxRow row = args.SelectedItem as ListBoxRow;
             if (row == null)
                 return;
 

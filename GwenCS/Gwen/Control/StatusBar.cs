@@ -13,7 +13,7 @@ namespace Gwen.Control
         /// <param name="parent">Parent control.</param>
         public StatusBar(Base parent) : base(parent)
         {
-			AutoSizeToContents = false;
+            AutoSizeToContents = false;
 
             Height = 22;
             Dock = Pos.Bottom;

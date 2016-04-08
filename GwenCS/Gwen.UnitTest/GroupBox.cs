@@ -60,18 +60,18 @@ namespace Gwen.UnitTest
                 gb1.SetPosition(10, 200);
                 gb1.SetSize(350, 200);
                 //gb1.AutoSizeToContents = true;
-                
+
                 Control.GroupBox gb2 = new Control.GroupBox(gb1);
                 gb2.Text = "I herd";
                 gb2.Dock = Pos.Left;
                 gb2.Margin = Margin.Three;
                 gb2.Padding = Padding.Five;
                 //gb2.AutoSizeToContents = true;
-                
+
                 Control.GroupBox gb3 = new Control.GroupBox(gb1);
                 gb3.Text = "You like";
                 gb3.Dock = Pos.Fill;
-                
+
                 Control.GroupBox gb4 = new Control.GroupBox(gb3);
                 gb4.Text = "Group Boxes,";
                 gb4.Dock = Pos.Top;
@@ -103,11 +103,9 @@ namespace Gwen.UnitTest
                 gb9.Dock = Pos.Bottom;
                 gb9.Padding = Gwen.Padding.Five;
                 gb9.AutoSizeToContents = true;
-
-				
             }
-		
-            
+
+
             // at the end to apply to all children
             DrawDebugOutlines = true;
         }

@@ -28,17 +28,29 @@ namespace Gwen.Control.Layout
         /// <summary>
         /// Column count.
         /// </summary>
-        public int ColumnCount { get { return m_ColumnCount; } set { SetColumnCount(value); } }
+        public int ColumnCount
+        {
+            get { return m_ColumnCount; }
+            set { SetColumnCount(value); }
+        }
 
         /// <summary>
         /// Indicates whether the row is even or odd (used for alternate coloring).
         /// </summary>
-        public bool EvenRow { get { return m_EvenRow; } set { m_EvenRow = value; } }
+        public bool EvenRow
+        {
+            get { return m_EvenRow; }
+            set { m_EvenRow = value; }
+        }
 
         /// <summary>
         /// Text of the first column.
         /// </summary>
-        public string Text { get { return GetText(0); } set { SetCellText(0, value); } }
+        public string Text
+        {
+            get { return GetText(0); }
+            set { SetCellText(0, value); }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TableRow"/> class.
@@ -100,9 +112,9 @@ namespace Gwen.Control.Layout
         /// <param name="width">Column width.</param>
         public void SetColumnWidth(int column, int width)
         {
-            if (null == m_Columns[column]) 
+            if (null == m_Columns[column])
                 return;
-            if (m_Columns[column].Width == width) 
+            if (m_Columns[column].Width == width)
                 return;
 
             m_Columns[column].Width = width;
@@ -115,7 +127,7 @@ namespace Gwen.Control.Layout
         /// <param name="text">Text to set.</param>
         public void SetCellText(int column, string text)
         {
-            if (null == m_Columns[column]) 
+            if (null == m_Columns[column])
                 return;
 
             m_Columns[column].Text = text;
@@ -129,7 +141,7 @@ namespace Gwen.Control.Layout
         /// <param name="enableMouseInput">Determines whether mouse input should be enabled for the cell.</param>
         public void SetCellContents(int column, Base control, bool enableMouseInput = false)
         {
-            if (null == m_Columns[column]) 
+            if (null == m_Columns[column])
                 return;
 
             control.Parent = m_Columns[column];
@@ -162,7 +174,7 @@ namespace Gwen.Control.Layout
 
             for (int i = 0; i < m_ColumnCount; i++)
             {
-                if (null == m_Columns[i]) 
+                if (null == m_Columns[i])
                     continue;
 
                 // Note, more than 1 child here, because the 
@@ -175,7 +187,7 @@ namespace Gwen.Control.Layout
                 {
                     m_Columns[i].SizeToContents();
                 }
-    
+
                 //if (i == m_ColumnCount - 1) // last column
                 //    m_Columns[i].Width = Parent.Width - width; // fill if not autosized
 

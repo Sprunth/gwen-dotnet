@@ -16,7 +16,7 @@ namespace Gwen.Control
         /// <summary>
         /// Invoked when the selected color has been changed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> ColorChanged;
+        public event GwenEventHandler<EventArgs> ColorChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ColorSlider"/> class.
@@ -71,8 +71,8 @@ namespace Gwen.Control
             }
 
             skin.Renderer.DrawColor = Color.White;
-            skin.Renderer.DrawTexturedRect(m_Texture, new Rectangle(5, 0, Width-10, Height));
-            
+            skin.Renderer.DrawTexturedRect(m_Texture, new Rectangle(5, 0, Width - 10, Height));
+
             int drawHeight = m_SelectedDist - 3;
 
             //Draw our selectors
@@ -95,7 +95,7 @@ namespace Gwen.Control
         /// <param name="down">If set to <c>true</c> mouse button is down.</param>
         protected override void OnMouseClickedLeft(int x, int y, bool down)
         {
-			base.OnMouseClickedLeft(x, y, down);
+            base.OnMouseClickedLeft(x, y, down);
             m_Depressed = down;
             if (down)
                 InputHandler.MouseFocus = this;
@@ -148,6 +148,10 @@ namespace Gwen.Control
         /// <summary>
         /// Selected color.
         /// </summary>
-        public Color SelectedColor { get { return GetColorAtHeight(m_SelectedDist); } set { SetColor(value); } }
+        public Color SelectedColor
+        {
+            get { return GetColorAtHeight(m_SelectedDist); }
+            set { SetColor(value); }
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace Gwen.Input
     public class KeyData
     {
         public readonly bool[] KeyState;
-        public readonly float [] NextRepeat;
+        public readonly float[] NextRepeat;
         public Base Target;
         public bool LeftMouseDown;
         public bool RightMouseDown;

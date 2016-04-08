@@ -15,32 +15,56 @@ namespace Gwen.Control
         /// <summary>
         /// Selected color.
         /// </summary>
-        public Color SelectedColor { get { return m_Color; } set { m_Color = value; UpdateControls(); } }
+        public Color SelectedColor
+        {
+            get { return m_Color; }
+            set
+            {
+                m_Color = value;
+                UpdateControls();
+            }
+        }
 
         /// <summary>
         /// Red value of the selected color.
         /// </summary>
-        public int R { get { return m_Color.R; } set { m_Color = Color.FromArgb(m_Color.A, value, m_Color.G, m_Color.B); } }
+        public int R
+        {
+            get { return m_Color.R; }
+            set { m_Color = Color.FromArgb(m_Color.A, value, m_Color.G, m_Color.B); }
+        }
 
         /// <summary>
         /// Green value of the selected color.
         /// </summary>
-        public int G { get { return m_Color.G; } set { m_Color = Color.FromArgb(m_Color.A, m_Color.R, value, m_Color.B); } }
+        public int G
+        {
+            get { return m_Color.G; }
+            set { m_Color = Color.FromArgb(m_Color.A, m_Color.R, value, m_Color.B); }
+        }
 
         /// <summary>
         /// Blue value of the selected color.
         /// </summary>
-        public int B { get { return m_Color.B; } set { m_Color = Color.FromArgb(m_Color.A, m_Color.R, m_Color.G, value); } }
+        public int B
+        {
+            get { return m_Color.B; }
+            set { m_Color = Color.FromArgb(m_Color.A, m_Color.R, m_Color.G, value); }
+        }
 
         /// <summary>
         /// Alpha value of the selected color.
         /// </summary>
-        public int A { get { return m_Color.A; } set { m_Color = Color.FromArgb(value, m_Color.R, m_Color.G, m_Color.B); } }
+        public int A
+        {
+            get { return m_Color.A; }
+            set { m_Color = Color.FromArgb(value, m_Color.R, m_Color.G, m_Color.B); }
+        }
 
         /// <summary>
         /// Invoked when the selected color has been changed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> ColorChanged;
+        public event GwenEventHandler<EventArgs> ColorChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ColorPicker"/> class.
@@ -85,7 +109,7 @@ namespace Gwen.Control
             slider.ValueChanged += SlidersMoved;
         }
 
-		private void NumericTyped(Base control, EventArgs args)
+        private void NumericTyped(Base control, EventArgs args)
         {
             TextBoxNumeric box = control as TextBoxNumeric;
             if (null == box)
@@ -150,7 +174,8 @@ namespace Gwen.Control
         }
 
         private void UpdateControls()
-        {	//This is a little weird, but whatever for now
+        {
+            //This is a little weird, but whatever for now
             UpdateColorControls("Red", Color.FromArgb(255, SelectedColor.R, 0, 0), SelectedColor.R);
             UpdateColorControls("Green", Color.FromArgb(255, 0, SelectedColor.G, 0), SelectedColor.G);
             UpdateColorControls("Blue", Color.FromArgb(255, 0, 0, SelectedColor.B), SelectedColor.B);

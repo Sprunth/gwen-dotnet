@@ -14,7 +14,10 @@ namespace Gwen.Renderer
         readonly Gwen.Texture texture;
         bool disposed;
 
-        public Texture Texture { get { return texture; } }
+        public Texture Texture
+        {
+            get { return texture; }
+        }
 
         /// <summary>
         /// Constructs a new instance.
@@ -35,7 +38,7 @@ namespace Gwen.Renderer
             gfx.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
             gfx.Clear(Color.Transparent);
 
-            texture = new Texture(renderer) { Width = width, Height = height };
+            texture = new Texture(renderer) {Width = width, Height = height};
         }
 
         /// <summary>

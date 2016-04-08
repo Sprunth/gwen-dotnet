@@ -128,12 +128,14 @@ namespace Gwen.ControlInternal
             {
                 m_ResizeDir = value;
 
-                if ((0 != (value & Pos.Left) && 0 != (value & Pos.Top)) || (0 != (value & Pos.Right) && 0 != (value & Pos.Bottom)))
+                if ((0 != (value & Pos.Left) && 0 != (value & Pos.Top)) ||
+                    (0 != (value & Pos.Right) && 0 != (value & Pos.Bottom)))
                 {
                     Cursor = Cursors.SizeNWSE;
                     return;
                 }
-                if ((0 != (value & Pos.Right) && 0 != (value & Pos.Top)) || (0 != (value & Pos.Left) && 0 != (value & Pos.Bottom)))
+                if ((0 != (value & Pos.Right) && 0 != (value & Pos.Top)) ||
+                    (0 != (value & Pos.Left) && 0 != (value & Pos.Bottom)))
                 {
                     Cursor = Cursors.SizeNESW;
                     return;

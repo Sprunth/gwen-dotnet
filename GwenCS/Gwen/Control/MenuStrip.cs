@@ -24,7 +24,6 @@ namespace Gwen.Control
         /// </summary>
         public override void Close()
         {
-            
         }
 
         /// <summary>

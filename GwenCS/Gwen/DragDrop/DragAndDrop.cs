@@ -40,15 +40,15 @@ namespace Gwen.DragDrop
             return true;
         }
 
-        private static bool ShouldStartDraggingControl( int x, int y )
+        private static bool ShouldStartDraggingControl(int x, int y)
         {
             // We're not holding a control down..
-            if (m_LastPressedControl == null) 
+            if (m_LastPressedControl == null)
                 return false;
 
             // Not been dragged far enough
             int length = Math.Abs(x - m_LastPressedPos.X) + Math.Abs(y - m_LastPressedPos.Y);
-            if (length < 5) 
+            if (length < 5)
                 return false;
 
             // Create the dragging package
@@ -162,9 +162,9 @@ namespace Gwen.DragDrop
                 return true;
             }
 
-            if (hoveredControl == null) 
+            if (hoveredControl == null)
                 return false;
-            if (!hoveredControl.DragAndDrop_Draggable()) 
+            if (!hoveredControl.DragAndDrop_Draggable())
                 return false;
 
             // Store the last clicked on control. Don't do anything yet, 
@@ -206,9 +206,9 @@ namespace Gwen.DragDrop
 
         public static void RenderOverlay(Canvas canvas, Skin.Base skin)
         {
-            if (CurrentPackage == null) 
+            if (CurrentPackage == null)
                 return;
-            if (CurrentPackage.DrawControl == null) 
+            if (CurrentPackage.DrawControl == null)
                 return;
 
             Point old = skin.Renderer.RenderOffset;

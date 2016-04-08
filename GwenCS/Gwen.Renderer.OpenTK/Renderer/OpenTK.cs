@@ -122,11 +122,21 @@ namespace Gwen.Renderer
         /// <summary>
         /// Returns number of cached strings in the text cache.
         /// </summary>
-        public int TextCacheSize { get { return m_StringCache.Count; } }
+        public int TextCacheSize
+        {
+            get { return m_StringCache.Count; }
+        }
 
-        public int DrawCallCount { get { return m_DrawCallCount; } }
+        public int DrawCallCount
+        {
+            get { return m_DrawCallCount; }
+        }
 
-        public int VertexCount { get { return m_VertNum; } }
+        public int VertexCount
+        {
+            get { return m_VertNum; }
+        }
+
         /// <summary>
         /// Clears the text rendering cache. Make sure to call this if cached strings size becomes too big (check TextCacheSize).
         /// </summary>
@@ -176,10 +186,7 @@ namespace Gwen.Renderer
         public override Color DrawColor
         {
             get { return m_Color; }
-            set
-            {
-                m_Color = value;
-            }
+            set { m_Color = value; }
         }
 
         public override void StartClip()
@@ -192,7 +199,8 @@ namespace Gwen.Renderer
             m_ClipEnabled = false;
         }
 
-        public override void DrawTexturedRect(Texture t, Rectangle rect, float u1 = 0, float v1 = 0, float u2 = 1, float v2 = 1)
+        public override void DrawTexturedRect(Texture t, Rectangle rect, float u1 = 0, float v1 = 0, float u2 = 1,
+            float v2 = 1)
         {
             // Missing image, not loaded properly?
             if (null == t.RendererData)
@@ -399,8 +407,9 @@ namespace Gwen.Renderer
                 return new Point(tex.Width, tex.Height);
             }
 
-			SizeF TabSize = m_Graphics.MeasureString("....", sysFont); //Spaces are not being picked up, let's just use .'s.
-			m_StringFormat.SetTabStops(0f, new float[] { TabSize.Width });
+            SizeF TabSize = m_Graphics.MeasureString("....", sysFont);
+                //Spaces are not being picked up, let's just use .'s.
+            m_StringFormat.SetTabStops(0f, new float[] {TabSize.Width});
 
             SizeF size = m_Graphics.MeasureString(text, sysFont, Point.Empty, m_StringFormat);
 
@@ -433,7 +442,8 @@ namespace Gwen.Renderer
 
                 Point size = MeasureText(font, text);
                 TextRenderer tr = new TextRenderer(size.X, size.Y, this);
-                tr.DrawString(text, sysFont, Brushes.White, Point.Empty, m_StringFormat); // renders string on the texture
+                tr.DrawString(text, sysFont, Brushes.White, Point.Empty, m_StringFormat);
+                    // renders string on the texture
 
                 DrawTexturedRect(tr.Texture, new Rectangle(position.X, position.Y, tr.Texture.Width, tr.Texture.Height));
 
@@ -471,20 +481,24 @@ namespace Gwen.Renderer
             GL.BindTexture(TextureTarget.Texture2D, glTex);
             m_LastTextureID = glTex;
 
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter,
+                (int)TextureMinFilter.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter,
+                (int)TextureMagFilter.Nearest);
 
             // Sort out our GWEN texture
             t.RendererData = glTex;
             t.Width = bmp.Width;
             t.Height = bmp.Height;
 
-            BitmapData data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, lock_format);
+            BitmapData data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly,
+                lock_format);
 
             switch (lock_format)
             {
                 case PixelFormat.Format32bppArgb:
-                    GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, t.Width, t.Height, 0, global::OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
+                    GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, t.Width, t.Height, 0,
+                        global::OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
                     break;
                 default:
                     // invalid
@@ -552,8 +566,10 @@ namespace Gwen.Renderer
 
             GL.BindTexture(TextureTarget.Texture2D, glTex);
 
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMagFilter.Nearest);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter,
+                (int)TextureMagFilter.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter,
+                (int)TextureMagFilter.Nearest);
 
             // Sort out our GWEN texture
             t.RendererData = glTex;
@@ -561,7 +577,8 @@ namespace Gwen.Renderer
             var data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly,
                 PixelFormat.Format32bppArgb);
 
-            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, t.Width, t.Height, 0, global::OpenTK.Graphics.OpenGL.PixelFormat.Rgba, PixelType.UnsignedByte, data.Scan0);
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, t.Width, t.Height, 0,
+                global::OpenTK.Graphics.OpenGL.PixelFormat.Rgba, PixelType.UnsignedByte, data.Scan0);
 
             bmp.UnlockBits(data);
             bmp.Dispose();
@@ -603,7 +620,8 @@ namespace Gwen.Renderer
             byte[] data = new byte[4 * texture.Width * texture.Height];
             fixed (byte* ptr = &data[0])
             {
-                GL.GetTexImage(TextureTarget.Texture2D, 0, global::OpenTK.Graphics.OpenGL.PixelFormat.Rgba, PixelType.UnsignedByte, (IntPtr)ptr);
+                GL.GetTexImage(TextureTarget.Texture2D, 0, global::OpenTK.Graphics.OpenGL.PixelFormat.Rgba,
+                    PixelType.UnsignedByte, (IntPtr)ptr);
                 pixel = Color.FromArgb(data[offset + 3], data[offset + 0], data[offset + 1], data[offset + 2]);
             }
 

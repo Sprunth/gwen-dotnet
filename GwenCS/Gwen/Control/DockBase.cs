@@ -28,24 +28,39 @@ namespace Gwen.Control
         /// <summary>
         /// Control docked on the left side.
         /// </summary>
-        public DockBase LeftDock { get { return GetChildDock(Pos.Left); } }
+        public DockBase LeftDock
+        {
+            get { return GetChildDock(Pos.Left); }
+        }
 
         /// <summary>
         /// Control docked on the right side.
         /// </summary>
-        public DockBase RightDock { get { return GetChildDock(Pos.Right); } }
+        public DockBase RightDock
+        {
+            get { return GetChildDock(Pos.Right); }
+        }
 
         /// <summary>
         /// Control docked on the top side.
         /// </summary>
-        public DockBase TopDock { get { return GetChildDock(Pos.Top); } }
+        public DockBase TopDock
+        {
+            get { return GetChildDock(Pos.Top); }
+        }
 
         /// <summary>
         /// Control docked on the bottom side.
         /// </summary>
-        public DockBase BottomDock { get { return GetChildDock(Pos.Bottom); } }
+        public DockBase BottomDock
+        {
+            get { return GetChildDock(Pos.Bottom); }
+        }
 
-        public TabControl TabControl { get { return m_DockedTabControl; } }
+        public TabControl TabControl
+        {
+            get { return m_DockedTabControl; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DockBase"/> class.
@@ -108,7 +123,6 @@ namespace Gwen.Control
         /// <param name="skin">Skin to use.</param>
         protected override void Render(Skin.Base skin)
         {
-
         }
 
         /// <summary>
@@ -274,7 +288,7 @@ namespace Gwen.Control
             }
         }
 
-		protected virtual void OnTabRemoved(Base control, EventArgs args)
+        protected virtual void OnTabRemoved(Base control, EventArgs args)
         {
             DoRedundancyCheck();
             DoConsolidateCheck();

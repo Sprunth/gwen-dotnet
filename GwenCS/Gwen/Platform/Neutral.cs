@@ -104,14 +104,14 @@ namespace Gwen.Platform
         public static bool FileOpen(string title, string startPath, string extension, Action<string> callback)
         {
             var dialog = new OpenFileDialog
-                             {
-                                 Title = title,
-                                 InitialDirectory = startPath,
-                                 DefaultExt = @"*.*",
-                                 Filter = extension,
-                                 CheckPathExists = true,
-                                 Multiselect = false
-                             };
+            {
+                Title = title,
+                InitialDirectory = startPath,
+                DefaultExt = @"*.*",
+                Filter = extension,
+                CheckPathExists = true,
+                Multiselect = false
+            };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 if (callback != null)

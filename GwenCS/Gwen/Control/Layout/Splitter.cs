@@ -72,18 +72,18 @@ namespace Gwen.Control.Layout
             {
                 Margin m = m_Panel[0].Margin;
                 if (m_Scale[0])
-                    m_Panel[0].SetBounds(m.Left, m.Top, w - m.Left - m.Right, (h*0.5f) - m.Top - m.Bottom);
+                    m_Panel[0].SetBounds(m.Left, m.Top, w - m.Left - m.Right, (h * 0.5f) - m.Top - m.Bottom);
                 else
-                    m_Panel[0].Position(Pos.Center, 0, (int) (h*-0.25f));
+                    m_Panel[0].Position(Pos.Center, 0, (int)(h * -0.25f));
             }
 
             if (m_Panel[1] != null)
             {
                 Margin m = m_Panel[1].Margin;
                 if (m_Scale[1])
-                    m_Panel[1].SetBounds(m.Left, m.Top + (h*0.5f), w - m.Left - m.Right, (h*0.5f) - m.Top - m.Bottom);
+                    m_Panel[1].SetBounds(m.Left, m.Top + (h * 0.5f), w - m.Left - m.Right, (h * 0.5f) - m.Top - m.Bottom);
                 else
-                    m_Panel[1].Position(Pos.Center, 0, (int) (h*0.25f));
+                    m_Panel[1].Position(Pos.Center, 0, (int)(h * 0.25f));
             }
         }
 

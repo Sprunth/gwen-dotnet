@@ -14,17 +14,24 @@ namespace Gwen.ControlInternal
         protected Point m_HoldPos;
         protected Base m_Target;
 
-        internal Base Target { get { return m_Target; } set { m_Target = value; } }
+        internal Base Target
+        {
+            get { return m_Target; }
+            set { m_Target = value; }
+        }
 
         /// <summary>
         /// Indicates if the control is being dragged.
         /// </summary>
-        public bool IsHeld { get { return m_Held; } }
+        public bool IsHeld
+        {
+            get { return m_Held; }
+        }
 
         /// <summary>
         /// Event invoked when the control position has been changed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> Dragged;
+        public event GwenEventHandler<EventArgs> Dragged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Dragger"/> class.
@@ -81,7 +88,7 @@ namespace Gwen.ControlInternal
             //m_Target->SetPosition( p.x, p.y );
             m_Target.MoveTo(p.X, p.Y);
             if (Dragged != null)
-				Dragged.Invoke(this, EventArgs.Empty);
+                Dragged.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -90,7 +97,6 @@ namespace Gwen.ControlInternal
         /// <param name="skin">Skin to use.</param>
         protected override void Render(Skin.Base skin)
         {
-            
         }
     }
 }

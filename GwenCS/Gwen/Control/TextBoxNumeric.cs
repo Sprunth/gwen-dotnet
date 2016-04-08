@@ -18,7 +18,7 @@ namespace Gwen.Control
         /// <param name="parent">Parent control.</param>
         public TextBoxNumeric(Base parent) : base(parent)
         {
-			AutoSizeToContents = false;
+            AutoSizeToContents = false;
             SetText("0", false);
         }
 
@@ -54,7 +54,7 @@ namespace Gwen.Control
                 Text = value.ToString();
             }
         }
-        
+
         // text -> value
         /// <summary>
         /// Handler for text changed event.

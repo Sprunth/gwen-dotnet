@@ -14,26 +14,17 @@ namespace Gwen.Control
 
         public int VerticalScroll
         {
-            get
-            {
-                return m_InnerPanel.Y;
-            }
+            get { return m_InnerPanel.Y; }
         }
 
         public int HorizontalScroll
         {
-            get
-            {
-                return m_InnerPanel.X;
-            }
+            get { return m_InnerPanel.X; }
         }
 
         public Base InnerPanel
         {
-            get
-            {
-                return m_InnerPanel;
-            }
+            get { return m_InnerPanel; }
         }
 
         private readonly ScrollBar m_VerticalScrollBar;
@@ -42,17 +33,27 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the control can be scrolled horizontally.
         /// </summary>
-        public bool CanScrollH { get { return m_CanScrollH; } }
+        public bool CanScrollH
+        {
+            get { return m_CanScrollH; }
+        }
 
         /// <summary>
         /// Indicates whether the control can be scrolled vertically.
         /// </summary>
-        public bool CanScrollV { get { return m_CanScrollV; } }
+        public bool CanScrollV
+        {
+            get { return m_CanScrollV; }
+        }
 
         /// <summary>
         /// Determines whether the scroll bars should be hidden if not needed.
         /// </summary>
-        public bool AutoHideBars { get { return m_AutoHideBars; } set { m_AutoHideBars = value; } }
+        public bool AutoHideBars
+        {
+            get { return m_AutoHideBars; }
+            set { m_AutoHideBars = value; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ScrollControl"/> class.
@@ -233,14 +234,14 @@ namespace Gwen.Control
             else
             {
                 m_InnerPanel.SetSize(Width - (m_VerticalScrollBar.IsHidden ? 0 : m_VerticalScrollBar.Width),
-                                     Math.Max(Height, childrenHeight));
+                    Math.Max(Height, childrenHeight));
             }
 
             float wPercent = Width /
                              (float)(childrenWidth + (m_VerticalScrollBar.IsHidden ? 0 : m_VerticalScrollBar.Width));
             float hPercent = Height /
                              (float)
-                             (childrenHeight + (m_HorizontalScrollBar.IsHidden ? 0 : m_HorizontalScrollBar.Height));
+                                 (childrenHeight + (m_HorizontalScrollBar.IsHidden ? 0 : m_HorizontalScrollBar.Height));
 
             if (m_CanScrollV)
                 VScrollRequired = hPercent >= 1;
@@ -254,11 +255,13 @@ namespace Gwen.Control
 
 
             m_VerticalScrollBar.ContentSize = m_InnerPanel.Height;
-            m_VerticalScrollBar.ViewableContentSize = Height - (m_HorizontalScrollBar.IsHidden ? 0 : m_HorizontalScrollBar.Height);
+            m_VerticalScrollBar.ViewableContentSize = Height -
+                                                      (m_HorizontalScrollBar.IsHidden ? 0 : m_HorizontalScrollBar.Height);
 
 
             m_HorizontalScrollBar.ContentSize = m_InnerPanel.Width;
-            m_HorizontalScrollBar.ViewableContentSize = Width - (m_VerticalScrollBar.IsHidden ? 0 : m_VerticalScrollBar.Width);
+            m_HorizontalScrollBar.ViewableContentSize = Width -
+                                                        (m_VerticalScrollBar.IsHidden ? 0 : m_VerticalScrollBar.Width);
 
             int newInnerPanelPosX = 0;
             int newInnerPanelPosY = 0;
@@ -267,7 +270,8 @@ namespace Gwen.Control
             {
                 newInnerPanelPosY =
                     (int)(
-                        -((m_InnerPanel.Height) - Height + (m_HorizontalScrollBar.IsHidden ? 0 : m_HorizontalScrollBar.Height)) *
+                        -((m_InnerPanel.Height) - Height +
+                          (m_HorizontalScrollBar.IsHidden ? 0 : m_HorizontalScrollBar.Height)) *
                         m_VerticalScrollBar.ScrollAmount);
             }
             if (CanScrollH && !m_HorizontalScrollBar.IsHidden)

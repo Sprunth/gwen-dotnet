@@ -17,7 +17,7 @@ namespace Gwen.Control
         /// <summary>
         /// Invoked when the selected color has been changed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> ColorChanged;
+        public event GwenEventHandler<EventArgs> ColorChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ColorLerpBox"/> class.
@@ -79,7 +79,7 @@ namespace Gwen.Control
             Invalidate();
 
             if (ColorChanged != null)
-				ColorChanged.Invoke(this, EventArgs.Empty);
+                ColorChanged.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Gwen.Control
         /// <param name="down">If set to <c>true</c> mouse button is down.</param>
         protected override void OnMouseClickedLeft(int x, int y, bool down)
         {
-			base.OnMouseClickedLeft(x, y, down);
+            base.OnMouseClickedLeft(x, y, down);
             m_Depressed = down;
             if (down)
                 InputHandler.MouseFocus = this;
@@ -165,17 +165,17 @@ namespace Gwen.Control
         {
             if (m_Texture == null)
             {
-                byte[] pixelData = new byte[Width*Height*4];
+                byte[] pixelData = new byte[Width * Height * 4];
 
                 for (int x = 0; x < Width; x++)
                 {
                     for (int y = 0; y < Height; y++)
                     {
                         Color c = GetColorAt(x, y);
-                        pixelData[4*(x + y*Width)] = c.R;
-                        pixelData[4*(x + y*Width) + 1] = c.G;
-                        pixelData[4*(x + y*Width) + 2] = c.B;
-                        pixelData[4*(x + y*Width) + 3] = c.A;
+                        pixelData[4 * (x + y * Width)] = c.R;
+                        pixelData[4 * (x + y * Width) + 1] = c.G;
+                        pixelData[4 * (x + y * Width) + 2] = c.B;
+                        pixelData[4 * (x + y * Width) + 3] = c.A;
                     }
                 }
 
@@ -193,7 +193,7 @@ namespace Gwen.Control
             skin.Renderer.DrawLinedRect(RenderBounds);
 
             Color selected = SelectedColor;
-            if ((selected.R + selected.G + selected.B)/3 < 170)
+            if ((selected.R + selected.G + selected.B) / 3 < 170)
                 skin.Renderer.DrawColor = Color.White;
             else
                 skin.Renderer.DrawColor = Color.Black;

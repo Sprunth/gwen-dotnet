@@ -60,10 +60,8 @@ namespace Gwen.UnitTest
                     TriangleButton.SetPosition(255, 140);
                     TriangleButton.Text = "Triangle";
                     TriangleButton.Width = 100;
-                    TriangleButton.Clicked += delegate(Base sender, ClickedEventArgs args)
-                    {
-                        combo.SelectedItem = Triangle;
-                    };
+                    TriangleButton.Clicked +=
+                        delegate(Base sender, ClickedEventArgs args) { combo.SelectedItem = Triangle; };
                 }
 
                 //Select by Text
@@ -72,10 +70,7 @@ namespace Gwen.UnitTest
                     TestBtn.SetPosition(360, 140);
                     TestBtn.Text = "Red";
                     TestBtn.Width = 100;
-					TestBtn.Clicked += delegate(Base sender, ClickedEventArgs args)
-                    {
-                        combo.SelectByText("Red");
-                    };
+                    TestBtn.Clicked += delegate(Base sender, ClickedEventArgs args) { combo.SelectByText("Red"); };
                 }
 
                 //Select by Name
@@ -84,10 +79,7 @@ namespace Gwen.UnitTest
                     TestBtn.SetPosition(465, 140);
                     TestBtn.Text = "Apple";
                     TestBtn.Width = 100;
-					TestBtn.Clicked += delegate(Base sender, ClickedEventArgs args)
-                    {
-                        combo.SelectByName("fruit");
-                    };
+                    TestBtn.Clicked += delegate(Base sender, ClickedEventArgs args) { combo.SelectByName("fruit"); };
                 }
 
                 //Select by UserData
@@ -96,15 +88,12 @@ namespace Gwen.UnitTest
                     TestBtn.SetPosition(570, 140);
                     TestBtn.Text = "Green";
                     TestBtn.Width = 100;
-					TestBtn.Clicked += delegate(Base sender, ClickedEventArgs args)
-                    {
-                        combo.SelectByUserData(12);
-                    };
+                    TestBtn.Clicked += delegate(Base sender, ClickedEventArgs args) { combo.SelectByUserData(12); };
                 }
             }
         }
 
-		void OnComboSelect(Base control, EventArgs args)
+        void OnComboSelect(Base control, EventArgs args)
         {
             Control.ComboBox combo = control as Control.ComboBox;
             UnitPrint(String.Format("ComboBox: OnComboSelect: {0}", combo.SelectedItem.Text));

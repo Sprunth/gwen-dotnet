@@ -70,13 +70,13 @@ namespace Gwen.Control
             m_Bar.Padding = new Padding(0, ButtonSize, 0, ButtonSize);
 
             float barHeight = 0.0f;
-            if (m_ContentSize > 0.0f) barHeight = (m_ViewableContentSize/m_ContentSize)*(Height - (ButtonSize*2));
+            if (m_ContentSize > 0.0f) barHeight = (m_ViewableContentSize / m_ContentSize) * (Height - (ButtonSize * 2));
 
-            if (barHeight < ButtonSize*0.5f)
-                barHeight = (int) (ButtonSize*0.5f);
+            if (barHeight < ButtonSize * 0.5f)
+                barHeight = (int)(ButtonSize * 0.5f);
 
-            m_Bar.Height = (int) (barHeight);
-            m_Bar.IsHidden = Height - (ButtonSize*2) <= barHeight;
+            m_Bar.Height = (int)(barHeight);
+            m_Bar.IsHidden = Height - (ButtonSize * 2) <= barHeight;
 
             //Based on our last scroll amount, produce a position for the bar
             if (!m_Bar.IsHeld)
@@ -85,13 +85,13 @@ namespace Gwen.Control
             }
         }
 
-		public virtual void NudgeUp(Base control, EventArgs args)
+        public virtual void NudgeUp(Base control, EventArgs args)
         {
             if (!IsDisabled)
                 SetScrollAmount(ScrollAmount - NudgeAmount, true);
         }
 
-		public virtual void NudgeDown(Base control, EventArgs args)
+        public virtual void NudgeDown(Base control, EventArgs args)
         {
             if (!IsDisabled)
                 SetScrollAmount(ScrollAmount + NudgeAmount, true);
@@ -116,10 +116,7 @@ namespace Gwen.Control
                 else
                     return base.NudgeAmount;
             }
-            set
-            {
-                base.NudgeAmount = value;
-            }
+            set { base.NudgeAmount = value; }
         }
 
         /// <summary>
@@ -130,7 +127,7 @@ namespace Gwen.Control
         /// <param name="down">If set to <c>true</c> mouse button is down.</param>
         protected override void OnMouseClickedLeft(int x, int y, bool down)
         {
-			base.OnMouseClickedLeft(x, y, down);
+            base.OnMouseClickedLeft(x, y, down);
             if (down)
             {
                 m_Depressed = true;
@@ -180,12 +177,12 @@ namespace Gwen.Control
         /// Handler for the BarMoved event.
         /// </summary>
         /// <param name="control">The control.</param>
-		protected override void OnBarMoved(Base control, EventArgs args)
+        protected override void OnBarMoved(Base control, EventArgs args)
         {
             if (m_Bar.IsHeld)
             {
                 SetScrollAmount(CalculateScrolledAmount(), false);
-				base.OnBarMoved(control, EventArgs.Empty);
+                base.OnBarMoved(control, EventArgs.Empty);
             }
             else
                 InvalidateParent();

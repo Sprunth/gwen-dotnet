@@ -15,7 +15,7 @@ namespace Gwen.UnitTest
             {
                 Control.Label label = new Control.Label(this);
                 label.Text = "Standard label (not autosized)";
-				label.AutoSizeToContents = false;
+                label.AutoSizeToContents = false;
                 label.SetBounds(10, 10, 100, 10);
             }
             {
@@ -30,17 +30,20 @@ namespace Gwen.UnitTest
             }
             {
                 Control.Label label = new Control.Label(this);
-                label.Text = "Korean: \uADF9\uC9C0\uD0D0\uD5D8\u3000\uD611\uD68C\uACB0\uC131\u3000\uCCB4\uACC4\uC801\u3000\uC5F0\uAD6C";
+                label.Text =
+                    "Korean: \uADF9\uC9C0\uD0D0\uD5D8\u3000\uD611\uD68C\uACB0\uC131\u3000\uCCB4\uACC4\uC801\u3000\uC5F0\uAD6C";
                 label.SetPosition(10, 70);
             }
             {
                 Control.Label label = new Control.Label(this);
-                label.Text = "Hindi: \u092F\u0947 \u0905\u0928\u0941\u091A\u094D\u091B\u0947\u0926 \u0939\u093F\u0928\u094D\u0926\u0940 \u092E\u0947\u0902 \u0939\u0948\u0964";
+                label.Text =
+                    "Hindi: \u092F\u0947 \u0905\u0928\u0941\u091A\u094D\u091B\u0947\u0926 \u0939\u093F\u0928\u094D\u0926\u0940 \u092E\u0947\u0902 \u0939\u0948\u0964";
                 label.SetPosition(10, 90);
             }
             {
                 Control.Label label = new Control.Label(this);
-                label.Text = "Arabic: \u0627\u0644\u0622\u0646 \u0644\u062D\u0636\u0648\u0631 \u0627\u0644\u0645\u0624\u062A\u0645\u0631 \u0627\u0644\u062F\u0648\u0644\u064A";
+                label.Text =
+                    "Arabic: \u0627\u0644\u0622\u0646 \u0644\u062D\u0636\u0648\u0631 \u0627\u0644\u0645\u0624\u062A\u0645\u0631 \u0627\u0644\u062F\u0648\u0644\u064A";
                 label.SetPosition(10, 110);
             }
             {
@@ -50,7 +53,7 @@ namespace Gwen.UnitTest
                 label.TextColor = Color.Blue;
                 label.SetToolTipText("I'm a tooltip");
                 font3 = new Font(Skin.Renderer, "Motorwerk", 20);
-                ((Control.Label) label.ToolTip).Font = font3;
+                ((Control.Label)label.ToolTip).Font = font3;
                 label.SetPosition(10, 130);
             }
             {
@@ -88,7 +91,7 @@ namespace Gwen.UnitTest
 
                 Control.Label outer = new Control.Label(this);
                 outer.SetBounds(10, 300, 190, 190);
-                
+
                 Control.Label l11 = new Control.Label(outer);
                 l11.SetBounds(10, 10, 50, 50);
                 l11.Text = "TL";
@@ -97,7 +100,7 @@ namespace Gwen.UnitTest
                 Control.Label l12 = new Control.Label(outer);
                 l12.SetBounds(70, 10, 50, 50);
                 l12.Text = "T";
-                l12.Alignment = Pos.Top|Pos.CenterH;
+                l12.Alignment = Pos.Top | Pos.CenterH;
 
                 Control.Label l13 = new Control.Label(outer);
                 l13.SetBounds(130, 10, 50, 50);
@@ -107,17 +110,17 @@ namespace Gwen.UnitTest
                 Control.Label l21 = new Control.Label(outer);
                 l21.SetBounds(10, 70, 50, 50);
                 l21.Text = "L";
-                l21.Alignment = Pos.Left|Pos.CenterV;
+                l21.Alignment = Pos.Left | Pos.CenterV;
 
                 Control.Label l22 = new Control.Label(outer);
                 l22.SetBounds(70, 70, 50, 50);
                 l22.Text = "C";
-                l22.Alignment = Pos.CenterH|Pos.CenterV;
+                l22.Alignment = Pos.CenterH | Pos.CenterV;
 
                 Control.Label l23 = new Control.Label(outer);
                 l23.SetBounds(130, 70, 50, 50);
                 l23.Text = "R";
-                l23.Alignment = Pos.Right|Pos.CenterV;
+                l23.Alignment = Pos.Right | Pos.CenterV;
 
                 Control.Label l31 = new Control.Label(outer);
                 l31.SetBounds(10, 130, 50, 50);

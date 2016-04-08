@@ -20,24 +20,42 @@ namespace Gwen.Control.Layout
         /// <summary>
         /// Column count (default 1).
         /// </summary>
-        public int ColumnCount { get { return m_ColumnCount; } set { SetColumnCount(value); Invalidate(); } }
+        public int ColumnCount
+        {
+            get { return m_ColumnCount; }
+            set
+            {
+                SetColumnCount(value);
+                Invalidate();
+            }
+        }
 
         /// <summary>
         /// Row count.
         /// </summary>
-        public int RowCount { get { return Children.Count; } }
+        public int RowCount
+        {
+            get { return Children.Count; }
+        }
 
         /// <summary>
         /// Gets or sets default height for new table rows.
         /// </summary>
-        public int DefaultRowHeight { get { return m_DefaultRowHeight; } set { m_DefaultRowHeight = value; } }
+        public int DefaultRowHeight
+        {
+            get { return m_DefaultRowHeight; }
+            set { m_DefaultRowHeight = value; }
+        }
 
         /// <summary>
         /// Returns specific row of the table.
         /// </summary>
         /// <param name="index">Row index.</param>
         /// <returns>Row at the specified index.</returns>
-        public TableRow this[int index] { get { return Children[index] as TableRow; } }
+        public TableRow this[int index]
+        {
+            get { return Children[index] as TableRow; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Table"/> class.
@@ -225,7 +243,8 @@ namespace Gwen.Control.Layout
                     if (null != cell)
                     {
                         if (i < ColumnCount - 1 || m_MaxWidth == 0)
-                            m_ColumnWidth[i] = Math.Max(m_ColumnWidth[i], cell.Width + cell.Margin.Left + cell.Margin.Right);
+                            m_ColumnWidth[i] = Math.Max(m_ColumnWidth[i],
+                                cell.Width + cell.Margin.Left + cell.Margin.Right);
                         else
                             m_ColumnWidth[i] = m_MaxWidth - width; // last cell - fill
                     }

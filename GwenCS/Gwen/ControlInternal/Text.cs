@@ -52,11 +52,13 @@ namespace Gwen.ControlInternal
         /// Determines whether the control should be automatically resized to fit the text.
         /// </summary>
         //public bool AutoSizeToContents { get; set; } // [omeg] added
-
         /// <summary>
         /// Text length in characters.
         /// </summary>
-        public int Length { get { return String.Length; } }
+        public int Length
+        {
+            get { return String.Length; }
+        }
 
         /// <summary>
         /// Text color override - used by tooltips.
@@ -95,7 +97,7 @@ namespace Gwen.ControlInternal
             else
                 skin.Renderer.DrawColor = TextColorOverride;
 
-            skin.Renderer.RenderText(Font, Point.Empty, TextOverride ?? String);
+            skin.Renderer.RenderText(Font, Point.Empty, TextOverride??String);
 
 #if DEBUG_TEXT_MEASURE
             {
@@ -153,7 +155,7 @@ namespace Gwen.ControlInternal
 
             if (Length > 0)
             {
-                p = Skin.Renderer.MeasureText(Font, TextOverride ?? String);
+                p = Skin.Renderer.MeasureText(Font, TextOverride??String);
             }
 
             if (p.X == Width && p.Y == Height)
@@ -176,14 +178,14 @@ namespace Gwen.ControlInternal
                 return new Point(0, 0);
             }
 
-			string sub = (TextOverride ?? String).Substring(0, index);
-			Point p = Skin.Renderer.MeasureText(Font, sub);
+            string sub = (TextOverride??String).Substring(0, index);
+            Point p = Skin.Renderer.MeasureText(Font, sub);
 
-			//if(p.Y >= Font.Size)
-			//	p = new Point(p.X, p.Y - Font.Size);
-			p.Y = 0;
+            //if(p.Y >= Font.Size)
+            //	p = new Point(p.X, p.Y - Font.Size);
+            p.Y = 0;
 
-			return p;
+            return p;
         }
 
         /// <summary>
@@ -210,5 +212,5 @@ namespace Gwen.ControlInternal
 
             return c;
         }
-	}
+    }
 }

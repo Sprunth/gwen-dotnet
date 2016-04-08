@@ -29,7 +29,6 @@ namespace Gwen.UnitTest
                         radio.AddOption("Right");
 
                         radio.SelectionChanged += OnDockChange;
-
                     }
                 }
 
@@ -52,7 +51,7 @@ namespace Gwen.UnitTest
             }
         }
 
-		void OnDockChange(Base control, EventArgs args)
+        void OnDockChange(Base control, EventArgs args)
         {
             RadioButtonGroup rc = (RadioButtonGroup)control;
 

@@ -77,7 +77,8 @@ namespace Gwen.Sample.Tao
                 test.Fps = 1000f * ftime.Count / ftime.Sum();
                 stopwatch.Restart();
 
-                if (renderer.TextCacheSize > 1000) // each cached string is an allocated texture, flush the cache once in a while in your real project
+                if (renderer.TextCacheSize > 1000)
+                    // each cached string is an allocated texture, flush the cache once in a while in your real project
                     renderer.FlushTextCache();
             }
 
@@ -118,6 +119,7 @@ namespace Gwen.Sample.Tao
 
         int prevX = -1;
         int prevY = -1;
+
         private void glControl_MouseMove(object sender, MouseEventArgs e)
         {
             canvas.Input_MouseMoved(e.X, e.Y, e.X - prevX, e.Y - prevY);

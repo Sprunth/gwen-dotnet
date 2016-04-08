@@ -15,7 +15,6 @@ namespace Gwen.Control
         public PropertyTree(Base parent)
             : base(parent)
         {
-
         }
 
         /// <summary>

@@ -28,7 +28,8 @@ namespace Gwen.Sample.SFML
                 const int height = 768;
 
                 // Create main window
-                m_Window = new RenderWindow(new VideoMode(width, height), "GWEN.Net SFML test", Styles.Titlebar|Styles.Close|Styles.Resize, new ContextSettings(32, 0));
+                m_Window = new RenderWindow(new VideoMode(width, height), "GWEN.Net SFML test",
+                    Styles.Titlebar | Styles.Close | Styles.Resize, new ContextSettings(32, 0));
 
                 // Setup event handlers
                 m_Window.Closed += OnClosed;
@@ -56,7 +57,7 @@ namespace Gwen.Sample.SFML
 
                 // set default font
                 Font defaultFont = new Font(gwenRenderer) {Size = 10, FaceName = "Arial Unicode MS"};
-                
+
                 // try to load, fallback if failed
                 if (gwenRenderer.LoadFont(defaultFont))
                 {
@@ -123,15 +124,15 @@ namespace Gwen.Sample.SFML
 
                 // we only need to dispose the canvas, it will take care of disposing all its children
                 m_Canvas.Dispose();
-                
+
                 // also dispose of these
                 skin.Dispose();
                 gwenRenderer.Dispose();
             }
             //catch (Exception e)
             //{
-                //String msg = String.Format("Exception: {0}\n{1}", e.Message, e.StackTrace);
-                //MessageBox.Show(msg);
+            //String msg = String.Format("Exception: {0}\n{1}", e.Message, e.StackTrace);
+            //MessageBox.Show(msg);
             //}
 
             m_Window.Dispose();
@@ -191,7 +192,7 @@ namespace Gwen.Sample.SFML
                     MessageBox.Show("Failed to capture window");
                 }
                 string path = String.Format("screenshot-{0:D2}{1:D2}{2:D2}.png", DateTime.Now.Hour, DateTime.Now.Minute,
-                                            DateTime.Now.Second);
+                    DateTime.Now.Second);
                 if (!img.SaveToFile(path))
                     MessageBox.Show(path, "Failed to save screenshot");
                 img.Dispose();
