@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Gwen.Control.Layout
+﻿namespace Gwen.Control.Layout
 {
     /// <summary>
     /// Helper control that positions its children in a specific way.

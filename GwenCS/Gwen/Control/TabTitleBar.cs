@@ -1,5 +1,4 @@
-﻿using System;
-using Gwen.DragDrop;
+﻿using Gwen.DragDrop;
 
 namespace Gwen.Control
 {

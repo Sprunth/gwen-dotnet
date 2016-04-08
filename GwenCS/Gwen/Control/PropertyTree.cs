@@ -1,5 +1,4 @@
-﻿using System;
-using Gwen.ControlInternal;
+﻿using Gwen.ControlInternal;
 
 namespace Gwen.Control
 {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Gwen.Control.Property
+﻿namespace Gwen.Control.Property
 {
     /// <summary>
     /// Checkable property.

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Drawing;
-
-namespace Gwen.Control
+﻿namespace Gwen.Control
 {
     /// <summary>
     /// Group box (container).

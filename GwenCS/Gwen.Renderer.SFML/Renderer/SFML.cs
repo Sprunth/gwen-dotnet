@@ -5,7 +5,6 @@ using System.Drawing;
 using SFML;
 using SFML.Graphics;
 using SFML.System;
-using SFML.Window;
 using Tao.OpenGl;
 using Color = SFML.Graphics.Color;
 using Image = SFML.Graphics.Image;

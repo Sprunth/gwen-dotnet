@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Gwen.Control
+﻿namespace Gwen.Control
 {
     /// <summary>
     /// Status bar.
