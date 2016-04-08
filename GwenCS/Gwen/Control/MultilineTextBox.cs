@@ -72,12 +72,12 @@ namespace Gwen.Control
         {
             get
             {
-                if (m_TextLines == null || m_TextLines.Count() == 0)
+                if (m_TextLines == null || m_TextLines.Count == 0)
                     return new Point(0, 0);
 
                 int Y = m_CursorPos.Y;
                 Y = Math.Max(Y, 0);
-                Y = Math.Min(Y, m_TextLines.Count() - 1);
+                Y = Math.Min(Y, m_TextLines.Count - 1);
 
                 int X = m_CursorPos.X;
                     //X may be beyond the last character, but we will want to draw it at the end of line.
@@ -102,12 +102,12 @@ namespace Gwen.Control
         {
             get
             {
-                if (m_TextLines == null || m_TextLines.Count() == 0)
+                if (m_TextLines == null || m_TextLines.Count == 0)
                     return new Point(0, 0);
 
                 int Y = m_CursorEnd.Y;
                 Y = Math.Max(Y, 0);
-                Y = Math.Min(Y, m_TextLines.Count() - 1);
+                Y = Math.Min(Y, m_TextLines.Count - 1);
 
                 int X = m_CursorEnd.X;
                     //X may be beyond the last character, but we will want to draw it at the end of line.
@@ -437,7 +437,7 @@ namespace Gwen.Control
         {
             //base.OnSelectAll(from);
             m_CursorEnd = new Point(0, 0);
-            m_CursorPos = new Point(m_TextLines.Last().Length, m_TextLines.Count());
+            m_CursorPos = new Point(m_TextLines.Last().Length, m_TextLines.Count);
 
             RefreshCursorBounds();
         }
@@ -922,7 +922,7 @@ namespace Gwen.Control
             string sub = String.Empty;
 
             /* Find the appropriate Y row (always pick whichever y the mouse currently is on) */
-            for (int y = 0; y < m_TextLines.Count(); y++)
+            for (int y = 0; y < m_TextLines.Count; y++)
             {
                 sub += m_TextLines[y] + Environment.NewLine;
                 Point cp = Skin.Renderer.MeasureText(Font, sub);

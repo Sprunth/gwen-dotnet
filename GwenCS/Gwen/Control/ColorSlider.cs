@@ -96,10 +96,7 @@ namespace Gwen.Control
         {
             base.OnMouseClickedLeft(x, y, down);
             m_Depressed = down;
-            if (down)
-                InputHandler.MouseFocus = this;
-            else
-                InputHandler.MouseFocus = null;
+            InputHandler.MouseFocus = down ? this : null;
 
             OnMouseMoved(x, y, 0, 0);
         }

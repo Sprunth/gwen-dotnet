@@ -92,10 +92,7 @@ namespace Gwen.ControlInternal
         {
             if (Length == 0 || Font == null) return;
 
-            if (TextColorOverride.A == 0)
-                skin.Renderer.DrawColor = TextColor;
-            else
-                skin.Renderer.DrawColor = TextColorOverride;
+            skin.Renderer.DrawColor = TextColorOverride.A == 0 ? TextColor : TextColorOverride;
 
             skin.Renderer.RenderText(Font, Point.Empty, TextOverride??String);
 

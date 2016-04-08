@@ -117,10 +117,7 @@ namespace Gwen.Control
         {
             base.OnMouseClickedLeft(x, y, down);
             m_Depressed = down;
-            if (down)
-                InputHandler.MouseFocus = this;
-            else
-                InputHandler.MouseFocus = null;
+            InputHandler.MouseFocus = down ? this : null;
 
             OnMouseMoved(x, y, 0, 0);
         }
@@ -190,10 +187,7 @@ namespace Gwen.Control
             skin.Renderer.DrawLinedRect(RenderBounds);
 
             Color selected = SelectedColor;
-            if ((selected.R + selected.G + selected.B) / 3 < 170)
-                skin.Renderer.DrawColor = Color.White;
-            else
-                skin.Renderer.DrawColor = Color.Black;
+            skin.Renderer.DrawColor = (selected.R + selected.G + selected.B) / 3 < 170 ? Color.White : Color.Black;
 
             Rectangle testRect = new Rectangle(m_CursorPos.X - 3, m_CursorPos.Y - 3, 6, 6);
 

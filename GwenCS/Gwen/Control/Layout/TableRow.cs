@@ -69,7 +69,7 @@ namespace Gwen.Control.Layout
             if (columnCount == m_ColumnCount) return;
 
             if (columnCount >= MaxColumns)
-                throw new ArgumentException("Invalid column count", "columnCount");
+                throw new ArgumentException("Invalid column count", nameof(columnCount));
 
             for (int i = 0; i < MaxColumns; i++)
             {

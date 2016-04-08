@@ -1580,7 +1580,7 @@ namespace Gwen.Control
             {
                 Pos dock = child.Dock;
 
-                if (!(0 != (dock & Pos.Fill)))
+                if (0 == (dock & Pos.Fill))
                     continue;
 
                 Margin margin = child.Margin;

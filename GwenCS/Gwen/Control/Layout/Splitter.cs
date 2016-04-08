@@ -31,7 +31,7 @@ namespace Gwen.Control.Layout
         public void SetPanel(int panelIndex, Base panel, bool noScale = false)
         {
             if (panelIndex < 0 || panelIndex > 1)
-                throw new ArgumentException("Invalid panel index", "panelIndex");
+                throw new ArgumentException("Invalid panel index", nameof(panelIndex));
 
             m_Panel[panelIndex] = panel;
             m_Scale[panelIndex] = !noScale;
@@ -50,7 +50,7 @@ namespace Gwen.Control.Layout
         Base GetPanel(int panelIndex)
         {
             if (panelIndex < 0 || panelIndex > 1)
-                throw new ArgumentException("Invalid panel index", "panelIndex");
+                throw new ArgumentException("Invalid panel index", nameof(panelIndex));
             return m_Panel[panelIndex];
         }
 

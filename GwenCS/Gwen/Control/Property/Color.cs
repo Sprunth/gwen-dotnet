@@ -87,7 +87,7 @@ namespace Gwen.Control.Property
 
         private void SetTextFromColor(System.Drawing.Color color)
         {
-            m_TextBox.Text = String.Format("{0} {1} {2}", color.R, color.G, color.B);
+            m_TextBox.Text = $"{color.R} {color.G} {color.B}";
         }
 
         private System.Drawing.Color GetColorFromText()

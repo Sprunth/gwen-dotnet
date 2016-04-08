@@ -141,7 +141,7 @@ namespace Gwen.Control
         /// <param name="skin">Skin to use.</param>
         protected override void Render(Skin.Base skin)
         {
-            skin.DrawMenuItem(this, IsMenuOpen, m_Checkable ? m_Checked : false);
+            skin.DrawMenuItem(this, IsMenuOpen, m_Checkable && m_Checked);
         }
 
         /// <summary>

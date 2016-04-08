@@ -79,14 +79,7 @@ namespace Gwen.Control
             {
                 if (m_Table.Children.Contains(value))
                 {
-                    if (AllowMultiSelect)
-                    {
-                        SelectRow(value, false);
-                    }
-                    else
-                    {
-                        SelectRow(value, true);
-                    }
+                    SelectRow(value, !AllowMultiSelect);
                 }
             }
         }

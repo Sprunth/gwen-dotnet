@@ -107,7 +107,7 @@ namespace Gwen.Control
             else if (pos == Pos.Left) sizeDir = Pos.Right;
             else if (pos == Pos.Top) sizeDir = Pos.Bottom;
             else if (pos == Pos.Bottom) sizeDir = Pos.Top;
-            else throw new ArgumentException("Invalid dock", "pos");
+            else throw new ArgumentException("Invalid dock", nameof(pos));
 
             m_Sizer?.Dispose();
             m_Sizer = new Resizer(this);

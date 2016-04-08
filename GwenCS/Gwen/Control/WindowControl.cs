@@ -146,10 +146,7 @@ namespace Gwen.Control
             m_Modal = new Modal(GetCanvas());
             Parent = m_Modal;
 
-            if (dim)
-                m_Modal.ShouldDrawBackground = true;
-            else
-                m_Modal.ShouldDrawBackground = false;
+            m_Modal.ShouldDrawBackground = dim;
         }
 
         /// <summary>
@@ -168,10 +165,7 @@ namespace Gwen.Control
         {
             bool hasFocus = IsOnTop;
 
-            if (hasFocus)
-                m_Title.TextColor = Skin.Colors.Window.TitleActive;
-            else
-                m_Title.TextColor = Skin.Colors.Window.TitleInactive;
+            m_Title.TextColor = hasFocus ? Skin.Colors.Window.TitleActive : Skin.Colors.Window.TitleInactive;
 
             skin.DrawWindow(this, m_TitleBar.Bottom, hasFocus);
         }
