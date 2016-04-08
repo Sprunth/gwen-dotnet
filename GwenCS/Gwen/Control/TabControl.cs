@@ -36,10 +36,7 @@ namespace Gwen.Control
         /// <summary>
         /// Currently active tab button.
         /// </summary>
-        public TabButton CurrentButton
-        {
-            get { return m_CurrentButton; }
-        }
+        public TabButton CurrentButton => m_CurrentButton;
 
         /// <summary>
         /// Current tab strip position.
@@ -53,10 +50,7 @@ namespace Gwen.Control
         /// <summary>
         /// Tab strip.
         /// </summary>
-        public TabStrip TabStrip
-        {
-            get { return m_TabStrip; }
-        }
+        public TabStrip TabStrip => m_TabStrip;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TabControl"/> class.
@@ -211,10 +205,7 @@ namespace Gwen.Control
         /// <summary>
         /// Number of tabs in the control.
         /// </summary>
-        public int TabCount
-        {
-            get { return m_TabStrip.Children.Count; }
-        }
+        public int TabCount => m_TabStrip.Children.Count;
 
         private void HandleOverflow()
         {

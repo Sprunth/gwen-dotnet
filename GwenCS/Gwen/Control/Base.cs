@@ -101,13 +101,7 @@ namespace Gwen.Control
         /// <summary>
         /// Returns true if any on click events are set.
         /// </summary>
-        internal bool ClickEventAssigned
-        {
-            get
-            {
-                return Clicked != null || RightClicked != null || DoubleClicked != null || DoubleRightClicked != null;
-            }
-        }
+        internal bool ClickEventAssigned => Clicked != null || RightClicked != null || DoubleClicked != null || DoubleRightClicked != null;
 
         /// <summary>
         /// Accelerator map.
@@ -218,10 +212,7 @@ namespace Gwen.Control
         /// <summary>
         /// Determines whether the control should be clipped to its bounds while rendering.
         /// </summary>
-        protected virtual bool ShouldClip
-        {
-            get { return true; }
-        }
+        protected virtual bool ShouldClip => true;
 
         /// <summary>
         /// Current padding - inner spacing.
@@ -260,10 +251,8 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the control is on top of its parent's children.
         /// </summary>
-        public virtual bool IsOnTop
-        {
-            get { return this == Parent.m_Children.First(); }
-        } // todo: validate
+        public virtual bool IsOnTop => this == Parent.m_Children.First();
+        // todo: validate
 
         /// <summary>
         /// User data associated with the control.
@@ -273,18 +262,12 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the control is hovered by mouse pointer.
         /// </summary>
-        public virtual bool IsHovered
-        {
-            get { return InputHandler.HoveredControl == this; }
-        }
+        public virtual bool IsHovered => InputHandler.HoveredControl == this;
 
         /// <summary>
         /// Indicates whether the control has focus.
         /// </summary>
-        public bool HasFocus
-        {
-            get { return InputHandler.KeyboardFocus == this; }
-        }
+        public bool HasFocus => InputHandler.KeyboardFocus == this;
 
         /// <summary>
         /// Indicates whether the control is disabled.
@@ -348,18 +331,12 @@ namespace Gwen.Control
         /// <summary>
         /// Control's size and position relative to the parent.
         /// </summary>
-        public Rectangle Bounds
-        {
-            get { return m_Bounds; }
-        }
+        public Rectangle Bounds => m_Bounds;
 
         /// <summary>
         /// Bounds for the renderer.
         /// </summary>
-        public Rectangle RenderBounds
-        {
-            get { return m_RenderBounds; }
-        }
+        public Rectangle RenderBounds => m_RenderBounds;
 
         /// <summary>
         /// Bounds adjusted by padding.
@@ -379,20 +356,11 @@ namespace Gwen.Control
         /// <summary>
         /// Determines whether hover should be drawn during rendering.
         /// </summary>
-        protected bool ShouldDrawHover
-        {
-            get { return InputHandler.MouseFocus == this || InputHandler.MouseFocus == null; }
-        }
+        protected bool ShouldDrawHover => InputHandler.MouseFocus == this || InputHandler.MouseFocus == null;
 
-        protected virtual bool AccelOnlyFocus
-        {
-            get { return false; }
-        }
+        protected virtual bool AccelOnlyFocus => false;
 
-        protected virtual bool NeedsInputChars
-        {
-            get { return false; }
-        }
+        protected virtual bool NeedsInputChars => false;
 
         /// <summary>
         /// Indicates whether the control and its parents are visible.
@@ -443,15 +411,9 @@ namespace Gwen.Control
             set { SetSize(Width, value); }
         }
 
-        public int Bottom
-        {
-            get { return m_Bounds.Bottom + m_Margin.Bottom; }
-        }
+        public int Bottom => m_Bounds.Bottom + m_Margin.Bottom;
 
-        public int Right
-        {
-            get { return m_Bounds.Right + m_Margin.Right; }
-        }
+        public int Right => m_Bounds.Right + m_Margin.Right;
 
         /// <summary>
         /// Determines whether margin, padding and bounds outlines for the control will be drawn. Applied recursively to all children.

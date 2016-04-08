@@ -21,26 +21,17 @@ namespace Gwen.Control
         /// <summary>
         /// Bar position (in pixels).
         /// </summary>
-        public override int BarPos
-        {
-            get { return m_Bar.X - Height; }
-        }
+        public override int BarPos => m_Bar.X - Height;
 
         /// <summary>
         /// Indicates whether the bar is horizontal.
         /// </summary>
-        public override bool IsHorizontal
-        {
-            get { return true; }
-        }
+        public override bool IsHorizontal => true;
 
         /// <summary>
         /// Button size (in pixels).
         /// </summary>
-        public override int ButtonSize
-        {
-            get { return Height; }
-        }
+        public override int ButtonSize => Height;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HorizontalScrollBar"/> class.

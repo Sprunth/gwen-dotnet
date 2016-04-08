@@ -191,10 +191,7 @@ namespace Gwen.Renderer
         /// <summary>
         /// Cache to texture provider.
         /// </summary>
-        public virtual ICacheToTexture CTT
-        {
-            get { return null; }
-        }
+        public virtual ICacheToTexture CTT => null;
 
         /// <summary>
         /// Loads the specified font.

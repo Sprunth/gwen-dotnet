@@ -21,10 +21,7 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the property value is being edited.
         /// </summary>
-        public bool IsEditing
-        {
-            get { return m_Property != null && m_Property.IsEditing; }
-        }
+        public bool IsEditing => m_Property != null && m_Property.IsEditing;
 
         /// <summary>
         /// Property value.
@@ -38,10 +35,7 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the control is hovered by mouse pointer.
         /// </summary>
-        public override bool IsHovered
-        {
-            get { return base.IsHovered || (m_Property != null && m_Property.IsHovered); }
-        }
+        public override bool IsHovered => base.IsHovered || (m_Property != null && m_Property.IsHovered);
 
         /// <summary>
         /// Property name.

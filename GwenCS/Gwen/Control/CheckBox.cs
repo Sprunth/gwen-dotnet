@@ -61,10 +61,7 @@ namespace Gwen.Control
         /// <summary>
         /// Determines whether unchecking is allowed.
         /// </summary>
-        protected virtual bool AllowUncheck
-        {
-            get { return true; }
-        }
+        protected virtual bool AllowUncheck => true;
 
         /// <summary>
         /// Handler for CheckChanged event.

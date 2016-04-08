@@ -21,18 +21,12 @@ namespace Gwen.Control
         /// <summary>
         /// Bar position (in pixels).
         /// </summary>
-        public override int BarPos
-        {
-            get { return m_Bar.Y - Width; }
-        }
+        public override int BarPos => m_Bar.Y - Width;
 
         /// <summary>
         /// Button size (in pixels).
         /// </summary>
-        public override int ButtonSize
-        {
-            get { return Width; }
-        }
+        public override int ButtonSize => Width;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="VerticalScrollBar"/> class.

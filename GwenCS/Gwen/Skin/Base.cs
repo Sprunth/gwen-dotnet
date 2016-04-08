@@ -32,10 +32,7 @@ namespace Gwen.Skin
         /// <summary>
         /// Renderer used.
         /// </summary>
-        public Renderer.Base Renderer
-        {
-            get { return m_Renderer; }
-        }
+        public Renderer.Base Renderer => m_Renderer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Base"/> class.

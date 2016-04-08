@@ -22,10 +22,7 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the combo menu is open.
         /// </summary>
-        public bool IsOpen
-        {
-            get { return m_Menu != null && !m_Menu.IsHidden; }
-        }
+        public bool IsOpen => m_Menu != null && !m_Menu.IsHidden;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ComboBox"/> class.
@@ -68,10 +65,7 @@ namespace Gwen.Control
             }
         }
 
-        internal override bool IsMenuComponent
-        {
-            get { return true; }
-        }
+        internal override bool IsMenuComponent => true;
 
         /// <summary>
         /// Adds a new item.

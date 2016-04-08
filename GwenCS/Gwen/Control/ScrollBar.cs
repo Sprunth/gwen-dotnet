@@ -30,18 +30,12 @@ namespace Gwen.Control
         /// <summary>
         /// Bar position (in pixels).
         /// </summary>
-        public virtual int BarPos
-        {
-            get { return 0; }
-        }
+        public virtual int BarPos => 0;
 
         /// <summary>
         /// Button size (in pixels).
         /// </summary>
-        public virtual int ButtonSize
-        {
-            get { return 0; }
-        }
+        public virtual int ButtonSize => 0;
 
         public virtual float NudgeAmount
         {
@@ -49,10 +43,7 @@ namespace Gwen.Control
             set { m_NudgeAmount = value; }
         }
 
-        public float ScrollAmount
-        {
-            get { return m_ScrollAmount; }
-        }
+        public float ScrollAmount => m_ScrollAmount;
 
         public float ContentSize
         {
@@ -77,10 +68,7 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the bar is horizontal.
         /// </summary>
-        public virtual bool IsHorizontal
-        {
-            get { return false; }
-        }
+        public virtual bool IsHorizontal => false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ScrollBar"/> class.

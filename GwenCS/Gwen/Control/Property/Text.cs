@@ -41,17 +41,11 @@
         /// <summary>
         /// Indicates whether the property value is being edited.
         /// </summary>
-        public override bool IsEditing
-        {
-            get { return m_TextBox.HasFocus; }
-        }
+        public override bool IsEditing => m_TextBox.HasFocus;
 
         /// <summary>
         /// Indicates whether the control is hovered by mouse pointer.
         /// </summary>
-        public override bool IsHovered
-        {
-            get { return base.IsHovered | m_TextBox.IsHovered; }
-        }
+        public override bool IsHovered => base.IsHovered | m_TextBox.IsHovered;
     }
 }

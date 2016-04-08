@@ -55,10 +55,7 @@ namespace Gwen.Control
         /// <summary>
         /// Selected color.
         /// </summary>
-        public Color SelectedColor
-        {
-            get { return GetColorAt(m_CursorPos.X, m_CursorPos.Y); }
-        }
+        public Color SelectedColor => GetColorAt(m_CursorPos.X, m_CursorPos.Y);
 
         /// <summary>
         /// Sets the selected color.

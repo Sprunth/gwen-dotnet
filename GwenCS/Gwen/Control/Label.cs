@@ -81,41 +81,23 @@ namespace Gwen.Control
         /// <summary>
         /// Width of the text (in pixels).
         /// </summary>
-        public int TextWidth
-        {
-            get { return m_Text.Width; }
-        }
+        public int TextWidth => m_Text.Width;
 
         /// <summary>
         /// Height of the text (in pixels).
         /// </summary>
-        public int TextHeight
-        {
-            get { return m_Text.Height; }
-        }
+        public int TextHeight => m_Text.Height;
 
-        public int TextX
-        {
-            get { return m_Text.X; }
-        }
+        public int TextX => m_Text.X;
 
-        public int TextY
-        {
-            get { return m_Text.Y; }
-        }
+        public int TextY => m_Text.Y;
 
         /// <summary>
         /// Text length (in characters).
         /// </summary>
-        public int TextLength
-        {
-            get { return m_Text.Length; }
-        }
+        public int TextLength => m_Text.Length;
 
-        public int TextRight
-        {
-            get { return m_Text.Right; }
-        }
+        public int TextRight => m_Text.Right;
 
         public virtual void MakeColorNormal()
         {

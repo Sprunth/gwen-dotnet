@@ -54,10 +54,7 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the text has active selection.
         /// </summary>
-        public bool HasSelection
-        {
-            get { return m_CursorPos != m_CursorEnd; }
-        }
+        public bool HasSelection => m_CursorPos != m_CursorEnd;
 
         /// <summary>
         /// Invoked when the text has changed.
@@ -75,16 +72,16 @@ namespace Gwen.Control
                 if (m_TextLines == null || m_TextLines.Count == 0)
                     return new Point(0, 0);
 
-                int Y = m_CursorPos.Y;
-                Y = Math.Max(Y, 0);
-                Y = Math.Min(Y, m_TextLines.Count - 1);
+                int y = m_CursorPos.Y;
+                y = Math.Max(y, 0);
+                y = Math.Min(y, m_TextLines.Count - 1);
 
-                int X = m_CursorPos.X;
+                int x = m_CursorPos.X;
                     //X may be beyond the last character, but we will want to draw it at the end of line.
-                X = Math.Max(X, 0);
-                X = Math.Min(X, m_TextLines[Y].Length);
+                x = Math.Max(x, 0);
+                x = Math.Min(x, m_TextLines[y].Length);
 
-                return new Point(X, Y);
+                return new Point(x, y);
             }
             set
             {
@@ -105,16 +102,16 @@ namespace Gwen.Control
                 if (m_TextLines == null || m_TextLines.Count == 0)
                     return new Point(0, 0);
 
-                int Y = m_CursorEnd.Y;
-                Y = Math.Max(Y, 0);
-                Y = Math.Min(Y, m_TextLines.Count - 1);
+                int y = m_CursorEnd.Y;
+                y = Math.Max(y, 0);
+                y = Math.Min(y, m_TextLines.Count - 1);
 
-                int X = m_CursorEnd.X;
+                int x = m_CursorEnd.X;
                     //X may be beyond the last character, but we will want to draw it at the end of line.
-                X = Math.Max(X, 0);
-                X = Math.Min(X, m_TextLines[Y].Length);
+                x = Math.Max(x, 0);
+                x = Math.Min(x, m_TextLines[y].Length);
 
-                return new Point(X, Y);
+                return new Point(x, y);
             }
             set
             {
@@ -132,10 +129,7 @@ namespace Gwen.Control
         /// <summary>
         /// Returns the number of lines that are in the Multiline Text Box.
         /// </summary>
-        public int TotalLines
-        {
-            get { return m_TextLines.Count; }
-        }
+        public int TotalLines => m_TextLines.Count;
 
         /// <summary>
         /// Gets and sets the text to display to the user. Each line is seperated by

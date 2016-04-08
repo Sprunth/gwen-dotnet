@@ -71,10 +71,7 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether any of the panels is zoomed.
         /// </summary>
-        public bool IsZoomed
-        {
-            get { return m_ZoomedSection != -1; }
-        }
+        public bool IsZoomed => m_ZoomedSection != -1;
 
         /// <summary>
         /// Gets or sets a value indicating whether splitters should be visible.

@@ -19,15 +19,9 @@ namespace Gwen.Control
 
         protected float m_LastInputTime;
 
-        protected override bool AccelOnlyFocus
-        {
-            get { return true; }
-        }
+        protected override bool AccelOnlyFocus => true;
 
-        protected override bool NeedsInputChars
-        {
-            get { return true; }
-        }
+        protected override bool NeedsInputChars => true;
 
         /// <summary>
         /// Determines whether text should be selected when the control is focused.
@@ -45,10 +39,7 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the text has active selection.
         /// </summary>
-        public virtual bool HasSelection
-        {
-            get { return m_CursorPos != m_CursorEnd; }
-        }
+        public virtual bool HasSelection => m_CursorPos != m_CursorEnd;
 
         /// <summary>
         /// Invoked when the text has changed.

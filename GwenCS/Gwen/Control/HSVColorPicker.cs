@@ -31,10 +31,7 @@ namespace Gwen.Control
         /// <summary>
         /// Selected color.
         /// </summary>
-        public Color SelectedColor
-        {
-            get { return m_LerpBox.SelectedColor; }
-        }
+        public Color SelectedColor => m_LerpBox.SelectedColor;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HSVColorPicker"/> class.

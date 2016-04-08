@@ -12,20 +12,11 @@ namespace Gwen.Control
         private bool m_CanScrollV;
         private bool m_AutoHideBars;
 
-        public int VerticalScroll
-        {
-            get { return m_InnerPanel.Y; }
-        }
+        public int VerticalScroll => m_InnerPanel.Y;
 
-        public int HorizontalScroll
-        {
-            get { return m_InnerPanel.X; }
-        }
+        public int HorizontalScroll => m_InnerPanel.X;
 
-        public Base InnerPanel
-        {
-            get { return m_InnerPanel; }
-        }
+        public Base InnerPanel => m_InnerPanel;
 
         private readonly ScrollBar m_VerticalScrollBar;
         private readonly ScrollBar m_HorizontalScrollBar;
@@ -33,18 +24,12 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the control can be scrolled horizontally.
         /// </summary>
-        public bool CanScrollH
-        {
-            get { return m_CanScrollH; }
-        }
+        public bool CanScrollH => m_CanScrollH;
 
         /// <summary>
         /// Indicates whether the control can be scrolled vertically.
         /// </summary>
-        public bool CanScrollV
-        {
-            get { return m_CanScrollV; }
-        }
+        public bool CanScrollV => m_CanScrollV;
 
         /// <summary>
         /// Determines whether the scroll bars should be hidden if not needed.

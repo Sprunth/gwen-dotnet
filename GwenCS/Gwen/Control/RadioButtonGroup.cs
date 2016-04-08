@@ -14,34 +14,22 @@ namespace Gwen.Control
         /// <summary>
         /// Selected radio button.
         /// </summary>
-        public LabeledRadioButton Selected
-        {
-            get { return m_Selected; }
-        }
+        public LabeledRadioButton Selected => m_Selected;
 
         /// <summary>
         /// Internal name of the selected radio button.
         /// </summary>
-        public string SelectedName
-        {
-            get { return m_Selected.Name; }
-        }
+        public string SelectedName => m_Selected.Name;
 
         /// <summary>
         /// Text of the selected radio button.
         /// </summary>
-        public string SelectedLabel
-        {
-            get { return m_Selected.Text; }
-        }
+        public string SelectedLabel => m_Selected.Text;
 
         /// <summary>
         /// Index of the selected radio button.
         /// </summary>
-        public int SelectedIndex
-        {
-            get { return Children.IndexOf(m_Selected); }
-        }
+        public int SelectedIndex => Children.IndexOf(m_Selected);
 
         /// <summary>
         /// Invoked when the selected option has changed.

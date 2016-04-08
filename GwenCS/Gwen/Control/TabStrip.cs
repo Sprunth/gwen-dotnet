@@ -25,10 +25,7 @@ namespace Gwen.Control
         /// <summary>
         /// Determines whether the control should be clipped to its bounds while rendering.
         /// </summary>
-        protected override bool ShouldClip
-        {
-            get { return false; }
-        }
+        protected override bool ShouldClip => false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TabStrip"/> class.

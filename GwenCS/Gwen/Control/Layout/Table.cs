@@ -33,10 +33,7 @@ namespace Gwen.Control.Layout
         /// <summary>
         /// Row count.
         /// </summary>
-        public int RowCount
-        {
-            get { return Children.Count; }
-        }
+        public int RowCount => Children.Count;
 
         /// <summary>
         /// Gets or sets default height for new table rows.
@@ -52,10 +49,7 @@ namespace Gwen.Control.Layout
         /// </summary>
         /// <param name="index">Row index.</param>
         /// <returns>Row at the specified index.</returns>
-        public TableRow this[int index]
-        {
-            get { return Children[index] as TableRow; }
-        }
+        public TableRow this[int index] => Children[index] as TableRow;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Table"/> class.

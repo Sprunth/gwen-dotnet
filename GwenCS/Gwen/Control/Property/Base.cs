@@ -33,10 +33,7 @@ namespace Gwen.Control.Property
         /// <summary>
         /// Indicates whether the property value is being edited.
         /// </summary>
-        public virtual bool IsEditing
-        {
-            get { return false; }
-        }
+        public virtual bool IsEditing => false;
 
         protected virtual void DoChanged()
         {

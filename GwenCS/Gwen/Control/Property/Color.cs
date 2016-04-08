@@ -80,10 +80,7 @@ namespace Gwen.Control.Property
         /// <summary>
         /// Indicates whether the property value is being edited.
         /// </summary>
-        public override bool IsEditing
-        {
-            get { return m_TextBox == InputHandler.KeyboardFocus; }
-        }
+        public override bool IsEditing => m_TextBox == InputHandler.KeyboardFocus;
 
         private void SetTextFromColor(System.Drawing.Color color)
         {

@@ -10,10 +10,7 @@ namespace Gwen.Control
     /// </summary>
     public class Menu : ScrollControl
     {
-        internal override bool IsMenuComponent
-        {
-            get { return true; }
-        }
+        internal override bool IsMenuComponent => true;
 
         public bool IconMarginDisabled { get; set; }
 
@@ -25,10 +22,7 @@ namespace Gwen.Control
         /// <summary>
         /// Determines whether the menu should open on mouse hover.
         /// </summary>
-        protected virtual bool ShouldHoverOpenMenu
-        {
-            get { return true; }
-        }
+        protected virtual bool ShouldHoverOpenMenu => true;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Menu"/> class.

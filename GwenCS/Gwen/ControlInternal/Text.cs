@@ -55,10 +55,7 @@ namespace Gwen.ControlInternal
         /// <summary>
         /// Text length in characters.
         /// </summary>
-        public int Length
-        {
-            get { return String.Length; }
-        }
+        public int Length => String.Length;
 
         /// <summary>
         /// Text color override - used by tooltips.

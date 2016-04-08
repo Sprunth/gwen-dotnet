@@ -17,7 +17,6 @@ namespace Gwen.Control
         protected Button m_ToggleButton;
         protected Button m_Title;
         private bool m_Selected;
-        private bool m_Selectable;
 
         /// <summary>
         /// Indicates whether this is a root node.
@@ -36,11 +35,7 @@ namespace Gwen.Control
         /// <summary>
         /// Determines whether the node is selectable.
         /// </summary>
-        public bool IsSelectable
-        {
-            get { return m_Selectable; }
-            set { m_Selectable = value; }
-        }
+        public bool IsSelectable { get; set; }
 
         /// <summary>
         /// Indicates whether the node is selected.
@@ -144,7 +139,7 @@ namespace Gwen.Control
 
             IsRoot = parent is TreeControl;
             m_Selected = false;
-            m_Selectable = true;
+            IsSelectable = true;
 
             Dock = Pos.Top;
         }

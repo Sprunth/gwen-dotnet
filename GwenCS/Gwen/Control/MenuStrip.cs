@@ -53,10 +53,7 @@
         /// <summary>
         /// Determines whether the menu should open on mouse hover.
         /// </summary>
-        protected override bool ShouldHoverOpenMenu
-        {
-            get { return IsMenuOpen(); }
-        }
+        protected override bool ShouldHoverOpenMenu => IsMenuOpen();
 
         /// <summary>
         /// Add item handler.

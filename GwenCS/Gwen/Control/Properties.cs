@@ -14,10 +14,8 @@ namespace Gwen.Control
         /// <summary>
         /// Returns the width of the first column (property names).
         /// </summary>
-        public int SplitWidth
-        {
-            get { return m_SplitterBar.X; }
-        } // todo: rename?
+        public int SplitWidth => m_SplitterBar.X;
+        // todo: rename?
 
         /// <summary>
         /// Invoked when a property value has been changed.

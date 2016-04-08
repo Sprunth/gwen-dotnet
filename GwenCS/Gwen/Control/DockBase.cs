@@ -28,39 +28,24 @@ namespace Gwen.Control
         /// <summary>
         /// Control docked on the left side.
         /// </summary>
-        public DockBase LeftDock
-        {
-            get { return GetChildDock(Pos.Left); }
-        }
+        public DockBase LeftDock => GetChildDock(Pos.Left);
 
         /// <summary>
         /// Control docked on the right side.
         /// </summary>
-        public DockBase RightDock
-        {
-            get { return GetChildDock(Pos.Right); }
-        }
+        public DockBase RightDock => GetChildDock(Pos.Right);
 
         /// <summary>
         /// Control docked on the top side.
         /// </summary>
-        public DockBase TopDock
-        {
-            get { return GetChildDock(Pos.Top); }
-        }
+        public DockBase TopDock => GetChildDock(Pos.Top);
 
         /// <summary>
         /// Control docked on the bottom side.
         /// </summary>
-        public DockBase BottomDock
-        {
-            get { return GetChildDock(Pos.Bottom); }
-        }
+        public DockBase BottomDock => GetChildDock(Pos.Bottom);
 
-        public TabControl TabControl
-        {
-            get { return m_DockedTabControl; }
-        }
+        public TabControl TabControl => m_DockedTabControl;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DockBase"/> class.

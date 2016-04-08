@@ -23,10 +23,7 @@ namespace Gwen.ControlInternal
         /// <summary>
         /// Indicates if the control is being dragged.
         /// </summary>
-        public bool IsHeld
-        {
-            get { return m_Held; }
-        }
+        public bool IsHeld => m_Held;
 
         /// <summary>
         /// Event invoked when the control position has been changed.

@@ -53,17 +53,11 @@
         /// <summary>
         /// Indicates whether the property value is being edited.
         /// </summary>
-        public override bool IsEditing
-        {
-            get { return m_CheckBox.HasFocus; }
-        }
+        public override bool IsEditing => m_CheckBox.HasFocus;
 
         /// <summary>
         /// Indicates whether the control is hovered by mouse pointer.
         /// </summary>
-        public override bool IsHovered
-        {
-            get { return base.IsHovered || m_CheckBox.IsHovered; }
-        }
+        public override bool IsHovered => base.IsHovered || m_CheckBox.IsHovered;
     }
 }

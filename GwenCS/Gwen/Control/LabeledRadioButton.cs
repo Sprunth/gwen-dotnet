@@ -70,10 +70,7 @@ namespace Gwen.Control
         }
 
         // todo: would be nice to remove that
-        internal RadioButton RadioButton
-        {
-            get { return m_RadioButton; }
-        }
+        internal RadioButton RadioButton => m_RadioButton;
 
         /// <summary>
         /// Handler for Space keyboard event.

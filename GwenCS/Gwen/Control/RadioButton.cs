@@ -8,10 +8,7 @@
         /// <summary>
         /// Determines whether unchecking is allowed.
         /// </summary>
-        protected override bool AllowUncheck
-        {
-            get { return false; }
-        }
+        protected override bool AllowUncheck => false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RadioButton"/> class.
