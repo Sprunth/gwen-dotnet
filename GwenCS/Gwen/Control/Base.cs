@@ -17,8 +17,8 @@ namespace Gwen.Control
         /// <summary>
         /// Delegate used for all control event handlers.
         /// </summary>
-        /// <param name="control">Event source.</param>
-        /// <param name="args" >Additional arguments. May be empty (EventArgs.Empty).</param>
+        /// <param name="sender">Event source.</param>
+        /// <param name="arguments" >Additional arguments. May be empty (EventArgs.Empty).</param>
         public delegate void GwenEventHandler<in T>(Base sender, T arguments) where T : System.EventArgs;
 
         private bool m_Disposed;

@@ -912,8 +912,8 @@ namespace Gwen.Control
         /// <summary>
         /// Returns index of the character closest to specified point (in canvas coordinates).
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="px"></param>
+        /// <param name="py"></param>
         /// <returns></returns>
         protected override Point GetClosestCharacter(int px, int py)
         {

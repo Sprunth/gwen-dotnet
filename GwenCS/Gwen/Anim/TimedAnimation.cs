@@ -51,7 +51,7 @@ namespace Gwen.Anim
 
             Run((float)Math.Pow(delta, m_Ease));
 
-            if (delta == 1.0f)
+            if (Math.Abs(delta - 1.0f) < 0.00001f) // if delta == 1.0f
             {
                 m_Finished = true;
                 OnFinish();
