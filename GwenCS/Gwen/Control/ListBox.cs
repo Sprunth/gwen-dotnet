@@ -15,7 +15,6 @@ namespace Gwen.Control
         private readonly List<ListBoxRow> m_SelectedRows;
 
         private bool m_MultiSelect;
-        private bool m_IsToggle;
         private bool m_SizeToContents;
         private Pos m_OldDock; // used while autosizing
 
@@ -36,11 +35,7 @@ namespace Gwen.Control
         /// <summary>
         /// Determines whether rows can be unselected by clicking on them again.
         /// </summary>
-        public bool IsToggle
-        {
-            get { return m_IsToggle; }
-            set { m_IsToggle = value; }
-        }
+        public bool IsToggle { get; set; }
 
         /// <summary>
         /// Number of rows in the list box.
@@ -153,7 +148,7 @@ namespace Gwen.Control
             m_Table.BoundsChanged += TableResized;
 
             m_MultiSelect = false;
-            m_IsToggle = false;
+            IsToggle = false;
         }
 
         /// <summary>

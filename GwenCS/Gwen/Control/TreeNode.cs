@@ -15,18 +15,13 @@ namespace Gwen.Control
         protected TreeControl m_TreeControl;
         protected Button m_ToggleButton;
         protected Button m_Title;
-        private bool m_Root;
         private bool m_Selected;
         private bool m_Selectable;
 
         /// <summary>
         /// Indicates whether this is a root node.
         /// </summary>
-        public bool IsRoot
-        {
-            get { return m_Root; }
-            set { m_Root = value; }
-        }
+        public bool IsRoot { get; set; }
 
         /// <summary>
         /// Parent tree control.
@@ -152,7 +147,7 @@ namespace Gwen.Control
             m_InnerPanel.Margin = new Margin(TreeIndentation, 1, 0, 0);
             m_InnerPanel.Hide();
 
-            m_Root = parent is TreeControl;
+            IsRoot = parent is TreeControl;
             m_Selected = false;
             m_Selectable = true;
 

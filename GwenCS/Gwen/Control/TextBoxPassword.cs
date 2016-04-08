@@ -11,16 +11,11 @@ namespace Gwen.Control
     public class TextBoxPassword : TextBox
     {
         private string m_Mask;
-        private char m_MaskCharacter;
 
         /// <summary>
         /// Character used in place of actual characters for display.
         /// </summary>
-        public char MaskCharacter
-        {
-            get { return m_MaskCharacter; }
-            set { m_MaskCharacter = value; }
-        }
+        public char MaskCharacter { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TextBoxPassword"/> class.
@@ -29,7 +24,7 @@ namespace Gwen.Control
         public TextBoxPassword(Base parent)
             : base(parent)
         {
-            m_MaskCharacter = '*';
+            MaskCharacter = '*';
         }
 
         /// <summary>
