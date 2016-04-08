@@ -165,7 +165,8 @@ namespace Gwen.Control
             //  The hack is to constantly invalide TreeNodes, which isn't bad, but there is
             //  definitely a better solution (possibly: Make it set the height from childmost
             //  first and work it's way up?) that invalidates and draws properly in 1 loop.
-            this.Invalidate();
+            // TODO: look at this
+            Invalidate();
         }
 
         /// <summary>
@@ -389,7 +390,7 @@ namespace Gwen.Control
                     Trees.AddRange(node.SelectedChildren);
                 }
 
-                if (this.IsSelected)
+                if (IsSelected)
                 {
                     Trees.Add(this);
                 }

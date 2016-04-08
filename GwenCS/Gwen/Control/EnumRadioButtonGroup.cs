@@ -7,18 +7,18 @@ namespace Gwen.Control
         public EnumRadioButtonGroup(Base parent) : base(parent)
         {
             if (!typeof(T).IsEnum) throw new Exception("T must be an enumerated type!");
-            this.Text = typeof(T).Name;
+            Text = typeof(T).Name;
             for (int i = 0; i < Enum.GetValues(typeof(T)).Length; i++)
             {
                 string name = Enum.GetNames(typeof(T))[i];
-                LabeledRadioButton lrb = this.AddOption(name);
+                LabeledRadioButton lrb = AddOption(name);
                 lrb.UserData = Enum.GetValues(typeof(T)).GetValue(i);
             }
         }
 
         public T SelectedValue
         {
-            get { return (T)this.Selected.UserData; }
+            get { return (T)Selected.UserData; }
             set
             {
                 foreach (Base child in Children)

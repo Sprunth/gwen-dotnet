@@ -191,7 +191,7 @@ namespace Gwen.Control.Layout
             base.Layout(skin);
 
             bool even = false;
-            foreach (TableRow row in Children)
+            foreach (var row in Children.Cast<TableRow>())
             {
                 row.EvenRow = even;
                 even = !even;
@@ -227,7 +227,7 @@ namespace Gwen.Control.Layout
             int height = 0;
             int width = 0;
 
-            foreach (TableRow row in Children)
+            foreach (var row in Children.Cast<TableRow>())
             {
                 row.SizeToContents(); // now all columns fit but only in this particular row
 

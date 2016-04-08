@@ -364,13 +364,10 @@ namespace Gwen.Control
         /// <param name="text">The label to look for, this is what is shown to the user.</param>
         public void SelectByText(string text)
         {
-            foreach (ListBoxRow item in m_Table.Children)
+            foreach (ListBoxRow item in m_Table.Children.Cast<ListBoxRow>().Where(item => item.Text == text))
             {
-                if (item.Text == text)
-                {
-                    SelectedRow = item;
-                    return;
-                }
+                SelectedRow = item;
+                return;
             }
         }
 
@@ -381,13 +378,10 @@ namespace Gwen.Control
         /// <param name="name">The internal name to look for. To select by what is displayed to the user, use "SelectByText".</param>
         public void SelectByName(string name)
         {
-            foreach (ListBoxRow item in m_Table.Children)
+            foreach (ListBoxRow item in m_Table.Children.Cast<ListBoxRow>().Where(item => item.Name == name))
             {
-                if (item.Name == name)
-                {
-                    SelectedRow = item;
-                    return;
-                }
+                SelectedRow = item;
+                return;
             }
         }
 
@@ -399,7 +393,7 @@ namespace Gwen.Control
         /// If null is passed in, it will look for null/unset UserData.</param>
         public void SelectByUserData(object userdata)
         {
-            foreach (ListBoxRow item in m_Table.Children)
+            foreach (var item in m_Table.Children.Cast<ListBoxRow>())
             {
                 if (userdata == null)
                 {

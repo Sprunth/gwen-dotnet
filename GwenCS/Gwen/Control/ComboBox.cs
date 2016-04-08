@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using Gwen.Control.EventArguments;
 using Gwen.ControlInternal;
 
@@ -260,13 +261,10 @@ namespace Gwen.Control
         /// <param name="text">The label to look for, this is what is shown to the user.</param>
         public void SelectByText(string text)
         {
-            foreach (MenuItem item in m_Menu.Children)
+            foreach (var item in m_Menu.Children.Cast<MenuItem>().Where(item => item.Text == text))
             {
-                if (item.Text == text)
-                {
-                    SelectedItem = item;
-                    return;
-                }
+                SelectedItem = item;
+                return;
             }
         }
 
@@ -277,13 +275,10 @@ namespace Gwen.Control
         /// <param name="name">The internal name to look for. To select by what is displayed to the user, use "SelectByText".</param>
         public void SelectByName(string name)
         {
-            foreach (MenuItem item in m_Menu.Children)
+            foreach (var item in m_Menu.Children.Cast<MenuItem>().Where(item => item.Name == name))
             {
-                if (item.Name == name)
-                {
-                    SelectedItem = item;
-                    return;
-                }
+                SelectedItem = item;
+                return;
             }
         }
 
@@ -295,7 +290,7 @@ namespace Gwen.Control
         /// If null is passed in, it will look for null/unset UserData.</param>
         public void SelectByUserData(object userdata)
         {
-            foreach (MenuItem item in m_Menu.Children)
+            foreach (var item in m_Menu.Children.Cast<MenuItem>())
             {
                 if (userdata == null)
                 {

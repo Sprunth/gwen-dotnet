@@ -647,8 +647,8 @@ namespace Gwen.Control
             {
                 if (m_CursorPos.Y > 0)
                 {
-                    OnKeyUp(down);
-                    OnKeyEnd(down);
+                    OnKeyUp(true);
+                    OnKeyEnd(true);
                 }
             }
 
@@ -682,8 +682,8 @@ namespace Gwen.Control
             {
                 if (m_CursorPos.Y < m_TextLines.Count - 1)
                 {
-                    OnKeyDown(down);
-                    OnKeyHome(down);
+                    OnKeyDown(true);
+                    OnKeyHome(true);
                 }
             }
 

@@ -215,9 +215,9 @@ namespace Gwen.Control
             base.SizeToChildren(width, height);
             if (width)
             {
-                int maxWidth = this.Width;
+                int maxWidth = Width;
                 maxWidth = Children.Select(child => child.Width).Concat(new[] {maxWidth}).Max();
-                this.SetSize(maxWidth, Height);
+                SetSize(maxWidth, Height);
             }
             return true;
         }

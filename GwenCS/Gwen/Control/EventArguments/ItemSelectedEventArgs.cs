@@ -8,7 +8,7 @@ namespace Gwen.Control.EventArguments
 
         internal ItemSelectedEventArgs(Base selecteditem)
         {
-            this.SelectedItem = selecteditem;
+            SelectedItem = selecteditem;
         }
     }
 }

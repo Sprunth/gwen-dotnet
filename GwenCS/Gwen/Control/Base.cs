@@ -1247,7 +1247,7 @@ namespace Gwen.Control
         protected virtual void OnMouseClickedLeft(int x, int y, bool down)
         {
             if (down)
-                Clicked?.Invoke(this, new ClickedEventArgs(x, y, down));
+                Clicked?.Invoke(this, new ClickedEventArgs(x, y, true));
         }
 
         /// <summary>
@@ -1267,7 +1267,7 @@ namespace Gwen.Control
         protected virtual void OnMouseClickedRight(int x, int y, bool down)
         {
             if (down)
-                RightClicked?.Invoke(this, new ClickedEventArgs(x, y, down));
+                RightClicked?.Invoke(this, new ClickedEventArgs(x, y, true));
         }
 
         /// <summary>
