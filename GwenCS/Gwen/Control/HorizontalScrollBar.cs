@@ -21,26 +21,17 @@ namespace Gwen.Control
         /// <summary>
         /// Bar position (in pixels).
         /// </summary>
-        public override int BarPos
-        {
-            get { return m_Bar.X - Height; }
-        }
+        public override int BarPos => m_Bar.X - Height;
 
         /// <summary>
         /// Indicates whether the bar is horizontal.
         /// </summary>
-        public override bool IsHorizontal
-        {
-            get { return true; }
-        }
+        public override bool IsHorizontal => true;
 
         /// <summary>
         /// Button size (in pixels).
         /// </summary>
-        public override int ButtonSize
-        {
-            get { return Height; }
-        }
+        public override int ButtonSize => Height;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HorizontalScrollBar"/> class.
@@ -92,13 +83,13 @@ namespace Gwen.Control
             }
         }
 
-		public void NudgeLeft(Base control, EventArgs args)
+        public void NudgeLeft(Base control, EventArgs args)
         {
             if (!IsDisabled)
                 SetScrollAmount(ScrollAmount - NudgeAmount, true);
         }
 
-		public void NudgeRight(Base control, EventArgs args)
+        public void NudgeRight(Base control, EventArgs args)
         {
             if (!IsDisabled)
                 SetScrollAmount(ScrollAmount + NudgeAmount, true);
@@ -123,10 +114,7 @@ namespace Gwen.Control
                 else
                     return base.NudgeAmount;
             }
-            set
-            {
-                base.NudgeAmount = value;
-            }
+            set { base.NudgeAmount = value; }
         }
 
         /// <summary>
@@ -137,7 +125,7 @@ namespace Gwen.Control
         /// <param name="down">If set to <c>true</c> mouse button is down.</param>
         protected override void OnMouseClickedLeft(int x, int y, bool down)
         {
-			base.OnMouseClickedLeft(x, y, down);
+            base.OnMouseClickedLeft(x, y, down);
             if (down)
             {
                 m_Depressed = true;
@@ -147,10 +135,9 @@ namespace Gwen.Control
             {
                 Point clickPos = CanvasPosToLocal(new Point(x, y));
                 if (clickPos.X < m_Bar.X)
-					NudgeLeft(this, EventArgs.Empty);
-                else
-                    if (clickPos.X > m_Bar.X + m_Bar.Width)
-						NudgeRight(this, EventArgs.Empty);
+                    NudgeLeft(this, EventArgs.Empty);
+                else if (clickPos.X > m_Bar.X + m_Bar.Width)
+                    NudgeRight(this, EventArgs.Empty);
 
                 m_Depressed = false;
                 InputHandler.MouseFocus = null;
@@ -190,7 +177,7 @@ namespace Gwen.Control
         /// Handler for the BarMoved event.
         /// </summary>
         /// <param name="control">Event source.</param>
-		protected override void OnBarMoved(Base control, EventArgs args)
+        protected override void OnBarMoved(Base control, EventArgs args)
         {
             if (m_Bar.IsHeld)
             {

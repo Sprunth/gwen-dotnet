@@ -31,12 +31,12 @@ namespace Gwen.Control
             get { return m_Scale; }
             set
             {
-                if (m_Scale == value)
+                if (m_Scale.Equals(value))
                     return;
 
                 m_Scale = value;
 
-                if (Skin != null && Skin.Renderer != null)
+                if (Skin?.Renderer != null)
                     Skin.Renderer.Scale = m_Scale;
 
                 OnScaleChanged();
@@ -47,14 +47,22 @@ namespace Gwen.Control
         /// <summary>
         /// Background color.
         /// </summary>
-        public Color BackgroundColor { get { return m_BackgroundColor; } set { m_BackgroundColor = value; } }
+        public Color BackgroundColor
+        {
+            get { return m_BackgroundColor; }
+            set { m_BackgroundColor = value; }
+        }
 
         /// <summary>
         /// In most situations you will be rendering the canvas every frame. 
         /// But in some situations you will only want to render when there have been changes. 
         /// You can do this by checking NeedsRedraw.
         /// </summary>
-        public bool NeedsRedraw { get { return m_NeedsRedraw; } set { m_NeedsRedraw = value; } }
+        public bool NeedsRedraw
+        {
+            get { return m_NeedsRedraw; }
+            set { m_NeedsRedraw = value; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Canvas"/> class.
@@ -85,7 +93,7 @@ namespace Gwen.Control
             NeedsRedraw = true;
             base.Redraw();
         }
-        
+
         // Children call parent.GetCanvas() until they get to 
         // this top level function.
         public override Canvas GetCanvas()
@@ -98,7 +106,6 @@ namespace Gwen.Control
         /// </summary>
         protected void Initialize()
         {
-
         }
 
         /// <summary>
@@ -169,7 +176,7 @@ namespace Gwen.Control
             // Reset tabbing
             NextTab = null;
             FirstTab = null;
-            
+
             ProcessDelayedDeletes();
 
             // Check has focus etc..

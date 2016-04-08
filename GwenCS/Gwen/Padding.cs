@@ -46,8 +46,8 @@ namespace Gwen
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
-            if (obj.GetType() != typeof (Padding)) return false;
-            return Equals((Padding) obj);
+            if (obj.GetType() != typeof(Padding)) return false;
+            return Equals((Padding)obj);
         }
 
         public override int GetHashCode()
@@ -55,9 +55,9 @@ namespace Gwen
             unchecked
             {
                 int result = Top;
-                result = (result*397) ^ Bottom;
-                result = (result*397) ^ Left;
-                result = (result*397) ^ Right;
+                result = (result * 397) ^ Bottom;
+                result = (result * 397) ^ Left;
+                result = (result * 397) ^ Right;
                 return result;
             }
         }

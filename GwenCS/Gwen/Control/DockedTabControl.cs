@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Gwen.Control
+﻿namespace Gwen.Control
 {
     /// <summary>
     /// Docked tab control.
@@ -12,7 +10,11 @@ namespace Gwen.Control
         /// <summary>
         /// Determines whether the title bar is visible.
         /// </summary>
-        public bool TitleBarVisible { get { return !m_TitleBar.IsHidden; } set { m_TitleBar.IsHidden = !value; } }
+        public bool TitleBarVisible
+        {
+            get { return !m_TitleBar.IsHidden; }
+            set { m_TitleBar.IsHidden = !value; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DockedTabControl"/> class.

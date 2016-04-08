@@ -14,7 +14,7 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the tab is active.
         /// </summary>
-        public bool IsActive { get { return m_Page != null && m_Page.IsVisible; } }
+        public bool IsActive => m_Page != null && m_Page.IsVisible;
 
         // todo: remove public access
         public TabControl TabControl
@@ -23,8 +23,7 @@ namespace Gwen.Control
             set
             {
                 if (value == m_Control) return;
-                if (m_Control != null)
-                    m_Control.OnLoseTab(this);
+                m_Control?.OnLoseTab(this);
                 m_Control = value;
             }
         }
@@ -32,15 +31,16 @@ namespace Gwen.Control
         /// <summary>
         /// Interior of the tab.
         /// </summary>
-        public Base Page { get { return m_Page; } set { m_Page = value; } }
+        public Base Page
+        {
+            get { return m_Page; }
+            set { m_Page = value; }
+        }
 
         /// <summary>
         /// Determines whether the control should be clipped to its bounds while rendering.
         /// </summary>
-        protected override bool ShouldClip
-        {
-            get { return false; }
-        }
+        protected override bool ShouldClip => false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TabButton"/> class.

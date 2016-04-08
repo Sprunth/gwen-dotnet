@@ -63,7 +63,10 @@ namespace Gwen.Renderer
         /// <summary>
         /// Returns number of cached strings in the text cache.
         /// </summary>
-        public int TextCacheSize { get { return m_StringCache.Count; } }
+        public int TextCacheSize
+        {
+            get { return m_StringCache.Count; }
+        }
 
         /// <summary>
         /// Clears the text rendering cache. Make sure to call this if cached strings size becomes too big (check TextCacheSize).
@@ -93,7 +96,7 @@ namespace Gwen.Renderer
             Gl.glEnableClientState(Gl.GL_TEXTURE_COORD_ARRAY);
             fixed (float* ptr3 = &m_Vertices[0].u)
                 Gl.glTexCoordPointer(2, Gl.GL_FLOAT, m_VertexSize, (IntPtr)ptr3);
-            
+
             Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, m_iVertNum);
 
             m_iVertNum = 0;
@@ -170,7 +173,8 @@ namespace Gwen.Renderer
                 rect.Y = view[3] - (rect.Y + rect.Height);
             }
 
-            Gl.glScissor((int) (rect.X*Scale), (int) (rect.Y*Scale), (int) (rect.Width*Scale), (int) (rect.Height*Scale));
+            Gl.glScissor((int)(rect.X * Scale), (int)(rect.Y * Scale), (int)(rect.Width * Scale),
+                (int)(rect.Height * Scale));
             Gl.glEnable(Gl.GL_SCISSOR_TEST);
         }
 
@@ -180,7 +184,8 @@ namespace Gwen.Renderer
             Gl.glDisable(Gl.GL_SCISSOR_TEST);
         }
 
-        public override void DrawTexturedRect(Texture t, Rectangle rect, float u1 = 0, float v1 = 0, float u2 = 1, float v2 = 1)
+        public override void DrawTexturedRect(Texture t, Rectangle rect, float u1 = 0, float v1 = 0, float u2 = 1,
+            float v2 = 1)
         {
             int tex = (int)t.RendererData;
 
@@ -197,7 +202,7 @@ namespace Gwen.Renderer
             int texturesOn;
             Gl.glGetBooleanv(Gl.GL_TEXTURE_2D, out texturesOn);
             Gl.glGetIntegerv(Gl.GL_TEXTURE_BINDING_2D, out boundtex);
-            if (0==texturesOn || tex != boundtex)
+            if (0 == texturesOn || tex != boundtex)
             {
                 Flush();
                 Gl.glBindTexture(Gl.GL_TEXTURE_2D, tex);
@@ -236,10 +241,10 @@ namespace Gwen.Renderer
             t.Height = bmp.Height;
 
             var data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly,
-                                    PixelFormat.Format32bppArgb);
+                PixelFormat.Format32bppArgb);
 
             Gl.glTexImage2D(Gl.GL_TEXTURE_2D, 0, Gl.GL_RGBA, t.Width, t.Height, 0, Gl.GL_BGRA,
-                            Gl.GL_UNSIGNED_BYTE, data.Scan0);
+                Gl.GL_UNSIGNED_BYTE, data.Scan0);
 
             bmp.UnlockBits(data);
         }
@@ -308,7 +313,7 @@ namespace Gwen.Renderer
                 unsafe
                 {
                     fixed (byte* ptr = &pixelData[0])
-                        bmp = new Bitmap(t.Width, t.Height, 4*t.Width, PixelFormat.Format32bppArgb, (IntPtr) ptr);
+                        bmp = new Bitmap(t.Width, t.Height, 4 * t.Width, PixelFormat.Format32bppArgb, (IntPtr)ptr);
                 }
             }
             catch (Exception)
@@ -329,10 +334,10 @@ namespace Gwen.Renderer
             t.RendererData = glTex;
 
             var data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly,
-                                    PixelFormat.Format32bppArgb);
+                PixelFormat.Format32bppArgb);
 
             Gl.glTexImage2D(Gl.GL_TEXTURE_2D, 0, Gl.GL_RGBA, t.Width, t.Height, 0, Gl.GL_BGRA,
-                            Gl.GL_UNSIGNED_BYTE, data.Scan0);
+                Gl.GL_UNSIGNED_BYTE, data.Scan0);
 
             bmp.UnlockBits(data);
             bmp.Dispose();
@@ -340,7 +345,7 @@ namespace Gwen.Renderer
 
         public override void FreeTexture(Texture t)
         {
-            int tex = (int) t.RendererData;
+            int tex = (int)t.RendererData;
             if (tex == 0)
                 return;
             Gl.glDeleteTextures(1, ref tex);
@@ -388,14 +393,14 @@ namespace Gwen.Renderer
                 LoadFont(font);
                 sysFont = font.RendererData as System.Drawing.Font;
             }
-            
+
             var key = new Tuple<string, Font>(text, font);
             if (m_StringCache.ContainsKey(key))
             {
                 var tex = m_StringCache[key].Texture;
                 return new Point(tex.Width, tex.Height);
             }
-            
+
             SizeF size = m_Graphics.MeasureString(text, sysFont);
             return new Point((int)size.Width, (int)size.Height);
         }

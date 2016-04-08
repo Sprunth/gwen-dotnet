@@ -1,10 +1,9 @@
-﻿using System;
-using Gwen.Control;
+﻿using Gwen.Control;
 
 namespace Gwen.ControlInternal
 {
     /// <summary>
-    /// Drag&drop highlight.
+    /// Drag & drop highlight.
     /// </summary>
     public class Highlight : Base
     {
@@ -14,7 +13,6 @@ namespace Gwen.ControlInternal
         /// <param name="parent">Parent control.</param>
         public Highlight(Base parent) : base(parent)
         {
-            
         }
 
         /// <summary>

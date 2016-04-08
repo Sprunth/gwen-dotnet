@@ -40,7 +40,7 @@ namespace Gwen.UnitTest
                 {
                     Control.Properties props = ptree.Add("Item Two");
                     props.ValueChanged += OnChanged;
-                    
+
                     props.Add("More Items");
                     props.Add("Bacon", new Control.Property.Check(props), "1");
                     props.Add("To Fill");

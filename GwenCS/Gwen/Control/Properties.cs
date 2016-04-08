@@ -14,12 +14,13 @@ namespace Gwen.Control
         /// <summary>
         /// Returns the width of the first column (property names).
         /// </summary>
-        public int SplitWidth { get { return m_SplitterBar.X; } } // todo: rename?
+        public int SplitWidth => m_SplitterBar.X;
+        // todo: rename?
 
         /// <summary>
         /// Invoked when a property value has been changed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> ValueChanged;
+        public event GwenEventHandler<EventArgs> ValueChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Properties"/> class.
@@ -55,7 +56,7 @@ namespace Gwen.Control
         /// Handles the splitter moved event.
         /// </summary>
         /// <param name="control">Event source.</param>
-		protected virtual void OnSplitterMoved(Base control, EventArgs args)
+        protected virtual void OnSplitterMoved(Base control, EventArgs args)
         {
             InvalidateChildren();
         }
@@ -66,7 +67,7 @@ namespace Gwen.Control
         /// <param name="label">Property name.</param>
         /// <param name="value">Initial value.</param>
         /// <returns>Newly created row.</returns>
-        public PropertyRow Add(string label, string value="")
+        public PropertyRow Add(string label, string value = "")
         {
             return Add(label, new Property.Text(this), value);
         }
@@ -78,7 +79,7 @@ namespace Gwen.Control
         /// <param name="prop">Property control.</param>
         /// <param name="value">Initial value.</param>
         /// <returns>Newly created row.</returns>
-        public PropertyRow Add(string label, Property.Base prop, string value="")
+        public PropertyRow Add(string label, Property.Base prop, string value = "")
         {
             PropertyRow row = new PropertyRow(this, prop);
             row.Dock = Pos.Top;
@@ -91,10 +92,9 @@ namespace Gwen.Control
             return row;
         }
 
-		private void OnRowValueChanged(Base control, EventArgs args)
+        private void OnRowValueChanged(Base control, EventArgs args)
         {
-            if (ValueChanged != null)
-				ValueChanged.Invoke(control, EventArgs.Empty);
+            ValueChanged?.Invoke(control, EventArgs.Empty);
         }
 
         /// <summary>

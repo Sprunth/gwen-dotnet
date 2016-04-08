@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
+using Gwen.Control.EventArguments;
 using Gwen.ControlInternal;
 
 namespace Gwen.Control
@@ -21,7 +23,7 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the combo menu is open.
         /// </summary>
-        public bool IsOpen { get { return m_Menu != null && !m_Menu.IsHidden; } }
+        public bool IsOpen => m_Menu != null && !m_Menu.IsHidden;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ComboBox"/> class.
@@ -64,10 +66,7 @@ namespace Gwen.Control
             }
         }
 
-        internal override bool IsMenuComponent
-        {
-            get { return true; }
-        }
+        internal override bool IsMenuComponent => true;
 
         /// <summary>
         /// Adds a new item.
@@ -123,7 +122,7 @@ namespace Gwen.Control
                 Open();
             }
 
-			base.OnClicked(x, y);
+            base.OnClicked(x, y);
         }
 
         /// <summary>
@@ -131,15 +130,14 @@ namespace Gwen.Control
         /// </summary>
         public virtual void DeleteAll()
         {
-            if (m_Menu != null)
-                m_Menu.DeleteAll();
+            m_Menu?.DeleteAll();
         }
 
         /// <summary>
         /// Internal handler for item selected event.
         /// </summary>
         /// <param name="control">Event source.</param>
-		protected virtual void OnItemSelected(Base control, ItemSelectedEventArgs args)
+        protected virtual void OnItemSelected(Base control, ItemSelectedEventArgs args)
         {
             if (!IsDisabled)
             {
@@ -151,8 +149,7 @@ namespace Gwen.Control
                 Text = m_SelectedItem.Text;
                 m_Menu.IsHidden = true;
 
-                if (ItemSelected != null)
-                    ItemSelected.Invoke(this, args);
+                ItemSelected?.Invoke(this, args);
 
                 Focus();
                 Invalidate();
@@ -210,10 +207,7 @@ namespace Gwen.Control
         /// </summary>
         public virtual void Close()
         {
-            if (m_Menu == null)
-                return;
-
-            m_Menu.Hide();
+            m_Menu?.Hide();
         }
 
         /// <summary>
@@ -258,23 +252,19 @@ namespace Gwen.Control
         /// <param name="skin">Skin to use.</param>
         protected override void RenderFocus(Skin.Base skin)
         {
-
         }
 
         /// <summary>
         /// Selects the first menu item with the given text it finds. 
         /// If a menu item can not be found that matches input, nothing happens.
         /// </summary>
-        /// <param name="label">The label to look for, this is what is shown to the user.</param>
+        /// <param name="text">The label to look for, this is what is shown to the user.</param>
         public void SelectByText(string text)
         {
-            foreach (MenuItem item in m_Menu.Children)
+            foreach (var item in m_Menu.Children.Cast<MenuItem>().Where(item => item.Text == text))
             {
-                if (item.Text == text)
-                {
-                    SelectedItem = item;
-                    return;
-                }
+                SelectedItem = item;
+                return;
             }
         }
 
@@ -285,13 +275,10 @@ namespace Gwen.Control
         /// <param name="name">The internal name to look for. To select by what is displayed to the user, use "SelectByText".</param>
         public void SelectByName(string name)
         {
-            foreach (MenuItem item in m_Menu.Children)
+            foreach (var item in m_Menu.Children.Cast<MenuItem>().Where(item => item.Name == name))
             {
-                if (item.Name == name)
-                {
-                    SelectedItem = item;
-                    return;
-                }
+                SelectedItem = item;
+                return;
             }
         }
 
@@ -303,7 +290,7 @@ namespace Gwen.Control
         /// If null is passed in, it will look for null/unset UserData.</param>
         public void SelectByUserData(object userdata)
         {
-            foreach (MenuItem item in m_Menu.Children)
+            foreach (var item in m_Menu.Children.Cast<MenuItem>())
             {
                 if (userdata == null)
                 {

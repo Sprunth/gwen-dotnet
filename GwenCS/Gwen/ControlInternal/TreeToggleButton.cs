@@ -1,5 +1,4 @@
-﻿using System;
-using Gwen.Control;
+﻿using Gwen.Control;
 
 namespace Gwen.ControlInternal
 {
@@ -25,7 +24,6 @@ namespace Gwen.ControlInternal
         /// <param name="skin">Skin to use.</param>
         protected override void RenderFocus(Skin.Base skin)
         {
-
         }
 
         /// <summary>

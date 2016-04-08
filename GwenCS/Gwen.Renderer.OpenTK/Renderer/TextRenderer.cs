@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Drawing.Text;
 using OpenTK.Graphics;
-using OpenTK.Graphics.OpenGL;
 
 namespace Gwen.Renderer
 {
@@ -16,7 +15,10 @@ namespace Gwen.Renderer
         readonly Gwen.Texture texture;
         bool disposed;
 
-        public Texture Texture { get { return texture; } }
+        public Texture Texture
+        {
+            get { return texture; }
+        }
 
         /// <summary>
         /// Constructs a new instance.

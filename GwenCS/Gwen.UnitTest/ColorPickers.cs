@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using Gwen.Control;
+using Gwen.Control.EventArguments;
 
 namespace Gwen.UnitTest
 {
@@ -37,20 +38,17 @@ namespace Gwen.UnitTest
                 OpenWindow.SetPosition(10, 200);
                 OpenWindow.SetSize(200, 20);
                 OpenWindow.Text = "Open Window";
-				OpenWindow.Clicked += delegate(Base sender, ClickedEventArgs args)
-                {
-                    Window.Show();
-                };
+                OpenWindow.Clicked += delegate(Base sender, ClickedEventArgs args) { Window.Show(); };
             }
         }
 
-		void ColorChanged(Base control, EventArgs args)
+        void ColorChanged(Base control, EventArgs args)
         {
             IColorPicker picker = control as IColorPicker;
             Color c = picker.SelectedColor;
             HSV hsv = c.ToHSV();
             String text = String.Format("Color changed: RGB: {0:X2}{1:X2}{2:X2} HSV: {3:F1} {4:F2} {5:F2}",
-                                        c.R, c.G, c.B, hsv.h, hsv.s, hsv.v);
+                c.R, c.G, c.B, hsv.h, hsv.s, hsv.v);
             UnitPrint(text);
         }
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using Gwen.Control;
+﻿using Gwen.Control;
 
 namespace Gwen.ControlInternal
 {
@@ -29,7 +28,8 @@ namespace Gwen.ControlInternal
         /// <param name="skin">Skin to use.</param>
         protected override void Render(Skin.Base skin)
         {
-            skin.DrawComboBoxArrow(this, m_ComboBox.IsHovered, m_ComboBox.IsDepressed, m_ComboBox.IsOpen, m_ComboBox.IsDisabled);
+            skin.DrawComboBoxArrow(this, m_ComboBox.IsHovered, m_ComboBox.IsDepressed, m_ComboBox.IsOpen,
+                m_ComboBox.IsDisabled);
         }
     }
 }

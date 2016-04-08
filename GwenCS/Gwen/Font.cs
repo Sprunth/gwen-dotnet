@@ -24,7 +24,7 @@ namespace Gwen
 
         //public bool Bold { get; set; }
         //public bool DropShadow { get; set; }
-        
+
         /// <summary>
         /// This should be set by the renderer if it tries to use a font where it's null.
         /// </summary>
@@ -43,7 +43,6 @@ namespace Gwen
         public Font(Renderer.Base renderer)
             : this(renderer, "Arial", 10)
         {
-
         }
 
         /// <summary>
@@ -70,7 +69,7 @@ namespace Gwen
             m_Renderer.FreeFont(this);
             GC.SuppressFinalize(this);
         }
-        
+
 #if DEBUG
         ~Font()
         {

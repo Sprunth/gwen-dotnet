@@ -1,5 +1,4 @@
-﻿
-namespace Gwen.Renderer
+﻿namespace Gwen.Renderer
 {
     public interface ICacheToTexture
     {
@@ -29,7 +28,7 @@ namespace Gwen.Renderer
         /// </summary>
         /// <param name="control">Control to be rendered.</param>
         void CreateControlCacheTexture(Control.Base control);
-        
+
         void UpdateControlCacheTexture(Control.Base control);
         void SetRenderer(Base renderer);
     }

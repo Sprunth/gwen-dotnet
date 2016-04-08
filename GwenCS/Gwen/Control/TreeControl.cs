@@ -13,7 +13,11 @@ namespace Gwen.Control
         /// <summary>
         /// Determines if multiple nodes can be selected at the same time.
         /// </summary>
-        public bool AllowMultiSelect { get { return m_MultiSelect; } set { m_MultiSelect = value; } }
+        public bool AllowMultiSelect
+        {
+            get { return m_MultiSelect; }
+            set { m_MultiSelect = value; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TreeControl"/> class.
@@ -43,7 +47,7 @@ namespace Gwen.Control
 
             m_ScrollControl.SetInnerSize(1000, 1000); // todo: why such arbitrary numbers?
 
-			Dock = Pos.None;
+            Dock = Pos.None;
         }
 
         /// <summary>
@@ -63,8 +67,7 @@ namespace Gwen.Control
         /// <param name="child"></param>
         protected override void OnChildBoundsChanged(System.Drawing.Rectangle oldChildBounds, Base child)
         {
-            if (m_ScrollControl != null)
-                m_ScrollControl.UpdateScrollBars();
+            m_ScrollControl?.UpdateScrollBars();
         }
 
         /// <summary>
@@ -88,7 +91,7 @@ namespace Gwen.Control
         /// Handler for node selected event.
         /// </summary>
         /// <param name="Control">Node selected.</param>
-		protected virtual void OnNodeSelected(Base Control, EventArgs args)
+        protected virtual void OnNodeSelected(Base Control, EventArgs args)
         {
             if (!m_MultiSelect /*|| InputHandler.InputHandler.IsKeyDown(Key.Control)*/)
                 UnselectAll();

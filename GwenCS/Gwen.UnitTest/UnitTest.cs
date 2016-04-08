@@ -85,7 +85,7 @@ namespace Gwen.UnitTest
                     RegisterUnitTest("CrossSplitter", cat, test);
                 }
             }
-            
+
             {
                 CollapsibleCategory cat = m_List.Add("Containers");
                 {
@@ -103,7 +103,7 @@ namespace Gwen.UnitTest
                     RegisterUnitTest("Docking", cat, test);
                 }
             }
-            
+
             {
                 CollapsibleCategory cat = m_List.Add("Non-standard");
                 {
@@ -128,7 +128,7 @@ namespace Gwen.UnitTest
             btn.Clicked += OnCategorySelect;
         }
 
-		private void DebugCheckChanged(Base control, EventArgs args)
+        private void DebugCheckChanged(Base control, EventArgs args)
         {
             if (m_DebugCheck.IsChecked)
                 m_Center.DrawDebugOutlines = true;
@@ -137,7 +137,7 @@ namespace Gwen.UnitTest
             Invalidate();
         }
 
-		private void OnCategorySelect(Base control, EventArgs args)
+        private void OnCategorySelect(Base control, EventArgs args)
         {
             if (m_LastControl != null)
             {

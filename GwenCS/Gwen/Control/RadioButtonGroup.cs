@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Gwen.Control.EventArguments;
 
 namespace Gwen.Control
 {
@@ -9,26 +10,26 @@ namespace Gwen.Control
     public class RadioButtonGroup : GroupBox
     {
         private LabeledRadioButton m_Selected;
-        
+
         /// <summary>
         /// Selected radio button.
         /// </summary>
-        public LabeledRadioButton Selected { get { return m_Selected; } }
+        public LabeledRadioButton Selected => m_Selected;
 
         /// <summary>
         /// Internal name of the selected radio button.
         /// </summary>
-        public string SelectedName { get { return m_Selected.Name; } }
+        public string SelectedName => m_Selected.Name;
 
         /// <summary>
         /// Text of the selected radio button.
         /// </summary>
-        public string SelectedLabel { get { return m_Selected.Text; } }
+        public string SelectedLabel => m_Selected.Text;
 
         /// <summary>
         /// Index of the selected radio button.
         /// </summary>
-        public int SelectedIndex { get { return Children.IndexOf(m_Selected); } }
+        public int SelectedIndex => Children.IndexOf(m_Selected);
 
         /// <summary>
         /// Invoked when the selected option has changed.
@@ -39,7 +40,6 @@ namespace Gwen.Control
         /// Initializes a new instance of the <see cref="RadioButtonGroup"/> class.
         /// </summary>
         /// <param name="parent">Parent control.</param>
-        /// <param name="label">Label for the outlining GroupBox.</param>
         public RadioButtonGroup(Base parent) : base(parent)
         {
             AutoSizeToContents = true;
@@ -96,6 +96,7 @@ namespace Gwen.Control
 
             OnChanged(m_Selected);
         }
+
         /*
         /// <summary>
         /// Sizes to contents.
@@ -115,10 +116,10 @@ namespace Gwen.Control
             InvalidateParent();
         }
         */
+
         protected virtual void OnChanged(Base NewTarget)
         {
-            if (SelectionChanged != null)
-                SelectionChanged.Invoke(this, new ItemSelectedEventArgs(NewTarget));
+            SelectionChanged?.Invoke(this, new ItemSelectedEventArgs(NewTarget));
         }
 
         /// <summary>

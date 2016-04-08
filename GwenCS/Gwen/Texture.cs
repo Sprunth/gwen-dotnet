@@ -91,6 +91,5 @@ namespace Gwen
             //Debug.Print(String.Format("IDisposable object finalized: {0}", GetType()));
         }
 #endif
-
-   }
+    }
 }

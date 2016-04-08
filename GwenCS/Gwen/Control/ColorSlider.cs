@@ -16,7 +16,7 @@ namespace Gwen.Control
         /// <summary>
         /// Invoked when the selected color has been changed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> ColorChanged;
+        public event GwenEventHandler<EventArgs> ColorChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ColorSlider"/> class.
@@ -35,8 +35,7 @@ namespace Gwen.Control
         /// </summary>
         public override void Dispose()
         {
-            if (m_Texture != null)
-                m_Texture.Dispose();
+            m_Texture?.Dispose();
             base.Dispose();
         }
 
@@ -71,8 +70,8 @@ namespace Gwen.Control
             }
 
             skin.Renderer.DrawColor = Color.White;
-            skin.Renderer.DrawTexturedRect(m_Texture, new Rectangle(5, 0, Width-10, Height));
-            
+            skin.Renderer.DrawTexturedRect(m_Texture, new Rectangle(5, 0, Width - 10, Height));
+
             int drawHeight = m_SelectedDist - 3;
 
             //Draw our selectors
@@ -95,12 +94,9 @@ namespace Gwen.Control
         /// <param name="down">If set to <c>true</c> mouse button is down.</param>
         protected override void OnMouseClickedLeft(int x, int y, bool down)
         {
-			base.OnMouseClickedLeft(x, y, down);
+            base.OnMouseClickedLeft(x, y, down);
             m_Depressed = down;
-            if (down)
-                InputHandler.MouseFocus = this;
-            else
-                InputHandler.MouseFocus = null;
+            InputHandler.MouseFocus = down ? this : null;
 
             OnMouseMoved(x, y, 0, 0);
         }
@@ -124,8 +120,7 @@ namespace Gwen.Control
                     cursorPos.Y = Height;
 
                 m_SelectedDist = cursorPos.Y;
-                if (ColorChanged != null)
-                    ColorChanged.Invoke(this, EventArgs.Empty);
+                ColorChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -141,13 +136,16 @@ namespace Gwen.Control
 
             m_SelectedDist = (int)(hsv.h / 360 * Height);
 
-            if (ColorChanged != null)
-                ColorChanged.Invoke(this, EventArgs.Empty);
+            ColorChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
         /// Selected color.
         /// </summary>
-        public Color SelectedColor { get { return GetColorAtHeight(m_SelectedDist); } set { SetColor(value); } }
+        public Color SelectedColor
+        {
+            get { return GetColorAtHeight(m_SelectedDist); }
+            set { SetColor(value); }
+        }
     }
 }

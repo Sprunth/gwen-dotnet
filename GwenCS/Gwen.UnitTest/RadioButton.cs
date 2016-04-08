@@ -47,7 +47,6 @@ namespace Gwen.UnitTest
 
 
             //this.DrawDebugOutlines = true;
-
         }
 
         void OnChange(Base control, EventArgs args)

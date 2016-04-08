@@ -28,24 +28,24 @@ namespace Gwen.Control
         /// <summary>
         /// Control docked on the left side.
         /// </summary>
-        public DockBase LeftDock { get { return GetChildDock(Pos.Left); } }
+        public DockBase LeftDock => GetChildDock(Pos.Left);
 
         /// <summary>
         /// Control docked on the right side.
         /// </summary>
-        public DockBase RightDock { get { return GetChildDock(Pos.Right); } }
+        public DockBase RightDock => GetChildDock(Pos.Right);
 
         /// <summary>
         /// Control docked on the top side.
         /// </summary>
-        public DockBase TopDock { get { return GetChildDock(Pos.Top); } }
+        public DockBase TopDock => GetChildDock(Pos.Top);
 
         /// <summary>
         /// Control docked on the bottom side.
         /// </summary>
-        public DockBase BottomDock { get { return GetChildDock(Pos.Bottom); } }
+        public DockBase BottomDock => GetChildDock(Pos.Bottom);
 
-        public TabControl TabControl { get { return m_DockedTabControl; } }
+        public TabControl TabControl => m_DockedTabControl;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DockBase"/> class.
@@ -92,10 +92,9 @@ namespace Gwen.Control
             else if (pos == Pos.Left) sizeDir = Pos.Right;
             else if (pos == Pos.Top) sizeDir = Pos.Bottom;
             else if (pos == Pos.Bottom) sizeDir = Pos.Top;
-            else throw new ArgumentException("Invalid dock", "pos");
+            else throw new ArgumentException("Invalid dock", nameof(pos));
 
-            if (m_Sizer != null)
-                m_Sizer.Dispose();
+            m_Sizer?.Dispose();
             m_Sizer = new Resizer(this);
             m_Sizer.Dock = sizeDir;
             m_Sizer.ResizeDir = sizeDir;
@@ -108,7 +107,6 @@ namespace Gwen.Control
         /// <param name="skin">Skin to use.</param>
         protected override void Render(Skin.Base skin)
         {
-
         }
 
         /// <summary>
@@ -186,13 +184,13 @@ namespace Gwen.Control
             if (minimum > 0.3f)
                 return Pos.Fill;
 
-            if (top == minimum && (null == m_Top || m_Top.IsHidden))
+            if (top.Equals(minimum) && (null == m_Top || m_Top.IsHidden))
                 return Pos.Top;
-            if (left == minimum && (null == m_Left || m_Left.IsHidden))
+            if (left.Equals(minimum) && (null == m_Left || m_Left.IsHidden))
                 return Pos.Left;
-            if (right == minimum && (null == m_Right || m_Right.IsHidden))
+            if (right.Equals(minimum) && (null == m_Right || m_Right.IsHidden))
                 return Pos.Right;
-            if (bottom == minimum && (null == m_Bottom || m_Bottom.IsHidden))
+            if (bottom.Equals(minimum) && (null == m_Bottom || m_Bottom.IsHidden))
                 return Pos.Bottom;
 
             return Pos.Fill;
@@ -274,7 +272,7 @@ namespace Gwen.Control
             }
         }
 
-		protected virtual void OnTabRemoved(Base control, EventArgs args)
+        protected virtual void OnTabRemoved(Base control, EventArgs args)
         {
             DoRedundancyCheck();
             DoConsolidateCheck();
@@ -285,9 +283,8 @@ namespace Gwen.Control
             if (!IsEmpty) return;
 
             DockBase pDockParent = Parent as DockBase;
-            if (null == pDockParent) return;
 
-            pDockParent.OnRedundantChildDock(this);
+            pDockParent?.OnRedundantChildDock(this);
         }
 
         protected virtual void DoConsolidateCheck()

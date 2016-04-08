@@ -17,32 +17,40 @@ namespace Gwen.Control
         /// <summary>
         /// Invoked when a tab has been added.
         /// </summary>
-		public event GwenEventHandler<EventArgs> TabAdded;
+        public event GwenEventHandler<EventArgs> TabAdded;
 
         /// <summary>
         /// Invoked when a tab has been removed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> TabRemoved;
+        public event GwenEventHandler<EventArgs> TabRemoved;
 
         /// <summary>
         /// Determines if tabs can be reordered by dragging.
         /// </summary>
-        public bool AllowReorder { get { return m_TabStrip.AllowReorder; } set { m_TabStrip.AllowReorder = value; } }
+        public bool AllowReorder
+        {
+            get { return m_TabStrip.AllowReorder; }
+            set { m_TabStrip.AllowReorder = value; }
+        }
 
         /// <summary>
         /// Currently active tab button.
         /// </summary>
-        public TabButton CurrentButton { get { return m_CurrentButton; } }
+        public TabButton CurrentButton => m_CurrentButton;
 
         /// <summary>
         /// Current tab strip position.
         /// </summary>
-        public Pos TabStripPosition { get { return m_TabStrip.StripPosition; }set { m_TabStrip.StripPosition = value; } }
+        public Pos TabStripPosition
+        {
+            get { return m_TabStrip.StripPosition; }
+            set { m_TabStrip.StripPosition = value; }
+        }
 
         /// <summary>
         /// Tab strip.
         /// </summary>
-        public TabStrip TabStrip { get { return m_TabStrip; } }
+        public TabStrip TabStrip => m_TabStrip;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TabControl"/> class.
@@ -116,8 +124,7 @@ namespace Gwen.Control
             button.Parent = m_TabStrip;
             button.Dock = Pos.Left;
             button.SizeToContents();
-            if (button.TabControl != null)
-                button.TabControl.UnsubscribeTabEvent(button);
+            button.TabControl?.UnsubscribeTabEvent(button);
             button.TabControl = this;
             button.Clicked += OnTabPressed;
 
@@ -126,8 +133,7 @@ namespace Gwen.Control
                 button.Press();
             }
 
-            if (TabAdded != null)
-                TabAdded.Invoke(this, EventArgs.Empty);
+            TabAdded?.Invoke(this, EventArgs.Empty);
 
             Invalidate();
         }
@@ -141,13 +147,12 @@ namespace Gwen.Control
         /// Handler for tab selection.
         /// </summary>
         /// <param name="control">Event source (TabButton).</param>
-		internal virtual void OnTabPressed(Base control, EventArgs args)
+        internal virtual void OnTabPressed(Base control, EventArgs args)
         {
             TabButton button = control as TabButton;
-            if (null == button) return;
 
-            Base page = button.Page;
-            if (null == page) return;
+            Base page = button?.Page;
+            if (page == null) return;
 
             if (m_CurrentButton == button)
                 return;
@@ -192,8 +197,7 @@ namespace Gwen.Control
 
             //TODO: Select a tab if any exist.
 
-            if (TabRemoved != null)
-				TabRemoved.Invoke(this, EventArgs.Empty);
+            TabRemoved?.Invoke(this, EventArgs.Empty);
 
             Invalidate();
         }
@@ -201,7 +205,7 @@ namespace Gwen.Control
         /// <summary>
         /// Number of tabs in the control.
         /// </summary>
-        public int TabCount { get { return m_TabStrip.Children.Count; } }
+        public int TabCount => m_TabStrip.Children.Count;
 
         private void HandleOverflow()
         {
@@ -230,7 +234,7 @@ namespace Gwen.Control
         m_TabStrip.SetMargin( Margin( Gwen::Approach( m_TabStrip.GetMargin().left, m_iScrollOffset * -1, 2 ), 0, 0, 0 ) );
         InvalidateParent();
 #else
-            m_TabStrip.Margin = new Margin(m_ScrollOffset*-1, 0, 0, 0);
+            m_TabStrip.Margin = new Margin(m_ScrollOffset * -1, 0, 0, 0);
 #endif
 
             m_Scroll[0].SetPosition(Width - 30, 5);

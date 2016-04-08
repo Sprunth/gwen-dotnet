@@ -28,7 +28,7 @@ namespace Gwen.Control.Property
         /// Color-select button press handler.
         /// </summary>
         /// <param name="control">Event source.</param>
-		protected virtual void OnButtonPressed(Control.Base control, EventArgs args)
+        protected virtual void OnButtonPressed(Control.Base control, EventArgs args)
         {
             Menu menu = new Menu(GetCanvas());
             menu.SetSize(256, 180);
@@ -51,7 +51,7 @@ namespace Gwen.Control.Property
         /// Color changed handler.
         /// </summary>
         /// <param name="control">Event source.</param>
-		protected virtual void OnColorChanged(Control.Base control, EventArgs args)
+        protected virtual void OnColorChanged(Control.Base control, EventArgs args)
         {
             HSVColorPicker picker = control as HSVColorPicker;
             SetTextFromColor(picker.SelectedColor);
@@ -80,14 +80,11 @@ namespace Gwen.Control.Property
         /// <summary>
         /// Indicates whether the property value is being edited.
         /// </summary>
-        public override bool IsEditing
-        {
-            get { return m_TextBox == InputHandler.KeyboardFocus; }
-        }
+        public override bool IsEditing => m_TextBox == InputHandler.KeyboardFocus;
 
         private void SetTextFromColor(System.Drawing.Color color)
         {
-            m_TextBox.Text = String.Format("{0} {1} {2}", color.R, color.G, color.B);
+            m_TextBox.Text = $"{color.R} {color.G} {color.B}";
         }
 
         private System.Drawing.Color GetColorFromText()

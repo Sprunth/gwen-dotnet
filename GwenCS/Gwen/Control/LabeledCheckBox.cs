@@ -1,4 +1,5 @@
 ﻿using System;
+using Gwen.Control.EventArguments;
 
 namespace Gwen.Control
 {
@@ -28,12 +29,20 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the control is checked.
         /// </summary>
-        public bool IsChecked { get { return m_CheckBox.IsChecked; } set { m_CheckBox.IsChecked = value; } }
+        public bool IsChecked
+        {
+            get { return m_CheckBox.IsChecked; }
+            set { m_CheckBox.IsChecked = value; }
+        }
 
         /// <summary>
         /// Label text.
         /// </summary>
-        public string Text { get { return m_Label.Text; } set { m_Label.Text = value; } }
+        public string Text
+        {
+            get { return m_Label.Text; }
+            set { m_Label.Text = value; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LabeledCheckBox"/> class.
@@ -51,7 +60,7 @@ namespace Gwen.Control
 
             m_Label = new Label(this);
             m_Label.Dock = Pos.Fill;
-			m_Label.Clicked += delegate(Base Control, ClickedEventArgs args) { m_CheckBox.Press(Control); };
+            m_Label.Clicked += delegate(Base Control, ClickedEventArgs args) { m_CheckBox.Press(Control); };
             m_Label.IsTabable = false;
 
             IsTabable = false;
@@ -64,17 +73,14 @@ namespace Gwen.Control
         {
             if (m_CheckBox.IsChecked)
             {
-                if (Checked != null)
-					Checked.Invoke(this, EventArgs.Empty);
+                Checked?.Invoke(this, EventArgs.Empty);
             }
             else
             {
-                if (UnChecked != null)
-					UnChecked.Invoke(this, EventArgs.Empty);
+                UnChecked?.Invoke(this, EventArgs.Empty);
             }
 
-            if (CheckChanged != null)
-				CheckChanged.Invoke(this, EventArgs.Empty);
+            CheckChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -87,8 +93,8 @@ namespace Gwen.Control
         protected override bool OnKeySpace(bool down)
         {
             base.OnKeySpace(down);
-            if (!down) 
-                m_CheckBox.IsChecked = !m_CheckBox.IsChecked; 
+            if (!down)
+                m_CheckBox.IsChecked = !m_CheckBox.IsChecked;
             return true;
         }
     }

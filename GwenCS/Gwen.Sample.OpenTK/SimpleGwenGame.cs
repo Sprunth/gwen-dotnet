@@ -154,11 +154,13 @@ namespace Gwen.Sample.OpenTK
 
             if (stopwatch.ElapsedMilliseconds > 1000)
             {
-                test.Note = String.Format("String Cache size: {0} Draw Calls: {1} Vertex Count: {2}", renderer.TextCacheSize, renderer.DrawCallCount, renderer.VertexCount);
+                test.Note = String.Format("String Cache size: {0} Draw Calls: {1} Vertex Count: {2}",
+                    renderer.TextCacheSize, renderer.DrawCallCount, renderer.VertexCount);
                 test.Fps = 1000f * ftime.Count / ftime.Sum();
                 stopwatch.Restart();
 
-                if (renderer.TextCacheSize > 1000) // each cached string is an allocated texture, flush the cache once in a while in your real project
+                if (renderer.TextCacheSize > 1000)
+                    // each cached string is an allocated texture, flush the cache once in a while in your real project
                     renderer.FlushTextCache();
             }
         }

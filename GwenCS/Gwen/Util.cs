@@ -13,12 +13,14 @@ namespace Gwen
         {
             return (int)Math.Round(x, MidpointRounding.AwayFromZero);
         }
+
         /*
         public static int Trunc(float x)
         {
             return (int)Math.Truncate(x);
         }
         */
+
         public static int Ceil(float x)
         {
             return (int)Math.Ceiling(x);

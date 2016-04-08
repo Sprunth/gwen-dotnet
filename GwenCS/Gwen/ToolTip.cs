@@ -58,8 +58,8 @@ namespace Gwen
             Point mousePos = Input.InputHandler.MousePosition;
             Rectangle bounds = g_ToolTip.ToolTip.Bounds;
 
-            Rectangle offset = Util.FloatRect(mousePos.X - bounds.Width*0.5f, mousePos.Y - bounds.Height - 10,
-                                                 bounds.Width, bounds.Height);
+            Rectangle offset = Util.FloatRect(mousePos.X - bounds.Width * 0.5f, mousePos.Y - bounds.Height - 10,
+                bounds.Width, bounds.Height);
             offset = Util.ClampRectToRect(offset, g_ToolTip.GetCanvas().Bounds);
 
             //Calculate offset on screen bounds

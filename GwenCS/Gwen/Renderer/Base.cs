@@ -24,8 +24,7 @@ namespace Gwen.Renderer
             //rnd = new Random();
             m_RenderOffset = Point.Empty;
             Scale = 1.0f;
-            if (CTT != null)
-                CTT.Initialize();
+            CTT?.Initialize();
         }
 
         /// <summary>
@@ -34,8 +33,7 @@ namespace Gwen.Renderer
         /// <filterpriority>2</filterpriority>
         public virtual void Dispose()
         {
-            if (CTT != null)
-                CTT.ShutDown();
+            CTT?.ShutDown();
             GC.SuppressFinalize(this);
         }
 
@@ -51,13 +49,15 @@ namespace Gwen.Renderer
         /// Starts rendering.
         /// </summary>
         public virtual void Begin()
-        { }
+        {
+        }
 
         /// <summary>
         /// Stops rendering.
         /// </summary>
         public virtual void End()
-        { }
+        {
+        }
 
         /// <summary>
         /// Gets or sets the current drawing color.
@@ -67,12 +67,20 @@ namespace Gwen.Renderer
         /// <summary>
         /// Rendering offset. No need to touch it usually.
         /// </summary>
-        public Point RenderOffset { get { return m_RenderOffset; } set { m_RenderOffset = value; } }
+        public Point RenderOffset
+        {
+            get { return m_RenderOffset; }
+            set { m_RenderOffset = value; }
+        }
 
         /// <summary>
         /// Clipping rectangle.
         /// </summary>
-        public Rectangle ClipRegion { get { return m_ClipRegion; } set { m_ClipRegion = value; } }
+        public Rectangle ClipRegion
+        {
+            get { return m_ClipRegion; }
+            set { m_ClipRegion = value; }
+        }
 
         /// <summary>
         /// Indicates whether the clip region is visible.
@@ -96,33 +104,38 @@ namespace Gwen.Renderer
         /// <param name="a"></param>
         /// <param name="b"></param>
         public virtual void DrawLine(int x, int y, int a, int b)
-        { }
+        {
+        }
 
         /// <summary>
         /// Draws a solid filled rectangle.
         /// </summary>
         /// <param name="rect"></param>
         public virtual void DrawFilledRect(Rectangle rect)
-        { }
+        {
+        }
 
         /// <summary>
         /// Starts clipping to the current clipping rectangle.
         /// </summary>
         public virtual void StartClip()
-        { }
+        {
+        }
 
         /// <summary>
         /// Stops clipping.
         /// </summary>
         public virtual void EndClip()
-        { }
+        {
+        }
 
         /// <summary>
         /// Loads the specified texture.
         /// </summary>
         /// <param name="t"></param>
         public virtual void LoadTexture(Texture t)
-        { }
+        {
+        }
 
         /// <summary>
         /// Initializes texture from raw pixel data.
@@ -130,7 +143,8 @@ namespace Gwen.Renderer
         /// <param name="t">Texture to initialize. Dimensions need to be set.</param>
         /// <param name="pixelData">Pixel data in RGBA format.</param>
         public virtual void LoadTextureRaw(Texture t, byte[] pixelData)
-        { }
+        {
+        }
 
         /// <summary>
         /// Initializes texture from image file data.
@@ -138,14 +152,16 @@ namespace Gwen.Renderer
         /// <param name="t">Texture to initialize.</param>
         /// <param name="data">Image file as stream.</param>
         public virtual void LoadTextureStream(Texture t, Stream data)
-        { }
+        {
+        }
 
         /// <summary>
         /// Frees the specified texture.
         /// </summary>
         /// <param name="t">Texture to free.</param>
         public virtual void FreeTexture(Texture t)
-        { }
+        {
+        }
 
         /// <summary>
         /// Draws textured rectangle.
@@ -156,8 +172,10 @@ namespace Gwen.Renderer
         /// <param name="v1">Texture coordinate v1.</param>
         /// <param name="u2">Texture coordinate u2.</param>
         /// <param name="v2">Texture coordinate v2.</param>
-        public virtual void DrawTexturedRect(Texture t, Rectangle targetRect, float u1 = 0, float v1 = 0, float u2 = 1, float v2 = 1)
-        { }
+        public virtual void DrawTexturedRect(Texture t, Rectangle targetRect, float u1 = 0, float v1 = 0, float u2 = 1,
+            float v2 = 1)
+        {
+        }
 
         /// <summary>
         /// Draws "missing image" default texture.
@@ -173,7 +191,7 @@ namespace Gwen.Renderer
         /// <summary>
         /// Cache to texture provider.
         /// </summary>
-        public virtual ICacheToTexture CTT { get { return null; } }
+        public virtual ICacheToTexture CTT => null;
 
         /// <summary>
         /// Loads the specified font.
@@ -190,7 +208,8 @@ namespace Gwen.Renderer
         /// </summary>
         /// <param name="font">Font to free.</param>
         public virtual void FreeFont(Font font)
-        { }
+        {
+        }
 
         /// <summary>
         /// Returns dimensions of the text using specified font.
@@ -388,7 +407,8 @@ namespace Gwen.Renderer
         /// </summary>
         public Rectangle Translate(Rectangle rect)
         {
-            return new Rectangle(TranslateX(rect.X), TranslateY(rect.Y), Util.Ceil(rect.Width * Scale), Util.Ceil(rect.Height * Scale));
+            return new Rectangle(TranslateX(rect.X), TranslateY(rect.Y), Util.Ceil(rect.Width * Scale),
+                Util.Ceil(rect.Height * Scale));
         }
 
         /// <summary>
@@ -406,7 +426,6 @@ namespace Gwen.Renderer
         /// <param name="rect">Rectangle to add.</param>
         public void AddClipRegion(Rectangle rect)
         {
-
             rect.X = m_RenderOffset.X;
             rect.Y = m_RenderOffset.Y;
 

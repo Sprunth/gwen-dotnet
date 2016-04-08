@@ -1,5 +1,4 @@
-﻿using System;
-using Gwen.Control;
+﻿using Gwen.Control;
 
 namespace Gwen.UnitTest
 {
@@ -9,7 +8,6 @@ namespace Gwen.UnitTest
 
         public GUnit(Base parent) : base(parent)
         {
-            
         }
 
         public void UnitPrint(string str)

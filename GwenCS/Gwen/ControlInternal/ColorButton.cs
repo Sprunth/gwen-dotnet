@@ -14,7 +14,11 @@ namespace Gwen.ControlInternal
         /// <summary>
         /// Current color value.
         /// </summary>
-        public Color Color { get { return m_Color; } set { m_Color = value; } }
+        public Color Color
+        {
+            get { return m_Color; }
+            set { m_Color = value; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ColorButton"/> class.

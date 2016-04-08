@@ -19,22 +19,25 @@ namespace Gwen.Control.Property
         /// <summary>
         /// Invoked when the property value has been changed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> ValueChanged;
+        public event GwenEventHandler<EventArgs> ValueChanged;
 
         /// <summary>
         /// Property value (todo: always string, which is ugly. do something about it).
         /// </summary>
-        public virtual string Value { get { return null; } set { SetValue(value, false); } }
+        public virtual string Value
+        {
+            get { return null; }
+            set { SetValue(value, false); }
+        }
 
         /// <summary>
         /// Indicates whether the property value is being edited.
         /// </summary>
-        public virtual bool IsEditing { get { return false; } }
+        public virtual bool IsEditing => false;
 
         protected virtual void DoChanged()
         {
-            if (ValueChanged != null)
-                ValueChanged.Invoke(this, EventArgs.Empty);
+            ValueChanged?.Invoke(this, EventArgs.Empty);
         }
 
         protected virtual void OnValueChanged(Control.Base control, EventArgs args)
@@ -49,7 +52,6 @@ namespace Gwen.Control.Property
         /// <param name="fireEvents">Determines whether to fire "value changed" event.</param>
         public virtual void SetValue(string value, bool fireEvents = false)
         {
-            
         }
     }
 }

@@ -5,7 +5,6 @@ using System.Drawing;
 using SFML;
 using SFML.Graphics;
 using SFML.System;
-using SFML.Window;
 using Tao.OpenGl;
 using Color = SFML.Graphics.Color;
 using Image = SFML.Graphics.Image;
@@ -37,7 +36,8 @@ namespace Gwen.Renderer
         {
             m_Target = target;
             m_VertexCache = new Vertex[CacheSize];
-            m_RenderState = new RenderStates(BlendMode.Alpha); // somehow worked without this in previous SFML version (May 9th 2010)
+            m_RenderState = new RenderStates(BlendMode.Alpha);
+                // somehow worked without this in previous SFML version (May 9th 2010)
         }
 
         public override void Begin()
@@ -45,8 +45,8 @@ namespace Gwen.Renderer
             base.Begin();
             var port = m_Target.GetViewport(m_Target.GetView());
             var scaled = m_Target.MapPixelToCoords(new Vector2i(port.Width, port.Height));
-            m_ViewScale.X = (port.Width/scaled.X)*Scale;
-            m_ViewScale.Y = (port.Height/scaled.Y)*Scale;
+            m_ViewScale.X = (port.Width / scaled.X) * Scale;
+            m_ViewScale.Y = (port.Height / scaled.Y) * Scale;
         }
 
         public override void End()
@@ -68,17 +68,12 @@ namespace Gwen.Renderer
         /// </summary>
         public override System.Drawing.Color DrawColor
         {
-            get
-            {
-                return System.Drawing.Color.FromArgb(m_Color.A, m_Color.R, m_Color.G, m_Color.B);
-            }
-            set
-            {
-                m_Color = new Color(value.R, value.G, value.B, value.A);
-            }
+            get { return System.Drawing.Color.FromArgb(m_Color.A, m_Color.R, m_Color.G, m_Color.B); }
+            set { m_Color = new Color(value.R, value.G, value.B, value.A); }
         }
 
-        public override System.Drawing.Color PixelColor(Texture texture, uint x, uint y, System.Drawing.Color defaultColor)
+        public override System.Drawing.Color PixelColor(Texture texture, uint x, uint y,
+            System.Drawing.Color defaultColor)
         {
             SFMLTexture tex = texture.RendererData as SFMLTexture;
             if (tex == null)
@@ -87,6 +82,7 @@ namespace Gwen.Renderer
             Color pixel = img.GetPixel(x, y);
             return System.Drawing.Color.FromArgb(pixel.A, pixel.R, pixel.G, pixel.B);
         }
+
         /*
         public override void DrawLine(int x1, int y1, int x2, int y2)
         {
@@ -98,6 +94,7 @@ namespace Gwen.Renderer
             m_Target.Draw(line, PrimitiveType.Lines);
         }
         */
+
         /// <summary>
         /// Loads the specified font.
         /// </summary>
@@ -105,10 +102,10 @@ namespace Gwen.Renderer
         /// <returns>True if succeeded.</returns>
         public override bool LoadFont(Font font)
         {
-            font.RealSize = font.Size*Scale;
+            font.RealSize = font.Size * Scale;
             global::SFML.Graphics.Font sfFont;
             bool ret = true;
-            
+
             Debug.Print("LoadFont: {0} {1}", font.FaceName, font.RendererData);
             try
             {
@@ -154,7 +151,7 @@ namespace Gwen.Renderer
         /// <param name="font">Font to free.</param>
         public override void FreeFont(Font font)
         {
-            if ( font.RendererData == null ) return;
+            if (font.RendererData == null) return;
 
             Debug.Print("FreeFont: {0} {1}", font.FaceName, font.RendererData);
 
@@ -208,7 +205,7 @@ namespace Gwen.Renderer
                 prev = cur;
                 if (cur == '\n' || cur == '\v')
                     continue;
-                extents.X += sfFont.GetGlyph(cur, (uint) font.RealSize, false).Advance;
+                extents.X += sfFont.GetGlyph(cur, (uint)font.RealSize, false).Advance;
             }
 
             return extents;
@@ -262,10 +259,11 @@ namespace Gwen.Renderer
             m_VertexCache[m_CacheSize++] = new Vertex(new Vector2f(rect.X, rect.Y), m_Color);
             m_VertexCache[m_CacheSize++] = new Vertex(new Vector2f(right, rect.Y), m_Color);
             m_VertexCache[m_CacheSize++] = new Vertex(new Vector2f(right, bottom), m_Color);
-            m_VertexCache[m_CacheSize++] = new Vertex(new Vector2f(rect.X, bottom), m_Color);  
+            m_VertexCache[m_CacheSize++] = new Vertex(new Vector2f(rect.X, bottom), m_Color);
         }
 
-        public override void DrawTexturedRect(Texture t, Rectangle targetRect, float u1 = 0, float v1 = 0, float u2 = 1, float v2 = 1)
+        public override void DrawTexturedRect(Texture t, Rectangle targetRect, float u1 = 0, float v1 = 0, float u2 = 1,
+            float v2 = 1)
         {
             SFMLTexture tex = t.RendererData as SFMLTexture;
             if (null == tex)
@@ -277,7 +275,8 @@ namespace Gwen.Renderer
             DrawTexturedRect(tex, targetRect, u1, v1, u2, v2);
         }
 
-        protected void DrawTexturedRect(SFMLTexture tex, Rectangle targetRect, float u1 = 0, float v1 = 0, float u2 = 1, float v2 = 1)
+        protected void DrawTexturedRect(SFMLTexture tex, Rectangle targetRect, float u1 = 0, float v1 = 0, float u2 = 1,
+            float v2 = 1)
         {
             Rectangle rect = Translate(targetRect);
 
@@ -309,7 +308,7 @@ namespace Gwen.Renderer
 
             Debug.Print("LoadTexture: {0} {1}", texture.Name, texture.RendererData);
 
-            if (texture.RendererData != null) 
+            if (texture.RendererData != null)
                 FreeTexture(texture);
 
             SFMLTexture sfTexture;
@@ -373,7 +372,7 @@ namespace Gwen.Renderer
 
             Debug.Print("LoadTextureRaw: {0}", texture.RendererData);
 
-            if (texture.RendererData != null) 
+            if (texture.RendererData != null)
                 FreeTexture(texture);
 
             SFMLTexture sfTexture;
@@ -411,10 +410,10 @@ namespace Gwen.Renderer
         {
             FlushCache();
             Rectangle clip = ClipRegion;
-            clip.X = (int) Math.Round(clip.X*m_ViewScale.X);
-            clip.Y = (int) Math.Round(clip.Y*m_ViewScale.Y);
-            clip.Width = (int) Math.Round(clip.Width*m_ViewScale.X);
-            clip.Height = (int) Math.Round(clip.Height*m_ViewScale.Y);
+            clip.X = (int)Math.Round(clip.X * m_ViewScale.X);
+            clip.Y = (int)Math.Round(clip.Y * m_ViewScale.Y);
+            clip.Width = (int)Math.Round(clip.Width * m_ViewScale.X);
+            clip.Height = (int)Math.Round(clip.Height * m_ViewScale.Y);
 
             var view = m_Target.GetView();
             var v = m_Target.GetViewport(view);
@@ -442,7 +441,6 @@ namespace Gwen.Renderer
         }
 
         #region Implementation of ICacheToTexture
-
         private Dictionary<Control.Base, RenderTexture> m_RT;
         private Stack<RenderTarget> m_Stack;
         private RenderTarget m_RealRT;
@@ -523,7 +521,6 @@ namespace Gwen.Renderer
         {
             throw new NotImplementedException();
         }
-
         #endregion
     }
 }

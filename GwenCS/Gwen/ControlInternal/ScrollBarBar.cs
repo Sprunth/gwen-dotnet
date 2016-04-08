@@ -1,5 +1,4 @@
-﻿using System;
-using Gwen.Control;
+﻿using Gwen.Control;
 
 namespace Gwen.ControlInternal
 {
@@ -13,12 +12,20 @@ namespace Gwen.ControlInternal
         /// <summary>
         /// Indicates whether the bar is horizontal.
         /// </summary>
-        public bool IsHorizontal { get { return m_Horizontal; } set { m_Horizontal = value; } }
+        public bool IsHorizontal
+        {
+            get { return m_Horizontal; }
+            set { m_Horizontal = value; }
+        }
 
         /// <summary>
         /// Indicates whether the bar is vertical.
         /// </summary>
-        public bool IsVertical { get { return !m_Horizontal; } set { m_Horizontal = !value; } }
+        public bool IsVertical
+        {
+            get { return !m_Horizontal; }
+            set { m_Horizontal = !value; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ScrollBarBar"/> class.

@@ -1,5 +1,4 @@
-﻿using System;
-using Gwen.Control;
+﻿using Gwen.Control;
 
 namespace Gwen.ControlInternal
 {
@@ -8,12 +7,10 @@ namespace Gwen.ControlInternal
     /// </summary>
     public class SliderBar : Dragger
     {
-        private bool m_bHorizontal;
-
         /// <summary>
         /// Indicates whether the bar is horizontal.
         /// </summary>
-        public bool IsHorizontal { get { return m_bHorizontal; } set { m_bHorizontal = value; } }
+        public bool IsHorizontal { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SliderBar"/> class.

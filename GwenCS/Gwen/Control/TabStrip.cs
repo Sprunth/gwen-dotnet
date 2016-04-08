@@ -16,15 +16,16 @@ namespace Gwen.Control
         /// <summary>
         /// Determines whether it is possible to reorder tabs by mouse dragging.
         /// </summary>
-        public bool AllowReorder { get { return m_AllowReorder; } set { m_AllowReorder = value; } }
+        public bool AllowReorder
+        {
+            get { return m_AllowReorder; }
+            set { m_AllowReorder = value; }
+        }
 
         /// <summary>
         /// Determines whether the control should be clipped to its bounds while rendering.
         /// </summary>
-        protected override bool ShouldClip
-        {
-            get { return false; }
-        }
+        protected override bool ShouldClip => false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TabStrip"/> class.
@@ -75,7 +76,7 @@ namespace Gwen.Control
             if (droppedOn != null)
             {
                 Point dropPos = droppedOn.CanvasPosToLocal(new Point(x, y));
-                DragAndDrop.SourceControl.BringNextToControl(droppedOn, dropPos.X > droppedOn.Width/2);
+                DragAndDrop.SourceControl.BringNextToControl(droppedOn, dropPos.X > droppedOn.Width / 2);
             }
             else
             {
@@ -188,7 +189,7 @@ namespace Gwen.Control
                 m_TabDragControl.BringToFront();
                 m_TabDragControl.SetPosition(droppedOn.X - 1, 0);
 
-                if (dropPos.X > droppedOn.Width/2)
+                if (dropPos.X > droppedOn.Width / 2)
                 {
                     m_TabDragControl.MoveBy(droppedOn.Width - 1, 0);
                 }

@@ -34,7 +34,7 @@ namespace Gwen.Control
         public RichLabel(Base parent)
             : base(parent)
         {
-            newline = new string[] { Environment.NewLine };
+            newline = new string[] {Environment.NewLine};
             m_TextBlocks = new List<TextBlock>();
         }
 
@@ -43,7 +43,7 @@ namespace Gwen.Control
         /// </summary>
         public void AddLineBreak()
         {
-            TextBlock block = new TextBlock { Type = BlockType.NewLine };
+            TextBlock block = new TextBlock {Type = BlockType.NewLine};
             m_TextBlocks.Add(block);
         }
 
@@ -64,7 +64,7 @@ namespace Gwen.Control
                 if (i > 0)
                     AddLineBreak();
 
-                TextBlock block = new TextBlock { Type = BlockType.Text, Text = lines[i], Color = color, Font = font };
+                TextBlock block = new TextBlock {Type = BlockType.Text, Text = lines[i], Color = color, Font = font};
 
                 m_TextBlocks.Add(block);
                 m_NeedsRebuild = true;
@@ -117,9 +117,9 @@ namespace Gwen.Control
             }
 
             string newString = String.Empty;
-            for (int i = 0; i < spaced.Length; i++)
+            foreach (string c in spaced)
             {
-                wordSize = Skin.Renderer.MeasureText(font, newString + spaced[i]);
+                wordSize = Skin.Renderer.MeasureText(font, newString + c);
                 if (wordSize.X > spaceLeft)
                 {
                     CreateLabel(newString, block, ref x, ref y, ref lineHeight, true);
@@ -128,7 +128,7 @@ namespace Gwen.Control
                     break;
                 }
 
-                newString += spaced[i];
+                newString += c;
             }
 
             int newstr_len = newString.Length;

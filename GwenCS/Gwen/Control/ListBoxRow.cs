@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using Gwen.Control.Layout;
 
 namespace Gwen.Control
@@ -30,7 +29,7 @@ namespace Gwen.Control
             get { return m_Selected; }
             set
             {
-                m_Selected = value;             
+                m_Selected = value;
                 // TODO: Get these values from the skin.
                 if (value)
                     SetTextColor(Color.White);
@@ -56,7 +55,7 @@ namespace Gwen.Control
         /// <param name="down">If set to <c>true</c> mouse button is down.</param>
         protected override void OnMouseClickedLeft(int x, int y, bool down)
         {
-			base.OnMouseClickedLeft(x, y, down);
+            base.OnMouseClickedLeft(x, y, down);
             if (down)
             {
                 //IsSelected = true; // [omeg] ListBox manages that

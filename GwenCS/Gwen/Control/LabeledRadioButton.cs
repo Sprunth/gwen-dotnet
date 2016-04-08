@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Gwen.Control.EventArguments;
 using Gwen.Input;
 
 namespace Gwen.Control
@@ -14,7 +14,11 @@ namespace Gwen.Control
         /// <summary>
         /// Label text.
         /// </summary>
-        public string Text { get { return m_Label.Text; } set { m_Label.Text = value; } }
+        public string Text
+        {
+            get { return m_Label.Text; }
+            set { m_Label.Text = value; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LabeledRadioButton"/> class.
@@ -23,7 +27,7 @@ namespace Gwen.Control
         public LabeledRadioButton(Base parent)
             : base(parent)
         {
-			MouseInputEnabled = true;
+            MouseInputEnabled = true;
             SetSize(100, 20);
 
             m_RadioButton = new RadioButton(this);
@@ -35,7 +39,7 @@ namespace Gwen.Control
             m_Label = new Label(this);
             m_Label.Alignment = Pos.CenterV | Pos.Left;
             m_Label.Text = "Radio Button";
-			m_Label.Clicked += delegate(Base control, ClickedEventArgs args) { m_RadioButton.Press(control); };
+            m_Label.Clicked += delegate(Base control, ClickedEventArgs args) { m_RadioButton.Press(control); };
             m_Label.IsTabable = false;
             m_Label.KeyboardInputEnabled = false;
         }
@@ -43,9 +47,10 @@ namespace Gwen.Control
         protected override void Layout(Skin.Base skin)
         {
             // ugly stuff because we don't have anchoring without docking (docking resizes children)
-            if (m_Label.Height > m_RadioButton.Height) // usually radio is smaller than label so it gets repositioned to avoid clipping with negative Y
+            if (m_Label.Height > m_RadioButton.Height)
+                // usually radio is smaller than label so it gets repositioned to avoid clipping with negative Y
             {
-                m_RadioButton.Y = (m_Label.Height - m_RadioButton.Height)/2;
+                m_RadioButton.Y = (m_Label.Height - m_RadioButton.Height) / 2;
             }
             Align.PlaceRightBottom(m_Label, m_RadioButton);
             SizeToChildren();
@@ -65,7 +70,7 @@ namespace Gwen.Control
         }
 
         // todo: would be nice to remove that
-        internal RadioButton RadioButton { get { return m_RadioButton; } }
+        internal RadioButton RadioButton => m_RadioButton;
 
         /// <summary>
         /// Handler for Space keyboard event.

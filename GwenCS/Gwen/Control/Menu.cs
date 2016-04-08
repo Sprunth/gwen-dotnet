@@ -10,22 +10,19 @@ namespace Gwen.Control
     /// </summary>
     public class Menu : ScrollControl
     {
-        private bool m_DisableIconMargin;
-        private bool m_DeleteOnClose;
+        internal override bool IsMenuComponent => true;
 
-        internal override bool IsMenuComponent { get { return true; } }
-        
-        public bool IconMarginDisabled { get { return m_DisableIconMargin; } set { m_DisableIconMargin = value; } }
-        
+        public bool IconMarginDisabled { get; set; }
+
         /// <summary>
         /// Determines whether the menu should be disposed on close.
         /// </summary>
-        public bool DeleteOnClose { get { return m_DeleteOnClose; } set { m_DeleteOnClose = value; } }
+        public bool DeleteOnClose { get; set; }
 
         /// <summary>
         /// Determines whether the menu should open on mouse hover.
         /// </summary>
-        protected virtual bool ShouldHoverOpenMenu { get { return true; } }
+        protected virtual bool ShouldHoverOpenMenu => true;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Menu"/> class.
@@ -144,7 +141,10 @@ namespace Gwen.Control
         public virtual void CloseAll()
         {
             //System.Diagnostics.Debug.Print("Menu.CloseAll: {0}", this);
-            Children.ForEach(child => { if (child is MenuItem) (child as MenuItem).CloseMenu(); });
+            Children.ForEach(child =>
+            {
+                (child as MenuItem)?.CloseMenu();
+            });
         }
 
         /// <summary>
@@ -153,14 +153,18 @@ namespace Gwen.Control
         /// <returns></returns>
         public virtual bool IsMenuOpen()
         {
-            return Children.Any(child => { if (child is MenuItem) return (child as MenuItem).IsMenuOpen; return false; });
+            return Children.Any(child =>
+            {
+                if (child is MenuItem) return (child as MenuItem).IsMenuOpen;
+                return false;
+            });
         }
 
         /// <summary>
         /// Mouse hover handler.
         /// </summary>
         /// <param name="control">Event source.</param>
-		protected virtual void OnHoverItem(Base control, EventArgs args)
+        protected virtual void OnHoverItem(Base control, EventArgs args)
         {
             if (!ShouldHoverOpenMenu) return;
 
@@ -206,19 +210,16 @@ namespace Gwen.Control
             divider.Margin = new Margin(IconMarginDisabled ? 0 : 24, 0, 4, 0);
         }
 
-		public override bool SizeToChildren(bool width = true, bool height = true)
-		{
-			base.SizeToChildren(width, height);
-			if (width) {
-				int MaxWidth = this.Width;
-				foreach (Base child in Children) {
-					if (child.Width > MaxWidth) {
-						MaxWidth = child.Width;
-					}
-				}
-				this.SetSize(MaxWidth, Height);
-			}
-			return true;
-		}
+        public override bool SizeToChildren(bool width = true, bool height = true)
+        {
+            base.SizeToChildren(width, height);
+            if (width)
+            {
+                int maxWidth = Width;
+                maxWidth = Children.Select(child => child.Width).Concat(new[] {maxWidth}).Max();
+                SetSize(maxWidth, Height);
+            }
+            return true;
+        }
     }
 }

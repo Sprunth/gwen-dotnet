@@ -1,7 +1,4 @@
-﻿using System;
-using System.Drawing;
-
-namespace Gwen.Control
+﻿namespace Gwen.Control
 {
     /// <summary>
     /// Group box (container).
@@ -15,7 +12,7 @@ namespace Gwen.Control
         /// <param name="parent">Parent control.</param>
         public GroupBox(Base parent) : base(parent)
         {
-			AutoSizeToContents = false;
+            AutoSizeToContents = false;
 
             // Set to true, because it's likely that our  
             // children will want mouse input, and they
@@ -29,7 +26,7 @@ namespace Gwen.Control
 
             m_InnerPanel = new Base(this);
             m_InnerPanel.Dock = Pos.Fill;
-            m_InnerPanel.Margin = new Margin(5, TextHeight+5, 5, 5);
+            m_InnerPanel.Margin = new Margin(5, TextHeight + 5, 5, 5);
             //Margin = new Margin(5, 5, 5, 5);
         }
 

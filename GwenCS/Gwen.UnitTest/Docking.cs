@@ -25,22 +25,22 @@ namespace Gwen.UnitTest
             Control.Label inner2 = new Control.Label(outer);
             inner2.Text = "2";
             inner2.Font = font;
-            inner2.SetSize(100, 100); 
+            inner2.SetSize(100, 100);
             inner2.Dock = Pos.Top;
             Control.Label inner3 = new Control.Label(outer);
             inner3.Text = "3";
             inner3.Font = font;
-            inner3.SetSize(100, 100); 
+            inner3.SetSize(100, 100);
             inner3.Dock = Pos.Right;
             Control.Label inner4 = new Control.Label(outer);
             inner4.Text = "4";
             inner4.Font = font;
-            inner4.SetSize(100, 100); 
+            inner4.SetSize(100, 100);
             inner4.Dock = Pos.Bottom;
             Control.Label inner5 = new Control.Label(outer);
             inner5.Text = "5";
             inner5.Font = font;
-            inner5.SetSize(100, 100); 
+            inner5.SetSize(100, 100);
             inner5.Dock = Pos.Fill;
 
             outer.DrawDebugOutlines = true;
@@ -76,7 +76,7 @@ namespace Gwen.UnitTest
             Control.Label l_width = new Control.Label(gb);
             l_width.SetSize(35, 15);
             l_width.Text = "Width:";
-         
+
             Control.HorizontalSlider width = new HorizontalSlider(gb);
             width.Name = "Width";
             width.UserData = subject;
@@ -173,8 +173,8 @@ namespace Gwen.UnitTest
 
         void DockChanged(Base control, EventArgs args)
         {
-            Base inner = (Base) control.UserData;
-            RadioButtonGroup rbg = (RadioButtonGroup) control;
+            Base inner = (Base)control.UserData;
+            RadioButtonGroup rbg = (RadioButtonGroup)control;
             Base gb = inner.UserData as Base;
             Control.Slider w = gb.FindChildByName("Width", true) as Control.Slider;
             Control.Slider h = gb.FindChildByName("Height", true) as Control.Slider;
@@ -182,7 +182,7 @@ namespace Gwen.UnitTest
             switch (rbg.SelectedIndex)
             {
                 case 0:
-                    inner.Dock = Pos.Left; 
+                    inner.Dock = Pos.Left;
                     break;
                 case 1:
                     inner.Dock = Pos.Top;

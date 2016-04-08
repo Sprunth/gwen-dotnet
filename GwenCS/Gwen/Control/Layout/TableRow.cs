@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using Gwen.Control.EventArguments;
 
 namespace Gwen.Control.Layout
 {
@@ -12,7 +13,6 @@ namespace Gwen.Control.Layout
         public const int MaxColumns = 5;
 
         private int m_ColumnCount;
-        private bool m_EvenRow;
         private readonly Label[] m_Columns;
 
         internal Label GetColumn(int index)
@@ -28,17 +28,25 @@ namespace Gwen.Control.Layout
         /// <summary>
         /// Column count.
         /// </summary>
-        public int ColumnCount { get { return m_ColumnCount; } set { SetColumnCount(value); } }
+        public int ColumnCount
+        {
+            get { return m_ColumnCount; }
+            set { SetColumnCount(value); }
+        }
 
         /// <summary>
         /// Indicates whether the row is even or odd (used for alternate coloring).
         /// </summary>
-        public bool EvenRow { get { return m_EvenRow; } set { m_EvenRow = value; } }
+        public bool EvenRow { get; set; }
 
         /// <summary>
         /// Text of the first column.
         /// </summary>
-        public string Text { get { return GetText(0); } set { SetCellText(0, value); } }
+        public string Text
+        {
+            get { return GetText(0); }
+            set { SetCellText(0, value); }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TableRow"/> class.
@@ -61,7 +69,7 @@ namespace Gwen.Control.Layout
             if (columnCount == m_ColumnCount) return;
 
             if (columnCount >= MaxColumns)
-                throw new ArgumentException("Invalid column count", "columnCount");
+                throw new ArgumentException("Invalid column count", nameof(columnCount));
 
             for (int i = 0; i < MaxColumns; i++)
             {
@@ -100,9 +108,9 @@ namespace Gwen.Control.Layout
         /// <param name="width">Column width.</param>
         public void SetColumnWidth(int column, int width)
         {
-            if (null == m_Columns[column]) 
+            if (null == m_Columns[column])
                 return;
-            if (m_Columns[column].Width == width) 
+            if (m_Columns[column].Width == width)
                 return;
 
             m_Columns[column].Width = width;
@@ -115,7 +123,7 @@ namespace Gwen.Control.Layout
         /// <param name="text">Text to set.</param>
         public void SetCellText(int column, string text)
         {
-            if (null == m_Columns[column]) 
+            if (null == m_Columns[column])
                 return;
 
             m_Columns[column].Text = text;
@@ -129,7 +137,7 @@ namespace Gwen.Control.Layout
         /// <param name="enableMouseInput">Determines whether mouse input should be enabled for the cell.</param>
         public void SetCellContents(int column, Base control, bool enableMouseInput = false)
         {
-            if (null == m_Columns[column]) 
+            if (null == m_Columns[column])
                 return;
 
             control.Parent = m_Columns[column];
@@ -148,8 +156,7 @@ namespace Gwen.Control.Layout
 
         protected virtual void OnRowSelected()
         {
-            if (Selected != null)
-                Selected.Invoke(this, new ItemSelectedEventArgs(this));
+            Selected?.Invoke(this, new ItemSelectedEventArgs(this));
         }
 
         /// <summary>
@@ -162,7 +169,7 @@ namespace Gwen.Control.Layout
 
             for (int i = 0; i < m_ColumnCount; i++)
             {
-                if (null == m_Columns[i]) 
+                if (null == m_Columns[i])
                     continue;
 
                 // Note, more than 1 child here, because the 
@@ -175,7 +182,7 @@ namespace Gwen.Control.Layout
                 {
                     m_Columns[i].SizeToContents();
                 }
-    
+
                 //if (i == m_ColumnCount - 1) // last column
                 //    m_Columns[i].Width = Parent.Width - width; // fill if not autosized
 

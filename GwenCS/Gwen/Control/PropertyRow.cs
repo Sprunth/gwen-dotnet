@@ -21,28 +21,30 @@ namespace Gwen.Control
         /// <summary>
         /// Indicates whether the property value is being edited.
         /// </summary>
-        public bool IsEditing { get { return m_Property != null && m_Property.IsEditing; } }
+        public bool IsEditing => m_Property != null && m_Property.IsEditing;
 
         /// <summary>
         /// Property value.
         /// </summary>
-        public string Value { get { return m_Property.Value; } set { m_Property.Value = value; } }
+        public string Value
+        {
+            get { return m_Property.Value; }
+            set { m_Property.Value = value; }
+        }
 
         /// <summary>
         /// Indicates whether the control is hovered by mouse pointer.
         /// </summary>
-        public override bool IsHovered
-        {
-            get
-            {
-                return base.IsHovered || (m_Property != null && m_Property.IsHovered);
-            }
-        }
+        public override bool IsHovered => base.IsHovered || (m_Property != null && m_Property.IsHovered);
 
         /// <summary>
         /// Property name.
         /// </summary>
-        public string Label { get { return m_Label.Text; } set { m_Label.Text = value; } }
+        public string Label
+        {
+            get { return m_Label.Text; }
+            set { m_Label.Text = value; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PropertyRow"/> class.
@@ -106,8 +108,7 @@ namespace Gwen.Control
 
         protected virtual void OnValueChanged(Base control, EventArgs args)
         {
-            if (ValueChanged != null)
-				ValueChanged.Invoke(this, EventArgs.Empty);
+            ValueChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnEditingChanged()

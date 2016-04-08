@@ -20,7 +20,7 @@ namespace Gwen.Control
         /// <summary>
         /// Invoked when the bar is moved.
         /// </summary>
-		public event GwenEventHandler<EventArgs> BarMoved;
+        public event GwenEventHandler<EventArgs> BarMoved;
 
         /// <summary>
         /// Bar size (in pixels).
@@ -30,22 +30,45 @@ namespace Gwen.Control
         /// <summary>
         /// Bar position (in pixels).
         /// </summary>
-        public virtual int BarPos { get { return 0; } }
-        
+        public virtual int BarPos => 0;
+
         /// <summary>
         /// Button size (in pixels).
         /// </summary>
-        public virtual int ButtonSize { get { return 0; } }
+        public virtual int ButtonSize => 0;
 
-        public virtual float NudgeAmount { get { return m_NudgeAmount / m_ContentSize; } set { m_NudgeAmount = value; } }
-        public float ScrollAmount { get { return m_ScrollAmount; } }
-        public float ContentSize { get { return m_ContentSize; } set { if (m_ContentSize != value) Invalidate(); m_ContentSize = value; } }
-        public float ViewableContentSize { get { return m_ViewableContentSize; } set { if (m_ViewableContentSize != value) Invalidate(); m_ViewableContentSize = value; } }
+        public virtual float NudgeAmount
+        {
+            get { return m_NudgeAmount / m_ContentSize; }
+            set { m_NudgeAmount = value; }
+        }
+
+        public float ScrollAmount => m_ScrollAmount;
+
+        public float ContentSize
+        {
+            get { return m_ContentSize; }
+            set
+            {
+                if (!m_ContentSize.Equals(value)) Invalidate();
+                m_ContentSize = value;
+            }
+        }
+
+        public float ViewableContentSize
+        {
+            get { return m_ViewableContentSize; }
+            set
+            {
+                if (!m_ViewableContentSize.Equals(value)) Invalidate();
+                m_ViewableContentSize = value;
+            }
+        }
 
         /// <summary>
         /// Indicates whether the bar is horizontal.
         /// </summary>
-        public virtual bool IsHorizontal { get { return false; } }
+        public virtual bool IsHorizontal => false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ScrollBar"/> class.
@@ -77,7 +100,7 @@ namespace Gwen.Control
         /// <returns>True if control state changed.</returns>
         public virtual bool SetScrollAmount(float value, bool forceUpdate = false)
         {
-            if (m_ScrollAmount == value && !forceUpdate)
+            if (!m_ScrollAmount.Equals(value) && !forceUpdate)
                 return false;
             m_ScrollAmount = value;
             Invalidate();
@@ -93,7 +116,6 @@ namespace Gwen.Control
         /// <param name="down">If set to <c>true</c> mouse button is down.</param>
         protected override void OnMouseClickedLeft(int x, int y, bool down)
         {
-
         }
 
         /// <summary>
@@ -109,10 +131,9 @@ namespace Gwen.Control
         /// Handler for the BarMoved event.
         /// </summary>
         /// <param name="control">The control.</param>
-		protected virtual void OnBarMoved(Base control, EventArgs args)
+        protected virtual void OnBarMoved(Base control, EventArgs args)
         {
-            if (BarMoved != null)
-				BarMoved.Invoke(this, EventArgs.Empty);
+            BarMoved?.Invoke(this, EventArgs.Empty);
         }
 
         protected virtual float CalculateScrolledAmount()
@@ -123,11 +144,22 @@ namespace Gwen.Control
         protected virtual int CalculateBarSize()
         {
             return 0;
-        } 
+        }
 
-        public virtual void ScrollToLeft() { } 
-        public virtual void ScrollToRight() { }
-        public virtual void ScrollToTop() { }
-        public virtual void ScrollToBottom() { }
+        public virtual void ScrollToLeft()
+        {
+        }
+
+        public virtual void ScrollToRight()
+        {
+        }
+
+        public virtual void ScrollToTop()
+        {
+        }
+
+        public virtual void ScrollToBottom()
+        {
+        }
     }
 }
