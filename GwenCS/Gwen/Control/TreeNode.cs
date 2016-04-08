@@ -2,6 +2,7 @@
 using System.Linq;
 using Gwen.ControlInternal;
 using System.Collections.Generic;
+using Gwen.Control.EventArguments;
 
 namespace Gwen.Control
 {
@@ -59,8 +60,7 @@ namespace Gwen.Control
                 if (m_Title != null)
                     m_Title.ToggleState = value;
 
-                if (SelectionChanged != null)
-                    SelectionChanged.Invoke(this, EventArgs.Empty);
+                SelectionChanged?.Invoke(this, EventArgs.Empty);
 
                 // propagate to root parent (tree)
                 m_TreeControl?.SelectionChanged?.Invoke(this, EventArgs.Empty);
@@ -266,9 +266,7 @@ namespace Gwen.Control
             foreach (Base child in Children)
             {
                 TreeNode node = child as TreeNode;
-                if (node == null)
-                    continue;
-                node.ExpandAll();
+                node?.ExpandAll();
             }
         }
 
@@ -284,9 +282,7 @@ namespace Gwen.Control
             foreach (Base child in Children)
             {
                 TreeNode node = child as TreeNode;
-                if (node == null)
-                    continue;
-                node.UnselectAll();
+                node?.UnselectAll();
             }
         }
 
@@ -323,8 +319,7 @@ namespace Gwen.Control
         /// <param name="control">Event source.</param>
         protected virtual void OnClickName(Base control, EventArgs args)
         {
-            if (LabelPressed != null)
-                LabelPressed.Invoke(this, EventArgs.Empty);
+            LabelPressed?.Invoke(this, EventArgs.Empty);
             IsSelected = !IsSelected;
         }
 
@@ -340,10 +335,7 @@ namespace Gwen.Control
             {
                 node.TreeControl = m_TreeControl;
 
-                if (m_TreeControl != null)
-                {
-                    m_TreeControl.OnNodeAdded(node);
-                }
+                m_TreeControl?.OnNodeAdded(node);
             }
 
             base.OnChildAdded(child);

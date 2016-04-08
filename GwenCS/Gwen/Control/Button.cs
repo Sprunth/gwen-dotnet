@@ -76,18 +76,15 @@ namespace Gwen.Control
 
                 m_ToggleStatus = value;
 
-                if (Toggled != null)
-                    Toggled.Invoke(this, EventArgs.Empty);
+                Toggled?.Invoke(this, EventArgs.Empty);
 
                 if (m_ToggleStatus)
                 {
-                    if (ToggledOn != null)
-                        ToggledOn.Invoke(this, EventArgs.Empty);
+                    ToggledOn?.Invoke(this, EventArgs.Empty);
                 }
                 else
                 {
-                    if (ToggledOff != null)
-                        ToggledOff.Invoke(this, EventArgs.Empty);
+                    ToggledOff?.Invoke(this, EventArgs.Empty);
                 }
 
                 Redraw();
@@ -157,8 +154,7 @@ namespace Gwen.Control
             {
                 IsDepressed = true;
                 InputHandler.MouseFocus = this;
-                if (Pressed != null)
-                    Pressed.Invoke(this, EventArgs.Empty);
+                Pressed?.Invoke(this, EventArgs.Empty);
             }
             else
             {
@@ -169,8 +165,7 @@ namespace Gwen.Control
 
                 IsDepressed = false;
                 InputHandler.MouseFocus = null;
-                if (Released != null)
-                    Released.Invoke(this, EventArgs.Empty);
+                Released?.Invoke(this, EventArgs.Empty);
             }
 
             Redraw();
@@ -198,8 +193,7 @@ namespace Gwen.Control
         {
             if (String.IsNullOrEmpty(textureName))
             {
-                if (m_Image != null)
-                    m_Image.Dispose();
+                m_Image?.Dispose();
                 m_Image = null;
                 return;
             }

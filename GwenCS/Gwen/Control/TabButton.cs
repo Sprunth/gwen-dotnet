@@ -26,8 +26,7 @@ namespace Gwen.Control
             set
             {
                 if (value == m_Control) return;
-                if (m_Control != null)
-                    m_Control.OnLoseTab(this);
+                m_Control?.OnLoseTab(this);
                 m_Control = value;
             }
         }

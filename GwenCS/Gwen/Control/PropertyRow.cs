@@ -114,8 +114,7 @@ namespace Gwen.Control
 
         protected virtual void OnValueChanged(Base control, EventArgs args)
         {
-            if (ValueChanged != null)
-                ValueChanged.Invoke(this, EventArgs.Empty);
+            ValueChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnEditingChanged()

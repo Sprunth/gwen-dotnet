@@ -231,10 +231,7 @@ namespace Gwen.Input
                 {
                     m_KeyData.NextRepeat[i] = Platform.Neutral.GetTimeInSeconds() + KeyRepeatRate;
 
-                    if (KeyboardFocus != null)
-                    {
-                        KeyboardFocus.InputKeyPressed((Key)i);
-                    }
+                    KeyboardFocus?.InputKeyPressed((Key)i);
                 }
             }
         }
@@ -393,10 +390,7 @@ namespace Gwen.Input
 
                 HoveredControl = hovered;
 
-                if (HoveredControl != null)
-                {
-                    HoveredControl.InputMouseEntered();
-                }
+                HoveredControl?.InputMouseEntered();
             }
 
             if (MouseFocus != null && MouseFocus.GetCanvas() == inCanvas)

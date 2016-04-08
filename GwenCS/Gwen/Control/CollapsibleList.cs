@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Gwen.Control.EventArguments;
 
 namespace Gwen.Control
 {
@@ -84,10 +85,8 @@ namespace Gwen.Control
             foreach (Base child in Children)
             {
                 CollapsibleCategory cat = child as CollapsibleCategory;
-                if (cat == null)
-                    continue;
 
-                cat.UnselectAll();
+                cat?.UnselectAll();
             }
         }
 
@@ -100,8 +99,7 @@ namespace Gwen.Control
             CollapsibleCategory cat = control as CollapsibleCategory;
             if (cat == null) return;
 
-            if (ItemSelected != null)
-                ItemSelected.Invoke(this, new ItemSelectedEventArgs(cat));
+            ItemSelected?.Invoke(this, new ItemSelectedEventArgs(cat));
         }
 
         /// <summary>
@@ -113,8 +111,7 @@ namespace Gwen.Control
             CollapsibleCategory cat = control as CollapsibleCategory;
             if (cat == null) return;
 
-            if (CategoryCollapsed != null)
-                CategoryCollapsed.Invoke(control, EventArgs.Empty);
+            CategoryCollapsed?.Invoke(control, EventArgs.Empty);
         }
     }
 }

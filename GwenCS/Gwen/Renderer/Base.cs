@@ -24,8 +24,7 @@ namespace Gwen.Renderer
             //rnd = new Random();
             m_RenderOffset = Point.Empty;
             Scale = 1.0f;
-            if (CTT != null)
-                CTT.Initialize();
+            CTT?.Initialize();
         }
 
         /// <summary>
@@ -34,8 +33,7 @@ namespace Gwen.Renderer
         /// <filterpriority>2</filterpriority>
         public virtual void Dispose()
         {
-            if (CTT != null)
-                CTT.ShutDown();
+            CTT?.ShutDown();
             GC.SuppressFinalize(this);
         }
 

@@ -73,17 +73,14 @@ namespace Gwen.Control
         {
             if (IsChecked)
             {
-                if (Checked != null)
-                    Checked.Invoke(this, EventArgs.Empty);
+                Checked?.Invoke(this, EventArgs.Empty);
             }
             else
             {
-                if (UnChecked != null)
-                    UnChecked.Invoke(this, EventArgs.Empty);
+                UnChecked?.Invoke(this, EventArgs.Empty);
             }
 
-            if (CheckChanged != null)
-                CheckChanged.Invoke(this, EventArgs.Empty);
+            CheckChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>

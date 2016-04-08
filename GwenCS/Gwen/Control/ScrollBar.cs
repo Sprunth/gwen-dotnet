@@ -145,8 +145,7 @@ namespace Gwen.Control
         /// <param name="control">The control.</param>
         protected virtual void OnBarMoved(Base control, EventArgs args)
         {
-            if (BarMoved != null)
-                BarMoved.Invoke(this, EventArgs.Empty);
+            BarMoved?.Invoke(this, EventArgs.Empty);
         }
 
         protected virtual float CalculateScrolledAmount()

@@ -40,8 +40,7 @@ namespace Gwen.Control.Property
 
         protected virtual void DoChanged()
         {
-            if (ValueChanged != null)
-                ValueChanged.Invoke(this, EventArgs.Empty);
+            ValueChanged?.Invoke(this, EventArgs.Empty);
         }
 
         protected virtual void OnValueChanged(Control.Base control, EventArgs args)

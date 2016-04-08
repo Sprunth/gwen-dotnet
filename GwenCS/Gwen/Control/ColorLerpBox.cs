@@ -38,8 +38,7 @@ namespace Gwen.Control
         /// </summary>
         public override void Dispose()
         {
-            if (m_Texture != null)
-                m_Texture.Dispose();
+            m_Texture?.Dispose();
             base.Dispose();
         }
 
@@ -78,8 +77,7 @@ namespace Gwen.Control
             }
             Invalidate();
 
-            if (ColorChanged != null)
-                ColorChanged.Invoke(this, EventArgs.Empty);
+            ColorChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -105,8 +103,7 @@ namespace Gwen.Control
                 if (m_CursorPos.Y > Height)
                     m_CursorPos.Y = Height;
 
-                if (ColorChanged != null)
-                    ColorChanged.Invoke(this, EventArgs.Empty);
+                ColorChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 

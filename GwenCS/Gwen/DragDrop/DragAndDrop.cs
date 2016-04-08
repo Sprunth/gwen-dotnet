@@ -21,7 +21,7 @@ namespace Gwen.DragDrop
         private static int m_MouseX;
         private static int m_MouseY;
 
-        private static bool onDrop(int x, int y)
+        private static bool OnDrop(int x, int y)
         {
             bool success = false;
 
@@ -127,10 +127,7 @@ namespace Gwen.DragDrop
             HoveredControl = m_NewHoveredControl;
 
             // If we exist, tell us that we've started hovering.
-            if (HoveredControl != null)
-            {
-                HoveredControl.DragAndDrop_HoverEnter(CurrentPackage, x, y);
-            }
+            HoveredControl?.DragAndDrop_HoverEnter(CurrentPackage, x, y);
 
             m_NewHoveredControl = null;
         }
@@ -158,7 +155,7 @@ namespace Gwen.DragDrop
                     return false;
 
                 // We were carrying something, drop it.
-                onDrop(x, y);
+                OnDrop(x, y);
                 return true;
             }
 
@@ -206,9 +203,7 @@ namespace Gwen.DragDrop
 
         public static void RenderOverlay(Canvas canvas, Skin.Base skin)
         {
-            if (CurrentPackage == null)
-                return;
-            if (CurrentPackage.DrawControl == null)
+            if (CurrentPackage?.DrawControl == null)
                 return;
 
             Point old = skin.Renderer.RenderOffset;

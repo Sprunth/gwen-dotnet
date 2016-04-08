@@ -109,8 +109,7 @@ namespace Gwen.Control
             else if (pos == Pos.Bottom) sizeDir = Pos.Top;
             else throw new ArgumentException("Invalid dock", "pos");
 
-            if (m_Sizer != null)
-                m_Sizer.Dispose();
+            m_Sizer?.Dispose();
             m_Sizer = new Resizer(this);
             m_Sizer.Dock = sizeDir;
             m_Sizer.ResizeDir = sizeDir;
@@ -299,9 +298,8 @@ namespace Gwen.Control
             if (!IsEmpty) return;
 
             DockBase pDockParent = Parent as DockBase;
-            if (null == pDockParent) return;
 
-            pDockParent.OnRedundantChildDock(this);
+            pDockParent?.OnRedundantChildDock(this);
         }
 
         protected virtual void DoConsolidateCheck()

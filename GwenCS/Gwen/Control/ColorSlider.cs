@@ -35,8 +35,7 @@ namespace Gwen.Control
         /// </summary>
         public override void Dispose()
         {
-            if (m_Texture != null)
-                m_Texture.Dispose();
+            m_Texture?.Dispose();
             base.Dispose();
         }
 
@@ -124,8 +123,7 @@ namespace Gwen.Control
                     cursorPos.Y = Height;
 
                 m_SelectedDist = cursorPos.Y;
-                if (ColorChanged != null)
-                    ColorChanged.Invoke(this, EventArgs.Empty);
+                ColorChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -141,8 +139,7 @@ namespace Gwen.Control
 
             m_SelectedDist = (int)(hsv.h / 360 * Height);
 
-            if (ColorChanged != null)
-                ColorChanged.Invoke(this, EventArgs.Empty);
+            ColorChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>

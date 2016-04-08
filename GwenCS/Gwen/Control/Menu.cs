@@ -147,7 +147,10 @@ namespace Gwen.Control
         public virtual void CloseAll()
         {
             //System.Diagnostics.Debug.Print("Menu.CloseAll: {0}", this);
-            Children.ForEach(child => { if (child is MenuItem) (child as MenuItem).CloseMenu(); });
+            Children.ForEach(child =>
+            {
+                (child as MenuItem)?.CloseMenu();
+            });
         }
 
         /// <summary>

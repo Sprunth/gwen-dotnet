@@ -116,11 +116,9 @@ namespace Gwen.Control
 
             if (m_ZoomedSection == -1)
             {
-                if (m_Sections[0] != null)
-                    m_Sections[0].SetBounds(0, 0, Width, m_VSplitter.Y);
+                m_Sections[0]?.SetBounds(0, 0, Width, m_VSplitter.Y);
 
-                if (m_Sections[1] != null)
-                    m_Sections[1].SetBounds(0, m_VSplitter.Y + m_BarSize, Width, Height - (m_VSplitter.Y + m_BarSize));
+                m_Sections[1]?.SetBounds(0, m_VSplitter.Y + m_BarSize, Width, Height - (m_VSplitter.Y + m_BarSize));
             }
             else
             {
@@ -162,18 +160,15 @@ namespace Gwen.Control
         /// </summary>
         protected void OnZoomChanged()
         {
-            if (ZoomChanged != null)
-                ZoomChanged.Invoke(this, EventArgs.Empty);
+            ZoomChanged?.Invoke(this, EventArgs.Empty);
 
             if (m_ZoomedSection == -1)
             {
-                if (PanelUnZoomed != null)
-                    PanelUnZoomed.Invoke(this, EventArgs.Empty);
+                PanelUnZoomed?.Invoke(this, EventArgs.Empty);
             }
             else
             {
-                if (PanelZoomed != null)
-                    PanelZoomed.Invoke(this, EventArgs.Empty);
+                PanelZoomed?.Invoke(this, EventArgs.Empty);
             }
         }
 

@@ -217,8 +217,7 @@ namespace Gwen.Control
             if (!m_Value.Equals(val))
             {
                 m_Value = val;
-                if (ValueChanged != null)
-                    ValueChanged.Invoke(this, EventArgs.Empty);
+                ValueChanged?.Invoke(this, EventArgs.Empty);
             }
 
             UpdateBarFromValue();

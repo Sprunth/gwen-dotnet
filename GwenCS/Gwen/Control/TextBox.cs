@@ -147,8 +147,7 @@ namespace Gwen.Control
             if (m_CursorPos > TextLength) m_CursorPos = TextLength;
             if (m_CursorEnd > TextLength) m_CursorEnd = TextLength;
 
-            if (TextChanged != null)
-                TextChanged.Invoke(this, EventArgs.Empty);
+            TextChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -619,8 +618,7 @@ namespace Gwen.Control
         /// </summary>
         protected virtual void OnReturn()
         {
-            if (SubmitPressed != null)
-                SubmitPressed.Invoke(this, EventArgs.Empty);
+            SubmitPressed?.Invoke(this, EventArgs.Empty);
         }
     }
 }

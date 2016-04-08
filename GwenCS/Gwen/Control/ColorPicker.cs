@@ -183,8 +183,7 @@ namespace Gwen.Control
             ColorDisplay disp = FindChildByName("Result", true) as ColorDisplay;
             disp.Color = SelectedColor;
 
-            if (ColorChanged != null)
-                ColorChanged.Invoke(this, EventArgs.Empty);
+            ColorChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void SlidersMoved(Base control, EventArgs args)
@@ -216,8 +215,7 @@ namespace Gwen.Control
             SetSize(Width, Height + 5);
 
             GroupBox groupBox = FindChildByName("ResultGroupBox", true) as GroupBox;
-            if (groupBox != null)
-                groupBox.SetPosition(groupBox.X, Height * 0.5f - groupBox.Height * 0.5f);
+            groupBox?.SetPosition(groupBox.X, Height * 0.5f - groupBox.Height * 0.5f);
 
             //UpdateControls(); // this spams events continuously every tick
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Gwen.Control.EventArguments;
 
 namespace Gwen.Control
 {
@@ -130,8 +131,7 @@ namespace Gwen.Control
 
         protected virtual void OnChanged(Base NewTarget)
         {
-            if (SelectionChanged != null)
-                SelectionChanged.Invoke(this, new ItemSelectedEventArgs(NewTarget));
+            SelectionChanged?.Invoke(this, new ItemSelectedEventArgs(NewTarget));
         }
 
         /// <summary>

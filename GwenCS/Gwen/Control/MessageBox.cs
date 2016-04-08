@@ -46,8 +46,7 @@ namespace Gwen.Control
 
         private void DismissedHandler(Base control, EventArgs args)
         {
-            if (Dismissed != null)
-                Dismissed.Invoke(this, EventArgs.Empty);
+            Dismissed?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>

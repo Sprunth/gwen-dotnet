@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using Gwen.Control.EventArguments;
 using Gwen.ControlInternal;
 
 namespace Gwen.Control
@@ -59,18 +60,15 @@ namespace Gwen.Control
 
                 m_Checked = value;
 
-                if (CheckChanged != null)
-                    CheckChanged.Invoke(this, EventArgs.Empty);
+                CheckChanged?.Invoke(this, EventArgs.Empty);
 
                 if (value)
                 {
-                    if (Checked != null)
-                        Checked.Invoke(this, EventArgs.Empty);
+                    Checked?.Invoke(this, EventArgs.Empty);
                 }
                 else
                 {
-                    if (UnChecked != null)
-                        UnChecked.Invoke(this, EventArgs.Empty);
+                    UnChecked?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
@@ -89,8 +87,7 @@ namespace Gwen.Control
 
                     if (!m_OnStrip)
                     {
-                        if (m_SubmenuArrow != null)
-                            m_SubmenuArrow.Dispose();
+                        m_SubmenuArrow?.Dispose();
                         m_SubmenuArrow = new RightArrow(this);
                         m_SubmenuArrow.SetSize(15, 15);
                     }
@@ -153,10 +150,7 @@ namespace Gwen.Control
         /// <param name="skin">Skin to use.</param>
         protected override void Layout(Skin.Base skin)
         {
-            if (m_SubmenuArrow != null)
-            {
-                m_SubmenuArrow.Position(Pos.Right | Pos.CenterV, 4, 0);
-            }
+            m_SubmenuArrow?.Position(Pos.Right | Pos.CenterV, 4, 0);
             base.Layout(skin);
         }
 
@@ -172,8 +166,7 @@ namespace Gwen.Control
             else if (!m_OnStrip)
             {
                 IsChecked = !IsChecked;
-                if (Selected != null)
-                    Selected.Invoke(this, new ItemSelectedEventArgs(this));
+                Selected?.Invoke(this, new ItemSelectedEventArgs(this));
                 GetCanvas().CloseMenus();
             }
             base.OnClicked(x, y);

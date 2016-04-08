@@ -1,4 +1,5 @@
 ﻿using System;
+using Gwen.Control.EventArguments;
 using Gwen.Control.Layout;
 using Gwen.ControlInternal;
 
@@ -150,8 +151,7 @@ namespace Gwen.Control
         protected override void OnTextChanged()
         {
             base.OnTextChanged();
-            if (ValueChanged != null)
-                ValueChanged.Invoke(this, EventArgs.Empty);
+            ValueChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

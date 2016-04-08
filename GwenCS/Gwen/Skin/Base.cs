@@ -72,9 +72,7 @@ namespace Gwen.Skin
         {
             if (font == null)
                 return;
-            if (m_Renderer == null)
-                return;
-            m_Renderer.FreeFont(font);
+            m_Renderer?.FreeFont(font);
         }
 
         /// <summary>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
 using Gwen.Anim;
+using Gwen.Control.EventArguments;
 using Gwen.DragDrop;
 using Gwen.Input;
 
@@ -139,18 +140,12 @@ namespace Gwen.Control
                 if (m_Parent == value)
                     return;
 
-                if (m_Parent != null)
-                {
-                    m_Parent.RemoveChild(this, false);
-                }
+                m_Parent?.RemoveChild(this, false);
 
                 m_Parent = value;
                 m_ActualParent = null;
 
-                if (m_Parent != null)
-                {
-                    m_Parent.AddChild(this);
-                }
+                m_Parent?.AddChild(this);
             }
         }
 
@@ -585,10 +580,8 @@ namespace Gwen.Control
         public virtual Canvas GetCanvas()
         {
             Base canvas = m_Parent;
-            if (canvas == null)
-                return null;
 
-            return canvas.GetCanvas();
+            return canvas?.GetCanvas();
         }
 
         /// <summary>
@@ -984,8 +977,7 @@ namespace Gwen.Control
 
             OnBoundsChanged(oldBounds);
 
-            if (BoundsChanged != null)
-                BoundsChanged.Invoke(this, EventArgs.Empty);
+            BoundsChanged?.Invoke(this, EventArgs.Empty);
 
             return true;
         }
@@ -1026,8 +1018,7 @@ namespace Gwen.Control
             //Anything that needs to update on size changes
             //Iterate my children and tell them I've changed
             //
-            if (Parent != null)
-                Parent.OnChildBoundsChanged(oldBounds, this);
+            Parent?.OnChildBoundsChanged(oldBounds, this);
 
 
             if (m_Bounds.Width != oldBounds.Width || m_Bounds.Height != oldBounds.Height)
@@ -1293,8 +1284,8 @@ namespace Gwen.Control
         /// <param name="down">If set to <c>true</c> mouse button is down.</param>
         protected virtual void OnMouseClickedLeft(int x, int y, bool down)
         {
-            if (down && Clicked != null)
-                Clicked(this, new ClickedEventArgs(x, y, down));
+            if (down)
+                Clicked?.Invoke(this, new ClickedEventArgs(x, y, down));
         }
 
         /// <summary>
@@ -1313,8 +1304,8 @@ namespace Gwen.Control
         /// <param name="down">If set to <c>true</c> mouse button is down.</param>
         protected virtual void OnMouseClickedRight(int x, int y, bool down)
         {
-            if (down && RightClicked != null)
-                RightClicked(this, new ClickedEventArgs(x, y, down));
+            if (down)
+                RightClicked?.Invoke(this, new ClickedEventArgs(x, y, down));
         }
 
         /// <summary>
@@ -1337,8 +1328,7 @@ namespace Gwen.Control
             //					Should be called by the event handler.
             OnMouseClickedLeft(x, y, true);
 
-            if (DoubleClicked != null)
-                DoubleClicked(this, new ClickedEventArgs(x, y, true));
+            DoubleClicked?.Invoke(this, new ClickedEventArgs(x, y, true));
         }
 
         /// <summary>
@@ -1359,8 +1349,7 @@ namespace Gwen.Control
             // [halfofastaple] See: OnMouseDoubleClicked for discussion on triggering single clicks in a double click event
             OnMouseClickedRight(x, y, true);
 
-            if (DoubleRightClicked != null)
-                DoubleRightClicked(this, new ClickedEventArgs(x, y, true));
+            DoubleRightClicked?.Invoke(this, new ClickedEventArgs(x, y, true));
         }
 
         /// <summary>
@@ -1399,8 +1388,7 @@ namespace Gwen.Control
         /// </summary>
         protected virtual void OnMouseLeft()
         {
-            if (HoverLeave != null)
-                HoverLeave.Invoke(this, EventArgs.Empty);
+            HoverLeave?.Invoke(this, EventArgs.Empty);
 
             if (ToolTip != null)
                 Gwen.ToolTip.Disable(this);
@@ -1450,8 +1438,7 @@ namespace Gwen.Control
         /// </summary>
         public virtual void Touch()
         {
-            if (Parent != null)
-                Parent.OnChildTouched(this);
+            Parent?.OnChildTouched(this);
         }
 
         protected virtual void OnChildTouched(Base control)
@@ -1882,8 +1869,7 @@ namespace Gwen.Control
         {
             UpdateColors();
             m_CacheTextureDirty = true;
-            if (m_Parent != null)
-                m_Parent.Redraw();
+            m_Parent?.Redraw();
         }
 
         /// <summary>
@@ -1901,10 +1887,7 @@ namespace Gwen.Control
         /// </summary>
         public void InvalidateParent()
         {
-            if (m_Parent != null)
-            {
-                m_Parent.Invalidate();
-            }
+            m_Parent?.Invalidate();
         }
 
         /// <summary>
@@ -1958,8 +1941,8 @@ namespace Gwen.Control
                     break;
             }
 
-            if (!handled && Parent != null)
-                Parent.OnKeyPressed(key, down);
+            if (!handled)
+                Parent?.OnKeyPressed(key, down);
 
             return handled;
         }

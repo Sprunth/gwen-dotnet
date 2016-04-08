@@ -236,8 +236,7 @@ namespace Gwen.Control
         protected override void OnTextChanged()
         {
             base.OnTextChanged();
-            if (TextChanged != null)
-                TextChanged.Invoke(this, EventArgs.Empty);
+            TextChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -1017,10 +1016,7 @@ namespace Gwen.Control
         /// <param name="child"></param>
         protected override void OnChildBoundsChanged(System.Drawing.Rectangle oldChildBounds, Base child)
         {
-            if (m_ScrollControl != null)
-            {
-                m_ScrollControl.UpdateScrollBars();
-            }
+            m_ScrollControl?.UpdateScrollBars();
         }
 
         /// <summary>
@@ -1059,17 +1055,17 @@ namespace Gwen.Control
             OnTextChanged();
         }
 
-        private Point GetCharacterPosition(Point CursorPosition)
+        private Point GetCharacterPosition(Point cursorPosition)
         {
             if (m_TextLines.Count == 0)
             {
                 return new Point(0, 0);
             }
-            string CurrLine = m_TextLines[CursorPosition.Y].Substring(0,
-                Math.Min(CursorPosition.X, m_TextLines[CursorPosition.Y].Length));
+            string CurrLine = m_TextLines[cursorPosition.Y].Substring(0,
+                Math.Min(cursorPosition.X, m_TextLines[cursorPosition.Y].Length));
 
             string sub = "";
-            for (int i = 0; i < CursorPosition.Y; i++)
+            for (int i = 0; i < cursorPosition.Y; i++)
             {
                 sub += m_TextLines[i] + "\n";
             }

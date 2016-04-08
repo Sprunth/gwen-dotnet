@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using Gwen.Control;
+using Gwen.Control.EventArguments;
 
 namespace Gwen.UnitTest
 {

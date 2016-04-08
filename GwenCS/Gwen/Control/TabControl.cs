@@ -130,8 +130,7 @@ namespace Gwen.Control
             button.Parent = m_TabStrip;
             button.Dock = Pos.Left;
             button.SizeToContents();
-            if (button.TabControl != null)
-                button.TabControl.UnsubscribeTabEvent(button);
+            button.TabControl?.UnsubscribeTabEvent(button);
             button.TabControl = this;
             button.Clicked += OnTabPressed;
 
@@ -140,8 +139,7 @@ namespace Gwen.Control
                 button.Press();
             }
 
-            if (TabAdded != null)
-                TabAdded.Invoke(this, EventArgs.Empty);
+            TabAdded?.Invoke(this, EventArgs.Empty);
 
             Invalidate();
         }
@@ -158,10 +156,9 @@ namespace Gwen.Control
         internal virtual void OnTabPressed(Base control, EventArgs args)
         {
             TabButton button = control as TabButton;
-            if (null == button) return;
 
-            Base page = button.Page;
-            if (null == page) return;
+            Base page = button?.Page;
+            if (page == null) return;
 
             if (m_CurrentButton == button)
                 return;
@@ -206,8 +203,7 @@ namespace Gwen.Control
 
             //TODO: Select a tab if any exist.
 
-            if (TabRemoved != null)
-                TabRemoved.Invoke(this, EventArgs.Empty);
+            TabRemoved?.Invoke(this, EventArgs.Empty);
 
             Invalidate();
         }

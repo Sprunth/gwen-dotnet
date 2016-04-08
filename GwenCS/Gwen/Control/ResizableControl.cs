@@ -92,8 +92,7 @@ namespace Gwen.Control
         /// <param name="control">Event source.</param>
         protected virtual void OnResized(Base control, EventArgs args)
         {
-            if (Resized != null)
-                Resized.Invoke(this, EventArgs.Empty);
+            Resized?.Invoke(this, EventArgs.Empty);
         }
 
         protected Resizer GetResizer(int i)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Gwen.Control.EventArguments;
 using Gwen.Control.Layout;
 
 namespace Gwen.Control
@@ -211,8 +212,7 @@ namespace Gwen.Control
             // TODO: make sure this is one of our rows!
             row.IsSelected = true;
             m_SelectedRows.Add(row);
-            if (RowSelected != null)
-                RowSelected.Invoke(this, new ItemSelectedEventArgs(row));
+            RowSelected?.Invoke(this, new ItemSelectedEventArgs(row));
         }
 
         /// <summary>
@@ -304,8 +304,7 @@ namespace Gwen.Control
             foreach (ListBoxRow row in m_SelectedRows)
             {
                 row.IsSelected = false;
-                if (RowUnselected != null)
-                    RowUnselected.Invoke(this, new ItemSelectedEventArgs(row));
+                RowUnselected?.Invoke(this, new ItemSelectedEventArgs(row));
             }
             m_SelectedRows.Clear();
         }
@@ -319,8 +318,7 @@ namespace Gwen.Control
             row.IsSelected = false;
             m_SelectedRows.Remove(row);
 
-            if (RowUnselected != null)
-                RowUnselected.Invoke(this, new ItemSelectedEventArgs(row));
+            RowUnselected?.Invoke(this, new ItemSelectedEventArgs(row));
         }
 
         /// <summary>

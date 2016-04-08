@@ -67,8 +67,7 @@ namespace Gwen.Control
         /// <param name="child"></param>
         protected override void OnChildBoundsChanged(System.Drawing.Rectangle oldChildBounds, Base child)
         {
-            if (m_ScrollControl != null)
-                m_ScrollControl.UpdateScrollBars();
+            m_ScrollControl?.UpdateScrollBars();
         }
 
         /// <summary>

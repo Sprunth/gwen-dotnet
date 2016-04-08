@@ -180,20 +180,16 @@ namespace Gwen.Control
 
             if (m_ZoomedSection == -1)
             {
-                if (m_Sections[0] != null)
-                    m_Sections[0].SetBounds(0, 0, m_HSplitter.X, m_VSplitter.Y);
+                m_Sections[0]?.SetBounds(0, 0, m_HSplitter.X, m_VSplitter.Y);
 
-                if (m_Sections[1] != null)
-                    m_Sections[1].SetBounds(m_HSplitter.X + m_BarSize, 0, Width - (m_HSplitter.X + m_BarSize),
-                        m_VSplitter.Y);
+                m_Sections[1]?.SetBounds(m_HSplitter.X + m_BarSize, 0, Width - (m_HSplitter.X + m_BarSize),
+                    m_VSplitter.Y);
 
-                if (m_Sections[2] != null)
-                    m_Sections[2].SetBounds(0, m_VSplitter.Y + m_BarSize, m_HSplitter.X,
-                        Height - (m_VSplitter.Y + m_BarSize));
+                m_Sections[2]?.SetBounds(0, m_VSplitter.Y + m_BarSize, m_HSplitter.X,
+                    Height - (m_VSplitter.Y + m_BarSize));
 
-                if (m_Sections[3] != null)
-                    m_Sections[3].SetBounds(m_HSplitter.X + m_BarSize, m_VSplitter.Y + m_BarSize,
-                        Width - (m_HSplitter.X + m_BarSize), Height - (m_VSplitter.Y + m_BarSize));
+                m_Sections[3]?.SetBounds(m_HSplitter.X + m_BarSize, m_VSplitter.Y + m_BarSize,
+                    Width - (m_HSplitter.X + m_BarSize), Height - (m_VSplitter.Y + m_BarSize));
             }
             else
             {
@@ -235,18 +231,15 @@ namespace Gwen.Control
         /// </summary>
         protected void OnZoomChanged()
         {
-            if (ZoomChanged != null)
-                ZoomChanged.Invoke(this, EventArgs.Empty);
+            ZoomChanged?.Invoke(this, EventArgs.Empty);
 
             if (m_ZoomedSection == -1)
             {
-                if (PanelUnZoomed != null)
-                    PanelUnZoomed.Invoke(this, EventArgs.Empty);
+                PanelUnZoomed?.Invoke(this, EventArgs.Empty);
             }
             else
             {
-                if (PanelZoomed != null)
-                    PanelZoomed.Invoke(this, EventArgs.Empty);
+                PanelZoomed?.Invoke(this, EventArgs.Empty);
             }
         }
 

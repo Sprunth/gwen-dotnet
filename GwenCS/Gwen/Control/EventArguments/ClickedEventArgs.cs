@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gwen.Control
+namespace Gwen.Control.EventArguments
 {
     public class ClickedEventArgs : EventArgs
     {

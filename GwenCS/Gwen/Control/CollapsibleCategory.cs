@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Gwen.Control.EventArguments;
 using Gwen.ControlInternal;
 
 namespace Gwen.Control
@@ -72,8 +73,7 @@ namespace Gwen.Control
         /// <param name="control">Source control.</param>
         protected virtual void OnHeaderToggle(Base control, EventArgs args)
         {
-            if (Collapsed != null)
-                Collapsed.Invoke(this, EventArgs.Empty);
+            Collapsed?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -96,8 +96,7 @@ namespace Gwen.Control
 
             child.ToggleState = true;
 
-            if (Selected != null)
-                Selected.Invoke(this, new ItemSelectedEventArgs(control));
+            Selected?.Invoke(this, new ItemSelectedEventArgs(control));
         }
 
         /// <summary>

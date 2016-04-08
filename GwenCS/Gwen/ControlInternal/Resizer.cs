@@ -115,8 +115,7 @@ namespace Gwen.ControlInternal
 
             m_Target.SetBounds(bounds);
 
-            if (Resized != null)
-                Resized.Invoke(this, EventArgs.Empty);
+            Resized?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using Gwen.Input;
+﻿using Gwen.Control.EventArguments;
+using Gwen.Input;
 
 namespace Gwen.Control
 {

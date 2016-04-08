@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using Gwen.Control.EventArguments;
 using Gwen.ControlInternal;
 
 namespace Gwen.Control
@@ -134,8 +135,7 @@ namespace Gwen.Control
         /// </summary>
         public virtual void DeleteAll()
         {
-            if (m_Menu != null)
-                m_Menu.DeleteAll();
+            m_Menu?.DeleteAll();
         }
 
         /// <summary>
@@ -154,8 +154,7 @@ namespace Gwen.Control
                 Text = m_SelectedItem.Text;
                 m_Menu.IsHidden = true;
 
-                if (ItemSelected != null)
-                    ItemSelected.Invoke(this, args);
+                ItemSelected?.Invoke(this, args);
 
                 Focus();
                 Invalidate();
@@ -213,10 +212,7 @@ namespace Gwen.Control
         /// </summary>
         public virtual void Close()
         {
-            if (m_Menu == null)
-                return;
-
-            m_Menu.Hide();
+            m_Menu?.Hide();
         }
 
         /// <summary>

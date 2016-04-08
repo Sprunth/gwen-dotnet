@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using Gwen.Control.EventArguments;
 
 namespace Gwen.Control.Layout
 {
@@ -155,8 +156,7 @@ namespace Gwen.Control.Layout
 
         protected virtual void OnRowSelected()
         {
-            if (Selected != null)
-                Selected.Invoke(this, new ItemSelectedEventArgs(this));
+            Selected?.Invoke(this, new ItemSelectedEventArgs(this));
         }
 
         /// <summary>

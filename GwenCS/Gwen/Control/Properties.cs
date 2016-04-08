@@ -96,8 +96,7 @@ namespace Gwen.Control
 
         private void OnRowValueChanged(Base control, EventArgs args)
         {
-            if (ValueChanged != null)
-                ValueChanged.Invoke(control, EventArgs.Empty);
+            ValueChanged?.Invoke(control, EventArgs.Empty);
         }
 
         /// <summary>
