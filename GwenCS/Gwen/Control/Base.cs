@@ -1376,12 +1376,11 @@ namespace Gwen.Control
         /// </summary>
         protected virtual void OnMouseEntered()
         {
-            if (HoverEnter != null)
-                HoverEnter.Invoke(this, EventArgs.Empty);
+            HoverEnter?.Invoke(this, EventArgs.Empty);
 
             if (ToolTip != null)
                 Gwen.ToolTip.Enable(this);
-            else if (Parent != null && Parent.ToolTip != null)
+            else if (Parent?.ToolTip != null)
                 Gwen.ToolTip.Enable(Parent);
 
             Redraw();

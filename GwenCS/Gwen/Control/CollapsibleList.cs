@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Gwen.Control
 {
@@ -35,19 +36,7 @@ namespace Gwen.Control
         /// </summary>
         public Button GetSelectedButton()
         {
-            foreach (Base child in Children)
-            {
-                CollapsibleCategory cat = child as CollapsibleCategory;
-                if (cat == null)
-                    continue;
-
-                Button button = cat.GetSelectedButton();
-
-                if (button != null)
-                    return button;
-            }
-
-            return null;
+            return Children.OfType<CollapsibleCategory>().Select(cat => cat.GetSelectedButton()).FirstOrDefault(button => button != null);
         }
 
         /// <summary>

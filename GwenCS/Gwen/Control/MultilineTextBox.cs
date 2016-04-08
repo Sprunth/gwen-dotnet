@@ -196,7 +196,7 @@ namespace Gwen.Control
             m_ScrollControl.Margin = Margin.One;
             m_InnerPanel = m_ScrollControl;
             m_Text.Parent = m_InnerPanel;
-            m_ScrollControl.InnerPanel.BoundsChanged += new GwenEventHandler<EventArgs>(ScrollChanged);
+            m_ScrollControl.InnerPanel.BoundsChanged += ScrollChanged;
 
 
             m_TextLines.Add(String.Empty);

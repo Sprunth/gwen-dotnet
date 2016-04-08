@@ -63,24 +63,19 @@ namespace Gwen.Control
                     SelectionChanged.Invoke(this, EventArgs.Empty);
 
                 // propagate to root parent (tree)
-                if (m_TreeControl != null && m_TreeControl.SelectionChanged != null)
-                    m_TreeControl.SelectionChanged.Invoke(this, EventArgs.Empty);
+                m_TreeControl?.SelectionChanged?.Invoke(this, EventArgs.Empty);
 
                 if (value)
                 {
-                    if (Selected != null)
-                        Selected.Invoke(this, EventArgs.Empty);
+                    Selected?.Invoke(this, EventArgs.Empty);
 
-                    if (m_TreeControl != null && m_TreeControl.Selected != null)
-                        m_TreeControl.Selected.Invoke(this, EventArgs.Empty);
+                    m_TreeControl?.Selected?.Invoke(this, EventArgs.Empty);
                 }
                 else
                 {
-                    if (Unselected != null)
-                        Unselected.Invoke(this, EventArgs.Empty);
+                    Unselected?.Invoke(this, EventArgs.Empty);
 
-                    if (m_TreeControl != null && m_TreeControl.Unselected != null)
-                        m_TreeControl.Unselected.Invoke(this, EventArgs.Empty);
+                    m_TreeControl?.Unselected?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
@@ -241,10 +236,8 @@ namespace Gwen.Control
             if (m_ToggleButton != null)
                 m_ToggleButton.ToggleState = true;
 
-            if (Expanded != null)
-                Expanded.Invoke(this, EventArgs.Empty);
-            if (m_TreeControl != null && m_TreeControl.Expanded != null)
-                m_TreeControl.Expanded.Invoke(this, EventArgs.Empty);
+            Expanded?.Invoke(this, EventArgs.Empty);
+            m_TreeControl?.Expanded?.Invoke(this, EventArgs.Empty);
 
             Invalidate();
         }
@@ -258,10 +251,8 @@ namespace Gwen.Control
             if (m_ToggleButton != null)
                 m_ToggleButton.ToggleState = false;
 
-            if (Collapsed != null)
-                Collapsed.Invoke(this, EventArgs.Empty);
-            if (m_TreeControl != null && m_TreeControl.Collapsed != null)
-                m_TreeControl.Collapsed.Invoke(this, EventArgs.Empty);
+            Collapsed?.Invoke(this, EventArgs.Empty);
+            m_TreeControl?.Collapsed?.Invoke(this, EventArgs.Empty);
 
             Invalidate();
         }

@@ -36,7 +36,7 @@ namespace Gwen.Control
 
                 m_Scale = value;
 
-                if (Skin != null && Skin.Renderer != null)
+                if (Skin?.Renderer != null)
                     Skin.Renderer.Scale = m_Scale;
 
                 OnScaleChanged();
