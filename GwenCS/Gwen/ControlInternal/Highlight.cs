@@ -3,7 +3,7 @@
 namespace Gwen.ControlInternal
 {
     /// <summary>
-    /// Drag&drop highlight.
+    /// Drag & drop highlight.
     /// </summary>
     public class Highlight : Base
     {

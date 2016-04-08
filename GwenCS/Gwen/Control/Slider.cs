@@ -214,7 +214,7 @@ namespace Gwen.Control
                 val /= m_NotchCount;
             }
 
-            if (m_Value != val)
+            if (!m_Value.Equals(val))
             {
                 m_Value = val;
                 if (ValueChanged != null)

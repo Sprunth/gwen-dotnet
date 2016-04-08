@@ -200,13 +200,13 @@ namespace Gwen.Control
             if (minimum > 0.3f)
                 return Pos.Fill;
 
-            if (top == minimum && (null == m_Top || m_Top.IsHidden))
+            if (top.Equals(minimum) && (null == m_Top || m_Top.IsHidden))
                 return Pos.Top;
-            if (left == minimum && (null == m_Left || m_Left.IsHidden))
+            if (left.Equals(minimum) && (null == m_Left || m_Left.IsHidden))
                 return Pos.Left;
-            if (right == minimum && (null == m_Right || m_Right.IsHidden))
+            if (right.Equals(minimum) && (null == m_Right || m_Right.IsHidden))
                 return Pos.Right;
-            if (bottom == minimum && (null == m_Bottom || m_Bottom.IsHidden))
+            if (bottom.Equals(minimum) && (null == m_Bottom || m_Bottom.IsHidden))
                 return Pos.Bottom;
 
             return Pos.Fill;

@@ -59,7 +59,7 @@ namespace Gwen.Control
             get { return m_ContentSize; }
             set
             {
-                if (m_ContentSize != value) Invalidate();
+                if (!m_ContentSize.Equals(value)) Invalidate();
                 m_ContentSize = value;
             }
         }
@@ -69,7 +69,7 @@ namespace Gwen.Control
             get { return m_ViewableContentSize; }
             set
             {
-                if (m_ViewableContentSize != value) Invalidate();
+                if (!m_ViewableContentSize.Equals(value)) Invalidate();
                 m_ViewableContentSize = value;
             }
         }
@@ -112,7 +112,7 @@ namespace Gwen.Control
         /// <returns>True if control state changed.</returns>
         public virtual bool SetScrollAmount(float value, bool forceUpdate = false)
         {
-            if (m_ScrollAmount == value && !forceUpdate)
+            if (!m_ScrollAmount.Equals(value) && !forceUpdate)
                 return false;
             m_ScrollAmount = value;
             Invalidate();

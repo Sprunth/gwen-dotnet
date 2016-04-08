@@ -138,7 +138,7 @@ namespace Gwen.Control
             {
                 if (value < m_Min) value = m_Min;
                 if (value > m_Max) value = m_Max;
-                if (value == m_Value) return;
+                if (value.Equals(m_Value)) return;
 
                 base.Value = value;
             }

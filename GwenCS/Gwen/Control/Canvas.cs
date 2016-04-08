@@ -31,7 +31,7 @@ namespace Gwen.Control
             get { return m_Scale; }
             set
             {
-                if (m_Scale == value)
+                if (m_Scale.Equals(value))
                     return;
 
                 m_Scale = value;
